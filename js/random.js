@@ -1,0 +1,1 @@
+var posts=["2024/06/17/hello-world/","2024/03/10/Java/Redis/Redis/","2023/02/22/Java/SpringBoot/SpringbootStudyNote/","2024/06/17/Java/SSM/Mybatis9.28/","2024/06/17/Java/SSM/SpringMVC/","2024/06/17/Java/SSM/Spring/"];function toRandomPost(){window.open('/'+posts[Math.floor(Math.random() * posts.length)],"_self");};
