@@ -13,18 +13,18 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1微服务阶段javase：OOP Mysql：持久化 html+css+js+jquery+框架：视图层，框架运用不熟练，css不好; javaweb：独立开发MVC三层架构：原始 ssm：框架：简化了我们的开发流程，配置也开始较为复杂； war：tomcat运行 Spring再简化：SpringBoot - jar：内嵌tomcat;	微服务架构！ 服务越来越多：SpringCloud;   H">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/SpringbootStudyNote.assets/image-20230109201052645.png">
-<meta property="og:image" content="http://example.com/SpringbootStudyNote.assets/image-20230112154654007.png">
-<meta property="og:image" content="http://example.com/SpringbootStudyNote.assets/image-20230112185648829.png">
-<meta property="og:image" content="http://example.com/SpringbootStudyNote.assets/image-20230113163629106.png">
-<meta property="og:image" content="http://example.com/SpringbootStudyNote.assets/image-20230113164405998.png">
-<meta property="og:image" content="http://example.com/SpringbootStudyNote.assets/image-20230113164930114.png">
-<meta property="og:image" content="http://example.com/SpringbootStudyNote.assets/image-20230113194424483.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025420.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025422.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025423.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025424.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025425.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025426.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025427.png">
 <meta property="article:published_time" content="2023-02-21T16:05:27.557Z">
-<meta property="article:modified_time" content="2023-02-18T08:50:55.877Z">
+<meta property="article:modified_time" content="2024-06-17T02:25:32.463Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/SpringbootStudyNote.assets/image-20230109201052645.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025420.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -99,7 +99,7 @@
 <p><strong>war：tomcat运行</strong></p>
 <p>Spring再简化：SpringBoot - jar：内嵌tomcat;	微服务架构！</p>
 <p>服务越来越多：SpringCloud;</p>
-<p><img src="/SpringbootStudyNote.assets/image-20230109201052645.png" alt="image-20230109201052645"></p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025420.png" alt="image-20230109201052645"></p>
 <p> Http:&#x2F;&#x2F;xxx.do</p>
 <p>新服务架构：服务网格！</p>
 <p>老师：</p>
@@ -173,7 +173,7 @@ List&lt;String&gt; configurations = this.getCandidateConfigurations(annotationMe
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">获取候选的配置：</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata, AnnotationAttributes attributes) &#123;</span><br><span class="line">    List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(this.getSpringFactoriesLoaderFactoryClass(), this.getBeanClassLoader());</span><br><span class="line">    Assert.notEmpty(configurations, &quot;No auto configuration classes found in META-INF/spring.factories. If you are using a custom packaging, make sure that file is correct.&quot;);</span><br><span class="line">    return configurations;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 META-INF/spring.factories：自动配置的核心文件
-![image-20230112005148551](SpringbootStudyNote.assets/image-20230112005148551.png)
+![image-20230112005148551](https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025421.png)
 </code></pre>
 </li>
 </ul>
@@ -205,7 +205,7 @@ META-INF/spring.factories：自动配置的核心文件
 <li>run；</li>
 </ul>
 <p>全面接管SpringMVC的配置！ 实操！</p>
-<h1 id="SpringBoot-起步依赖原理分析"><a href="#SpringBoot-起步依赖原理分析" class="headerlink" title="SpringBoot 起步依赖原理分析"></a>SpringBoot 起步依赖原理分析</h1><p><img src="/SpringbootStudyNote.assets/image-20230112154654007.png" alt="image-20230112154654007"></p>
+<h1 id="SpringBoot-起步依赖原理分析"><a href="#SpringBoot-起步依赖原理分析" class="headerlink" title="SpringBoot 起步依赖原理分析"></a>SpringBoot 起步依赖原理分析</h1><p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025422.png" alt="image-20230112154654007"></p>
 <p>&lt;dependencyManagement&gt;：&#x3D;&#x3D;依赖版本锁定，会锁定依赖的坐标的版本，规定给子过程的坐标版本，使得子工程导入依赖时可以省略版本&#x3D;&#x3D;</p>
 <blockquote>
 <p><strong>小结</strong></p>
@@ -284,7 +284,7 @@ META-INF/spring.factories：自动配置的核心文件
 </li>
 <li><p>@ConfigurationProperties</p>
 <p>将实体类注入，注意属性名需要和配置相同，<code>@ConfigurationProperties()</code>里的值为前缀</p>
-<p><img src="/SpringbootStudyNote.assets/image-20230112185648829.png" alt="image-20230112185648829"></p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025423.png" alt="image-20230112185648829"></p>
 </li>
 </ol>
 <h2 id="Profile"><a href="#Profile" class="headerlink" title="Profile"></a>Profile</h2><p>我们在开发SpringBoot应用时，通常同一套程序会被安装到不同的环境，比如：开发、测试、生产等等。其中数据库地址、服务器端口等等配置都不同，如果每次打包时，都要修改配置文件，那么非常的麻烦。profile功能就说来进行动态配置切换的。</p>
@@ -350,11 +350,11 @@ META-INF/spring.factories：自动配置的核心文件
 </ol>
 <h1 id="Spring自动配置原理分析"><a href="#Spring自动配置原理分析" class="headerlink" title="Spring自动配置原理分析"></a>Spring自动配置原理分析</h1><h2 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h2><p>Condition是在Spring4.0中增加的条件判断功能，通过这个功能可以实现选择性的创建Bean操作。</p>
 <p>SpringBoot提供了一个<code>@Conditional(value)</code>注解。value存放的是实现了<code>Condition</code>接口的核心条件判断类，用来实现我们为创建<code>Bean</code>所需要拥有的条件判断。</p>
-<p><img src="/SpringbootStudyNote.assets/image-20230113163629106.png" alt="image-20230113163629106"></p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025424.png" alt="image-20230113163629106"></p>
 <p><code>Condition</code>是一个函数式接口，包含有一个<code>boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata)</code>方法，我们自定义的条件判断类就实现了这个接口的方法，<code>matches</code>方法中<code>context 上下文对象。用于获取环境变量、IOC容器、ClassLoader对象</code>,<code>metadata 注解的源对象，可以用于获取注解定义的属性值</code>。我们根据需求编写一个动态的注解，能够根据我们是否导入的类坐标来创立<code>Bean</code>,则我们可以自定义一个注解<code>ConditionOnClass</code>。</p>
-<p><img src="/SpringbootStudyNote.assets/image-20230113164405998.png" alt="image-20230113164405998"></p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025425.png" alt="image-20230113164405998"></p>
 <p>如图可知我们自定义的注解中标注了<code>@Conditional(value)</code>，其中传值为我们自定义的核心判断类。且注解属性value为字符串数组，用于存放我们需要判断的坐标值。</p>
-<p><img src="/SpringbootStudyNote.assets/image-20230113164930114.png" alt="image-20230113164930114"></p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025426.png" alt="image-20230113164930114"></p>
 <p>如此就可以创建出自定义的Bean装载拦截器了</p>
 <h2 id="切换内置Web服务器"><a href="#切换内置Web服务器" class="headerlink" title="切换内置Web服务器"></a>切换内置Web服务器</h2><p>SpringBoot的web环境中默认使用tomcat作为内置服务器，其实SpringBoot提供了4种内置服务器供我们选择，我们可以很方便的进行切换</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">   排除tomcat</span></span><br><span class="line"><span class="comment">   --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--引入jetty--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jetty<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -364,7 +364,7 @@ META-INF/spring.factories：自动配置的核心文件
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--获取其他项目坐标--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.NanCheng<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>SpringBoot-09-enableTest<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>但是根据<code>@SpringBootApplication</code>注解内源码我们发现：</p>
-<p><img src="/SpringbootStudyNote.assets/image-20230113194424483.png" alt="image-20230113194424483"></p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025427.png" alt="image-20230113194424483"></p>
 <p>它内部的<code>ComponentScan</code>注解扫描的范围仅包括引导类所在包及其子包，所以从其他项目引入的Bean无法被获取。那如果需要获取目标包，我们可以使用三种方式：</p>
 <ol>
 <li><p>使用@ComponentScan扫描目标包，即</p>
@@ -441,7 +441,7 @@ META-INF/spring.factories：自动配置的核心文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/02/22/Java/SpringBoot/SpringbootStudyNote/" data-id="clxibqoro0002jc734ezg1kzi" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/02/22/Java/SpringBoot/SpringbootStudyNote/" data-id="clxict6uw00021k735im0d02h" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
