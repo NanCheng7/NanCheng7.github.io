@@ -1,87 +1,200 @@
 
 <!DOCTYPE html>
-<html lang="en" class="loading">
+<html lang="zh">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SpringBoot - Hexo</title>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate" />
-    <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="1微服务阶段javase：OOP
-Mysql：持久化
-html+css+js+jquery+框架：视图层，框架运用不熟练，css不好;
-javaweb：独立开发MVC三层架构：原始
-ssm：框架：简,"> 
-    <meta name="author" content="John Doe"> 
-    <link rel="alternative" href="atom.xml" title="Hexo" type="application/atom+xml"> 
-    <link rel="icon" href="/img/favicon.png"> 
-    
-    
-    
-    <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="SpringBoot - Hexo"/>
-    <meta name="twitter:description" content="1微服务阶段javase：OOP
-Mysql：持久化
-html+css+js+jquery+框架：视图层，框架运用不熟练，css不好;
-javaweb：独立开发MVC三层架构：原始
-ssm：框架：简,"/>
-    
-    
-    
-    
-    <meta property="og:site_name" content="Hexo"/>
-    <meta property="og:type" content="object"/>
-    <meta property="og:title" content="SpringBoot - Hexo"/>
-    <meta property="og:description" content="1微服务阶段javase：OOP
-Mysql：持久化
-html+css+js+jquery+框架：视图层，框架运用不熟练，css不好;
-javaweb：独立开发MVC三层架构：原始
-ssm：框架：简,"/>
-    
-<link rel="stylesheet" href="/css/diaspora.css">
+    <meta charset="utf-8" />
+    <title>SpringBoot | Hexo</title>
+    <meta name="author" content="NanCheng7" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <link rel="icon" href="/images/avatar.jpg" />
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
 
-    <script>window.searchDbPath = "/search.xml";</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
 <meta name="generator" content="Hexo 7.2.0"></head>
-
-<body class="loading">
-    <span id="config-title" style="display:none">Hexo</span>
-    <div id="loader"></div>
-    <div id="single">
-    <div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
-    <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">SpringBoot</h3>
-    <div class="social">
-        <div>
-            <div class="share">
-                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
             </div>
-            <div id="qr"></div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>HEXO</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;HEXO</span>
         </div>
-    </div>
-    <div class="scrollbar"></div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
 </div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
 
-    <div class="section">
-        <div class="article">
-    <div class='main'>
-        <h1 class="title">SpringBoot</h1>
-        <div class="stuff">
-            <span>二月 22, 2023</span>
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>SpringBoot</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/2/22
+        </span>
+        
+        <span class="category">
+            <a href="/categories/Java/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Java
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
             
-  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/SSMP/" rel="tag">SSMP</a></li></ul>
-
-
-        </div>
-        <div class="content markdown">
-            <h1 id="1微服务阶段"><a href="#1微服务阶段" class="headerlink" title="1微服务阶段"></a>1微服务阶段</h1><p>javase：OOP</p>
+            
+            <span class="tag">
+                
+                <a href="/tags/SSMP/" style="color: #00bcd4">
+                    SSMP
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="1微服务阶段"><a href="#1微服务阶段" class="headerlink" title="1微服务阶段"></a>1微服务阶段</h1><p>javase：OOP</p>
 <p>Mysql：持久化</p>
 <p>html+css+js+jquery+框架：视图层，框架运用不熟练，css不好;</p>
 <p>javaweb：独立开发MVC三层架构：原始</p>
@@ -133,8 +246,11 @@ ssm：框架：简,"/>
 <ul>
 <li></li>
 </ul>
-  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="xml">&lt;dependency&gt;
+   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+   &lt;artifactId&gt;spring-boot-starter&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
 <ul>
 <li><p>启动器：说白了就说SpringBoot的启动场景；</p>
 </li>
@@ -144,8 +260,22 @@ ssm：框架：简,"/>
 </li>
 </ul>
 <p><strong>主程序</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.nancheng.hellospringboot;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="comment">//程序的主入口</span></span><br><span class="line"><span class="comment">//本身就说Spring的一个组件</span></span><br><span class="line"><span class="comment">//@SpringBootApplication：标注这个类是一个SpringBoot的应用</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloSpringBootApplication</span> &#123;</span><br><span class="line">	<span class="comment">//SpringApplication 将SpringBoot应用启动</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		SpringApplication.run(HelloSpringBootApplication.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">package com.nancheng.hellospringboot;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+//程序的主入口
+//本身就说Spring的一个组件
+//@SpringBootApplication：标注这个类是一个SpringBoot的应用
+@SpringBootApplication
+public class HelloSpringBootApplication &#123;
+    //SpringApplication 将SpringBoot应用启动
+    public static void main(String[] args) &#123;
+        SpringApplication.run(HelloSpringBootApplication.class, args);
+    &#125;
+    
+&#125;
+</code></pre>
 <ul>
 <li><p>注解：</p>
 <ul>
@@ -160,11 +290,15 @@ ssm：框架：简,"/>
     
 //获取所有的配置
 List&lt;String&gt; configurations = this.getCandidateConfigurations(annotationMetadata, attributes);
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">获取候选的配置：</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata, AnnotationAttributes attributes) &#123;</span><br><span class="line">    List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(this.getSpringFactoriesLoaderFactoryClass(), this.getBeanClassLoader());</span><br><span class="line">    Assert.notEmpty(configurations, &quot;No auto configuration classes found in META-INF/spring.factories. If you are using a custom packaging, make sure that file is correct.&quot;);</span><br><span class="line">    return configurations;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-META-INF/spring.factories：自动配置的核心文件
-![image-20230112005148551](https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025421.png)
 </code></pre>
+<p>获取候选的配置：</p>
+<pre><code class="java">protected List&lt;String&gt; getCandidateConfigurations(AnnotationMetadata metadata, AnnotationAttributes attributes) &#123;
+    List&lt;String&gt; configurations = SpringFactoriesLoader.loadFactoryNames(this.getSpringFactoriesLoaderFactoryClass(), this.getBeanClassLoader());
+    Assert.notEmpty(configurations, &quot;No auto configuration classes found in META-INF/spring.factories. If you are using a custom packaging, make sure that file is correct.&quot;);
+    return configurations;
+&#125;
+</code></pre>
+<p>META-INF&#x2F;spring.factories：自动配置的核心文件<br><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025421.png" alt="image-20230112005148551"></p>
 </li>
 </ul>
 </li>
@@ -227,20 +361,40 @@ META-INF/spring.factories：自动配置的核心文件
 <li>缩进的空格数目不重要，只要同层级的元素左侧对其即可</li>
 <li># 表示注释，从这个字符一直到行尾，都会被解析器忽略</li>
 </ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line">  <span class="attr">address:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="attr">name:</span> <span class="string">abc</span></span><br></pre></td></tr></table></figure>
+<pre><code class="yaml">server:
+  port: 8080
+  address: 127.0.0.1
+  
 
+name: abc
+</code></pre>
 <h3 id="YAML数据格式"><a href="#YAML数据格式" class="headerlink" title="YAML数据格式"></a>YAML数据格式</h3><ul>
 <li><p>对象(Map)：键值对的集合</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">person:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">zhangshan</span></span><br><span class="line"><span class="comment">#行内写法</span></span><br><span class="line"><span class="attr">person:</span> &#123;<span class="attr">name:</span> <span class="string">zhangsan</span>&#125; <span class="comment">#了解即可</span></span><br></pre></td></tr></table></figure>
+<pre><code class="yaml">person:
+  name: zhangshan
+#行内写法
+person: &#123;name: zhangsan&#125; #了解即可
+</code></pre>
 </li>
 <li><p>数组：一组按次序排列的值</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">address:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">beijing</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">shanghai</span></span><br><span class="line"><span class="comment"># 行内写法</span></span><br><span class="line"><span class="attr">address:</span> [<span class="string">beijing</span>,<span class="string">shanghai</span>]</span><br></pre></td></tr></table></figure>
+<pre><code class="yaml">address:
+  - beijing
+  - shanghai
+# 行内写法
+address: [beijing,shanghai]
+</code></pre>
 </li>
 <li><p>纯量：单个的、不可再分的值</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">msg1:</span> <span class="string">&#x27;hello \n world&#x27;</span> <span class="comment"># 单引号忽略转义字符</span></span><br><span class="line"><span class="attr">msg2:</span> <span class="string">&quot;hello \n world&quot;</span> <span class="comment">#双引号识别转义字符</span></span><br></pre></td></tr></table></figure></li>
+<pre><code class="yaml">msg1: &#39;hello \n world&#39; # 单引号忽略转义字符
+msg2: &quot;hello \n world&quot; #双引号识别转义字符
+</code></pre>
+</li>
 </ul>
-<h3 id="YAML参数引用"><a href="#YAML参数引用" class="headerlink" title="YAML参数引用"></a>YAML参数引用</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">lisi</span></span><br><span class="line"></span><br><span class="line"><span class="attr">person:</span></span><br><span class="line">	<span class="attr">name:</span> <span class="string">$&#123;name&#125;</span> <span class="comment">#引用上边定义的name值</span></span><br></pre></td></tr></table></figure>
+<h3 id="YAML参数引用"><a href="#YAML参数引用" class="headerlink" title="YAML参数引用"></a>YAML参数引用</h3><pre><code class="yaml">name: lisi
 
+person:
+    name: $&#123;name&#125; #引用上边定义的name值
+</code></pre>
 <h3 id="YAML小结"><a href="#YAML小结" class="headerlink" title="YAML小结"></a>YAML小结</h3><p>1、配置文件类型</p>
 <ul>
 <li>properties：键值对</li>
@@ -267,10 +421,47 @@ META-INF/spring.factories：自动配置的核心文件
 </ul>
 <h2 id="读取配置内容"><a href="#读取配置内容" class="headerlink" title="读取配置内容"></a>读取配置内容</h2><ol>
 <li><p>@Value</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConfigTestController</span> &#123;</span><br><span class="line">   <span class="meta">@Value(&quot;$&#123;person.name&#125;&quot;)</span></span><br><span class="line">   String name1;</span><br><span class="line">   <span class="meta">@Value(&quot;$&#123;person2.name&#125;&quot;)</span></span><br><span class="line">   String name2;</span><br><span class="line">   <span class="meta">@Value(&quot;$&#123;person.sex&#125;&quot;)</span></span><br><span class="line">   String sex;</span><br><span class="line">   <span class="meta">@Value(&quot;$&#123;person.age&#125;&quot;)</span></span><br><span class="line">   <span class="type">int</span> age;</span><br><span class="line">   <span class="meta">@Value(&quot;$&#123;address[0]&#125;&quot;)</span></span><br><span class="line">   String address1;</span><br><span class="line">   <span class="meta">@Value(&quot;$&#123;address[1]&#125;&quot;)</span></span><br><span class="line">   String address2;</span><br><span class="line">   <span class="meta">@Value(&quot;$&#123;msg1&#125;&quot;)</span></span><br><span class="line">   String msg1;</span><br><span class="line">   <span class="meta">@Value(&quot;$&#123;msg2&#125;&quot;)</span></span><br><span class="line">   String msg2;</span><br><span class="line">   <span class="meta">@RequestMapping(&quot;/test1&quot;)</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">TestConfig</span><span class="params">(User user1,User user2)</span>&#123;</span><br><span class="line">      user1 = <span class="keyword">new</span> <span class="title class_">User</span>(name1,age,sex,address1,msg1);</span><br><span class="line">      user2 = <span class="keyword">new</span> <span class="title class_">User</span>(name2,age,sex,address2,msg2);</span><br><span class="line">      System.out.println(msg1);</span><br><span class="line">      System.out.println(msg2);</span><br><span class="line">      <span class="keyword">return</span> user1.toString()+<span class="string">&quot;&lt;============&gt;&quot;</span>+user2.toString();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">@RestController
+public class ConfigTestController &#123;
+   @Value(&quot;$&#123;person.name&#125;&quot;)
+   String name1;
+   @Value(&quot;$&#123;person2.name&#125;&quot;)
+   String name2;
+   @Value(&quot;$&#123;person.sex&#125;&quot;)
+   String sex;
+   @Value(&quot;$&#123;person.age&#125;&quot;)
+   int age;
+   @Value(&quot;$&#123;address[0]&#125;&quot;)
+   String address1;
+   @Value(&quot;$&#123;address[1]&#125;&quot;)
+   String address2;
+   @Value(&quot;$&#123;msg1&#125;&quot;)
+   String msg1;
+   @Value(&quot;$&#123;msg2&#125;&quot;)
+   String msg2;
+   @RequestMapping(&quot;/test1&quot;)
+   public String TestConfig(User user1,User user2)&#123;
+      user1 = new User(name1,age,sex,address1,msg1);
+      user2 = new User(name2,age,sex,address2,msg2);
+      System.out.println(msg1);
+      System.out.println(msg2);
+      return user1.toString()+&quot;&lt;============&gt;&quot;+user2.toString();
+   &#125;
+&#125;
+</code></pre>
 </li>
 <li><p>Environment</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> Environment env;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/test1&quot;)</span></span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">TestConfig</span><span class="params">(User user1,User user2)</span>&#123;</span><br><span class="line">		</span><br><span class="line">		user1 = <span class="keyword">new</span> <span class="title class_">User</span>(env.getProperty(<span class="string">&quot;person.name&quot;</span>),Integer.parseInt(env.getProperty(<span class="string">&quot;person.age&quot;</span>)),env.getProperty(<span class="string">&quot;person.sex&quot;</span>),env.getProperty(<span class="string">&quot;address[0]&quot;</span>),env.getProperty(<span class="string">&quot;msg1&quot;</span>));</span><br><span class="line">		user2 = <span class="keyword">new</span> <span class="title class_">User</span>(env.getProperty(<span class="string">&quot;person.name&quot;</span>),Integer.parseInt(env.getProperty(<span class="string">&quot;person.age&quot;</span>)),env.getProperty(<span class="string">&quot;person.sex&quot;</span>),env.getProperty(<span class="string">&quot;address[1]&quot;</span>),env.getProperty(<span class="string">&quot;msg2&quot;</span>));</span><br><span class="line">		<span class="keyword">return</span> user1.toString()+<span class="string">&quot;&lt;============&gt;&quot;</span>+user2.toString();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">@Autowired
+private Environment env;
+
+@RequestMapping(&quot;/test1&quot;)
+    public String TestConfig(User user1,User user2)&#123;
+        
+        user1 = new User(env.getProperty(&quot;person.name&quot;),Integer.parseInt(env.getProperty(&quot;person.age&quot;)),env.getProperty(&quot;person.sex&quot;),env.getProperty(&quot;address[0]&quot;),env.getProperty(&quot;msg1&quot;));
+        user2 = new User(env.getProperty(&quot;person.name&quot;),Integer.parseInt(env.getProperty(&quot;person.age&quot;)),env.getProperty(&quot;person.sex&quot;),env.getProperty(&quot;address[1]&quot;),env.getProperty(&quot;msg2&quot;));
+        return user1.toString()+&quot;&lt;============&gt;&quot;+user2.toString();
+    &#125;
+</code></pre>
 </li>
 <li><p>@ConfigurationProperties</p>
 <p>将实体类注入，注意属性名需要和配置相同，<code>@ConfigurationProperties()</code>里的值为前缀</p>
@@ -308,8 +499,11 @@ META-INF/spring.factories：自动配置的核心文件
 <li><p>在yml种使用—分割不同配置</p>
 </li>
 <li><p>在不同的文档页种使用</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">activate:</span></span><br><span class="line">      <span class="attr">on-profile:</span> <span class="string">pro</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="yml">spring:
+  config:
+    activate:
+      on-profile: pro
+</code></pre>
 <p>进行文档分页的命名</p>
 </li>
 </ul>
@@ -347,27 +541,120 @@ META-INF/spring.factories：自动配置的核心文件
 <p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025426.png" alt="image-20230113164930114"></p>
 <p>如此就可以创建出自定义的Bean装载拦截器了</p>
 <h2 id="切换内置Web服务器"><a href="#切换内置Web服务器" class="headerlink" title="切换内置Web服务器"></a>切换内置Web服务器</h2><p>SpringBoot的web环境中默认使用tomcat作为内置服务器，其实SpringBoot提供了4种内置服务器供我们选择，我们可以很方便的进行切换</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">   排除tomcat</span></span><br><span class="line"><span class="comment">   --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--引入jetty--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jetty<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<pre><code class="xml">&lt;dependency&gt;
+   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+   &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+   &lt;!--
+   排除tomcat
+   --&gt;
+   &lt;exclusions&gt;
+      &lt;exclusion&gt;
+         &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+         &lt;artifactId&gt;spring-boot-starter-tomcat&lt;/artifactId&gt;
+      &lt;/exclusion&gt;
+   &lt;/exclusions&gt;
+&lt;/dependency&gt;
+&lt;!--引入jetty--&gt;
+&lt;dependency&gt;
+   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+   &lt;artifactId&gt;spring-boot-starter-jetty&lt;/artifactId&gt;
+&lt;/dependency&gt;
 
+&lt;dependency&gt;
+   &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+   &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+   &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
 <h2 id="Enable-注解"><a href="#Enable-注解" class="headerlink" title="@Enable*注解"></a>@Enable*注解</h2><p>在SpringBoot中提供了很多的<code>enable</code>开头的注解，这些注解都是用于动态启动某些功能的。而其底层原理是使用<code>@Import</code>注解导入一些配置类，实现<code>Bean</code>的动态加载。</p>
 <p>当我们需要扫描外部工程的包时，首先需要在pom文件中导入坐标：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--获取其他项目坐标--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.NanCheng<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>SpringBoot-09-enableTest<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<pre><code class="xml">&lt;!--获取其他项目坐标--&gt;
+&lt;dependency&gt;
+   &lt;groupId&gt;com.NanCheng&lt;/groupId&gt;
+   &lt;artifactId&gt;SpringBoot-09-enableTest&lt;/artifactId&gt;
+   &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
 <p>但是根据<code>@SpringBootApplication</code>注解内源码我们发现：</p>
 <p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171025427.png" alt="image-20230113194424483"></p>
 <p>它内部的<code>ComponentScan</code>注解扫描的范围仅包括引导类所在包及其子包，所以从其他项目引入的Bean无法被获取。那如果需要获取目标包，我们可以使用三种方式：</p>
 <ol>
 <li><p>使用@ComponentScan扫描目标包，即</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.NanCheng.Sb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;com.NanCheng.config&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringBoot09EnableApplication</span> &#123;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="type">ConfigurableApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> SpringApplication.run(SpringBoot09EnableApplication.class, args);</span><br><span class="line">      <span class="comment">//获取其他工程的bean</span></span><br><span class="line">      <span class="type">Object</span> <span class="variable">user</span> <span class="operator">=</span> context.getBean(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">      System.out.println(user);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">package com.NanCheng.Sb;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+@SpringBootApplication
+@ComponentScan(&quot;com.NanCheng.config&quot;)
+public class SpringBoot09EnableApplication &#123;
+   
+   public static void main(String[] args) &#123;
+      ConfigurableApplicationContext context = SpringApplication.run(SpringBoot09EnableApplication.class, args);
+      //获取其他工程的bean
+      Object user = context.getBean(&quot;user&quot;);
+      System.out.println(user);
+   &#125;
+&#125;
+</code></pre>
 </li>
 <li><p>使用Import注解，加载类，这些类都会被Spring创建，并放入IOC容器,即</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.NanCheng.Sb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.NanCheng.config.UserConfig;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Import;</span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@Import(UserConfig.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringBoot09EnableApplication</span> &#123;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="type">ConfigurableApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> SpringApplication.run(SpringBoot09EnableApplication.class, args);</span><br><span class="line">      <span class="comment">//获取其他工程的bean</span></span><br><span class="line">      <span class="type">Object</span> <span class="variable">user</span> <span class="operator">=</span> context.getBean(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">      System.out.println(user);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">package com.NanCheng.Sb;
+
+import com.NanCheng.config.UserConfig;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Import;
+@SpringBootApplication
+@Import(UserConfig.class)
+public class SpringBoot09EnableApplication &#123;
+   
+   public static void main(String[] args) &#123;
+      ConfigurableApplicationContext context = SpringApplication.run(SpringBoot09EnableApplication.class, args);
+      //获取其他工程的bean
+      Object user = context.getBean(&quot;user&quot;);
+      System.out.println(user);
+   &#125;
+&#125;
+</code></pre>
 </li>
 <li><p>可以对<code>@Import</code>注解进行封装，即我们无需关心目标Bean所在的位置，&#x3D;&#x3D;只需要将目标包的项目通过pom文件导入，再导入目标Bean的<code>@Enable</code>注解即可获得相应的Bean,其底层原理依旧是<code>@Import</code>注解&#x3D;&#x3D;</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.NanCheng.Sb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.NanCheng.config.EnableUser;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableUser</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringBoot09EnableApplication</span> &#123;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="type">ConfigurableApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> SpringApplication.run(SpringBoot09EnableApplication.class, args);</span><br><span class="line">      <span class="comment">//获取其他工程的bean</span></span><br><span class="line">      <span class="type">Object</span> <span class="variable">user</span> <span class="operator">=</span> context.getBean(<span class="string">&quot;user&quot;</span>);</span><br><span class="line">      System.out.println(user);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">package com.NanCheng.Sb;
 
+import com.NanCheng.config.EnableUser;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+@SpringBootApplication
+@EnableUser
+public class SpringBoot09EnableApplication &#123;
+   
+   public static void main(String[] args) &#123;
+      ConfigurableApplicationContext context = SpringApplication.run(SpringBoot09EnableApplication.class, args);
+      //获取其他工程的bean
+      Object user = context.getBean(&quot;user&quot;);
+      System.out.println(user);
+   &#125;
+   
+&#125;
+</code></pre>
 <p>目标Bean提供的<code>@Enable</code>注解如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.NanCheng.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Import;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Import(UserConfig.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> EnableUser &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<pre><code class="java">package com.NanCheng.config;
+
+import org.springframework.context.annotation.Import;
+
+import java.lang.annotation.*;
+
+@Target(&#123;ElementType.TYPE&#125;)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Import(UserConfig.class)
+public @interface EnableUser &#123;
+&#125;
+</code></pre>
+</li>
 </ol>
 <h2 id="Import注解"><a href="#Import注解" class="headerlink" title="@Import注解"></a>@Import注解</h2><p><code>@Enable*</code>底层依赖于<code>@Import</code>注解导入一些类，使用<code>@Import</code>导入的类会被Spring加载到<code>IOC容器</code>中。而<code>@Import</code>提供4种用法：</p>
 <ol>
@@ -376,25 +663,162 @@ META-INF/spring.factories：自动配置的核心文件
 <li>导入<code>ImportSelector</code>实现类，一般用于加载配置文件中的类</li>
 <li>导入<code>ImportBeanDefinitionRegistrar</code>实现类</li>
 </ol>
-<h3 id="1、导入Bean"><a href="#1、导入Bean" class="headerlink" title="1、导入Bean"></a>1、导入Bean</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.NanCheng.Sb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.NanCheng.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Import;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@Import(User.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringBoot09EnableApplication</span> &#123;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="type">ConfigurableApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> SpringApplication.run(SpringBoot09EnableApplication.class, args);</span><br><span class="line"></span><br><span class="line">      <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> context.getBean(User.class);</span><br><span class="line">      System.out.println(user);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1、导入Bean"><a href="#1、导入Bean" class="headerlink" title="1、导入Bean"></a>1、导入Bean</h3><pre><code class="java">package com.NanCheng.Sb;
 
+import com.NanCheng.pojo.User;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Import;
+
+import java.util.Map;
+
+@SpringBootApplication
+@Import(User.class)
+public class SpringBoot09EnableApplication &#123;
+   
+   public static void main(String[] args) &#123;
+      ConfigurableApplicationContext context = SpringApplication.run(SpringBoot09EnableApplication.class, args);
+
+      User user = context.getBean(User.class);
+      System.out.println(user);
+   &#125;
+   
+&#125;
+</code></pre>
 <p>我们直接在<code>@Import()</code>注解内直接加入获取的Bean的class。</p>
-<h3 id="2、导入配置类"><a href="#2、导入配置类" class="headerlink" title="2、导入配置类"></a>2、导入<code>配置</code>类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.NanCheng.Sb;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.NanCheng.config.UserConfig;</span><br><span class="line"><span class="keyword">import</span> com.NanCheng.pojo.Role;</span><br><span class="line"><span class="keyword">import</span> com.NanCheng.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Import;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@Import(UserConfig.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringBoot09EnableApplication</span> &#123;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="type">ConfigurableApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> SpringApplication.run(SpringBoot09EnableApplication.class, args);;</span><br><span class="line">      </span><br><span class="line">      <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> context.getBean(User.class);</span><br><span class="line">      System.out.println(user);</span><br><span class="line">      </span><br><span class="line">      <span class="type">Role</span> <span class="variable">role</span> <span class="operator">=</span> context.getBean(Role.class);</span><br><span class="line">      System.out.println(role);</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、导入配置类"><a href="#2、导入配置类" class="headerlink" title="2、导入配置类"></a>2、导入<code>配置</code>类</h3><pre><code class="java">package com.NanCheng.Sb;
 
+
+import com.NanCheng.config.UserConfig;
+import com.NanCheng.pojo.Role;
+import com.NanCheng.pojo.User;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Import;
+
+import java.util.Map;
+
+@SpringBootApplication
+@Import(UserConfig.class)
+public class SpringBoot09EnableApplication &#123;
+   
+   public static void main(String[] args) &#123;
+      ConfigurableApplicationContext context = SpringApplication.run(SpringBoot09EnableApplication.class, args);;
+      
+      User user = context.getBean(User.class);
+      System.out.println(user);
+      
+      Role role = context.getBean(Role.class);
+      System.out.println(role);
+
+   &#125;
+   
+&#125;
+</code></pre>
 <p>我们想要获取对应的Bean，只需要在<code>@Import()</code>注解当中直接导入装载了目标Bean的配置类即可。</p>
-<h3 id="3、导入ImportSelector实现类"><a href="#3、导入ImportSelector实现类" class="headerlink" title="3、导入ImportSelector实现类"></a>3、导入<code>ImportSelector</code>实现类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.NanCheng.Sb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.NanCheng.config.MyImportSelector;</span><br><span class="line"><span class="keyword">import</span> com.NanCheng.pojo.Role;</span><br><span class="line"><span class="keyword">import</span> com.NanCheng.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Import;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Import(User.class)</span></span><br><span class="line"><span class="meta">@Import(MyImportSelector.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringBoot09EnableApplication</span> &#123;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="type">ConfigurableApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> SpringApplication.run(SpringBoot09EnableApplication.class, args);</span><br><span class="line">      <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> context.getBean(User.class);</span><br><span class="line">      System.out.println(user);</span><br><span class="line">      </span><br><span class="line">      <span class="type">Role</span> <span class="variable">role</span> <span class="operator">=</span> context.getBean(Role.class);</span><br><span class="line">      System.out.println(role);</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3、导入ImportSelector实现类"><a href="#3、导入ImportSelector实现类" class="headerlink" title="3、导入ImportSelector实现类"></a>3、导入<code>ImportSelector</code>实现类</h3><pre><code class="java">package com.NanCheng.Sb;
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.NanCheng.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ImportSelector;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.type.AnnotationMetadata;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyImportSelector</span> <span class="keyword">implements</span> <span class="title class_">ImportSelector</span> &#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">public</span> String[] selectImports(AnnotationMetadata importingClassMetadata) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;com.NanCheng.pojo.Role&quot;</span>,<span class="string">&quot;com.NanCheng.pojo.User&quot;</span>&#125;;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+import com.NanCheng.config.MyImportSelector;
+import com.NanCheng.pojo.Role;
+import com.NanCheng.pojo.User;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Import;
 
+import java.util.Map;
+
+@SpringBootApplication
+
+@Import(User.class)
+@Import(MyImportSelector.class)
+public class SpringBoot09EnableApplication &#123;
+   
+   public static void main(String[] args) &#123;
+      ConfigurableApplicationContext context = SpringApplication.run(SpringBoot09EnableApplication.class, args);
+      User user = context.getBean(User.class);
+      System.out.println(user);
+      
+      Role role = context.getBean(Role.class);
+      System.out.println(role);
+
+   &#125;
+   
+&#125;
+</code></pre>
+<pre><code class="java">package com.NanCheng.config;
+
+import org.springframework.context.annotation.ImportSelector;
+import org.springframework.core.type.AnnotationMetadata;
+
+public class MyImportSelector implements ImportSelector &#123;
+   @Override
+   public String[] selectImports(AnnotationMetadata importingClassMetadata) &#123;
+      return new String[]&#123;&quot;com.NanCheng.pojo.Role&quot;,&quot;com.NanCheng.pojo.User&quot;&#125;;
+   &#125;
+&#125;
+</code></pre>
 <p>我们想要获取对应的Bean，只需要在<code>@Import()</code>注解当中直接导入&#x3D;&#x3D;返回值包含目标bean的路径&#x3D;&#x3D;的实现了<code>ImportSelector</code>的类即可。</p>
 <h3 id="4、导入ImportBeanDefinitionRegistrar实现类"><a href="#4、导入ImportBeanDefinitionRegistrar实现类" class="headerlink" title="4、导入ImportBeanDefinitionRegistrar实现类"></a>4、导入<code>ImportBeanDefinitionRegistrar</code>实现类</h3><blockquote>
 <p><code>ImportBeanDefinitionRegistrar</code>意为：导入Bean的定义注册</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.NanCheng.Sb;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.NanCheng.config.MyImportBeanDefinitionRegistrar;</span><br><span class="line"><span class="keyword">import</span> com.NanCheng.pojo.Role;</span><br><span class="line"><span class="keyword">import</span> com.NanCheng.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Import;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@Import(MyImportBeanDefinitionRegistrar.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringBoot09EnableApplication</span> &#123;</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">      <span class="type">ConfigurableApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> SpringApplication.run(SpringBoot09EnableApplication.class, args);</span><br><span class="line"></span><br><span class="line">      <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> context.getBean(User.class);</span><br><span class="line">      System.out.println(user);</span><br><span class="line">      </span><br><span class="line">      <span class="type">Role</span> <span class="variable">role</span> <span class="operator">=</span> context.getBean(Role.class);</span><br><span class="line">      System.out.println(role);</span><br><span class="line">      </span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">package com.NanCheng.Sb;
 
+import com.NanCheng.config.MyImportBeanDefinitionRegistrar;
+import com.NanCheng.pojo.Role;
+import com.NanCheng.pojo.User;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Import;
+import java.util.Map;
+
+@SpringBootApplication
+@Import(MyImportBeanDefinitionRegistrar.class)
+public class SpringBoot09EnableApplication &#123;
+   
+   public static void main(String[] args) &#123;
+      ConfigurableApplicationContext context = SpringApplication.run(SpringBoot09EnableApplication.class, args);
+
+      User user = context.getBean(User.class);
+      System.out.println(user);
+      
+      Role role = context.getBean(Role.class);
+      System.out.println(role);
+      
+   &#125;
+   
+&#125;
+</code></pre>
 <p><code>MyImportBeanDefinitionRegistrar</code>类源码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.NanCheng.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.NanCheng.pojo.Role;</span><br><span class="line"><span class="keyword">import</span> com.NanCheng.pojo.User;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.support.AbstractBeanDefinition;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.support.BeanDefinitionBuilder;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.support.BeanDefinitionRegistry;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.support.BeanNameGenerator;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ImportBeanDefinitionRegistrar;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.type.AnnotationMetadata;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ImportBeanDefinitionRegistrar：导入注册Bean定义</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyImportBeanDefinitionRegistrar</span> <span class="keyword">implements</span> <span class="title class_">ImportBeanDefinitionRegistrar</span> &#123;</span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">registerBeanDefinitions</span><span class="params">(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry, BeanNameGenerator importBeanNameGenerator)</span> &#123;</span><br><span class="line">      <span class="comment">/*AbstractBeanDefinition：抽象的Bean定义*/</span></span><br><span class="line">      <span class="type">AbstractBeanDefinition</span> <span class="variable">beanDefinition</span> <span class="operator">=</span> BeanDefinitionBuilder.rootBeanDefinition(User.class).getBeanDefinition();</span><br><span class="line">      registry.registerBeanDefinition(<span class="string">&quot;user&quot;</span>,beanDefinition);</span><br><span class="line">      </span><br><span class="line">      <span class="type">AbstractBeanDefinition</span> <span class="variable">beanDefinition1</span> <span class="operator">=</span> BeanDefinitionBuilder.rootBeanDefinition(Role.class).getBeanDefinition();</span><br><span class="line">      registry.registerBeanDefinition(<span class="string">&quot;role&quot;</span>,beanDefinition1);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code class="java">package com.NanCheng.config;
 
+import com.NanCheng.pojo.Role;
+import com.NanCheng.pojo.User;
+import org.springframework.beans.factory.support.AbstractBeanDefinition;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.BeanNameGenerator;
+import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
+import org.springframework.core.type.AnnotationMetadata;
+
+/**
+ * ImportBeanDefinitionRegistrar：导入注册Bean定义
+ */
+public class MyImportBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar &#123;
+   @Override
+   public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry, BeanNameGenerator importBeanNameGenerator) &#123;
+      /*AbstractBeanDefinition：抽象的Bean定义*/
+      AbstractBeanDefinition beanDefinition = BeanDefinitionBuilder.rootBeanDefinition(User.class).getBeanDefinition();
+      registry.registerBeanDefinition(&quot;user&quot;,beanDefinition);
+      
+      AbstractBeanDefinition beanDefinition1 = BeanDefinitionBuilder.rootBeanDefinition(Role.class).getBeanDefinition();
+      registry.registerBeanDefinition(&quot;role&quot;,beanDefinition1);
+   &#125;
+&#125;
+</code></pre>
 <p>我们想要获取对应的Bean，只需要在<code>@Import()</code>注解当中直接导入&#x3D;&#x3D;注册了对应的Bean&#x3D;&#x3D;且实现了<code>ImportSelector</code>的类即可。</p>
 <h2 id="EnableAutoConfiguration注解"><a href="#EnableAutoConfiguration注解" class="headerlink" title="@EnableAutoConfiguration注解"></a>@EnableAutoConfiguration注解</h2><ul>
 <li><code>@EnableAutoConfiguration</code>注解内部使用<code>@Import(AutoConfigurationImportSelect.class)</code>来加载类。</li>
@@ -428,113 +852,50 @@ META-INF/spring.factories：自动配置的核心文件
 </li>
 </ul>
 
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-                <source type="audio/mpeg" src="">
-            </audio>
-            
-                <ul id="audio-list" style="display:none">
-                    
-                        
-                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
-                        
-                    
-                        
-                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
-                        
-                    
-                </ul>
-            
-        </div>
-        
-        
-    <div id="gitalk-container" class="comment link"
-		data-enable="false"
-        data-ae="false"
-        data-ci=""
-        data-cs=""
-        data-r=""
-        data-o=""
-        data-a=""
-        data-d="false"
-    >查看评论</div>
-
-
     </div>
+    
+    
+    
+    
+    
+    
     
 </div>
 
-
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2024 Hexo
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;NanCheng7
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
     </div>
-</div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/js/main.js"></script>
+    
+    
+
+
+
+
+    
 </body>
-
-
-<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
-<script src="/js/plugin.js"></script>
-<script src="/js/typed.js"></script>
-<script src="/js/diaspora.js"></script>
-
-
-<link rel="stylesheet" href="/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
-
-
-<script src="/photoswipe/photoswipe.min.js"></script>
-<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
-
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
 </html>
