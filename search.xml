@@ -1,6 +1,2282 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>/2024/06/28/Vue/Vue3/</url>
+    <content><![CDATA[<hr>
+<h2 id="author-NanChengtitle-Vue3tag-前端框架"><a href="#author-NanChengtitle-Vue3tag-前端框架" class="headerlink" title="author:NanChengtitle:Vue3tag:前端框架"></a>author:NanCheng<br>title:Vue3<br>tag:前端框架</h2><h1 id="1-入门篇"><a href="#1-入门篇" class="headerlink" title="1.入门篇"></a>1.入门篇</h1><ul>
+<li>Vue是一款用于<strong>构建用户界面</strong>的渐进式的JS框架</li>
+</ul>
+<h2 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h2><blockquote>
+<ul>
+<li>实例代码</li>
+</ul>
+<pre><code class="HTMl">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Vue3快速入门&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;/h1&gt;
+    &lt;/div&gt;
+
+
+    &lt;!--ES引入Vue模块--&gt;
+    &lt;script type=&quot;module&quot;&gt;
+        import &#123; createApp &#125; from &#39;https://unpkg.com/vue@3/dist/vue.esm-browser.js&#39;;
+        createApp(&#123;
+            data() &#123;
+                return &#123;
+                    //定义数据
+                    msg: &#39;hello Vue3&#39;
+                &#125;
+            &#125;
+        &#125;).mount(&#39;#app&#39;)
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>演示效果</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406291859619.png" alt="image-20240629181157927"></p>
+</blockquote>
+<h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>v-for</td>
+<td>列表渲染，遍历容器的元素或对象的属性</td>
+</tr>
+<tr>
+<td>v-bind</td>
+<td>为HTML标签绑定属性值，如href、css样式等</td>
+</tr>
+<tr>
+<td>v-if&#x2F;v-else-if&#x2F;v-else</td>
+<td>条件性的渲染某元素，判定为true时渲染，否则不渲染</td>
+</tr>
+<tr>
+<td>v-show</td>
+<td>根据条件展示某元素，区别在于切换的是display属性的值</td>
+</tr>
+<tr>
+<td>v-model</td>
+<td>在表单元素上创建双向绑定元素</td>
+</tr>
+<tr>
+<td>v-on</td>
+<td>为HTML标签绑定事件</td>
+</tr>
+</tbody></table>
+<h3 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h3><p>![image-20240629181834467](Vue3 images&#x2F;image-20240629181834467.png)</p>
+<blockquote>
+<ul>
+<li>实例代码</li>
+</ul>
+<pre><code class="HTMl">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;v-for&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;table border=&quot;1 solid&quot; colspa=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+            &lt;tr&gt;
+                &lt;th&gt;文章标题&lt;/th&gt;
+                &lt;th&gt;分类&lt;/th&gt;
+                &lt;th&gt;发表时间&lt;/th&gt;
+                &lt;th&gt;状态&lt;/th&gt;
+                &lt;th&gt;操作&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr v-for=&quot;(article,index) in articleList&quot;&gt;
+                &lt;td&gt;&#123;&#123; article.title &#125;&#125;&lt;/td&gt;
+                &lt;td&gt;&#123;&#123; article.category &#125;&#125;&lt;/td&gt;
+                &lt;td&gt;&#123;&#123; article.time &#125;&#125;&lt;/td&gt;
+                &lt;td&gt;&#123;&#123; article.status &#125;&#125;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button&gt;编辑&lt;/button&gt;
+                    &lt;button&gt;删除&lt;/button&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;script type=&quot;module&quot;&gt;
+        import &#123;createApp&#125; from  &#39;https://unpkg.com/vue@3/dist/vue.esm-browser.js&#39;;
+        createApp( &#123;
+            data() &#123;
+                return &#123;
+                    articleList: [
+                        &#123;
+                            title: &quot;test1&quot;,
+                            category: &quot;c1&quot;,
+                            time: &quot;2023-09-01&quot;,
+                            status: &quot;已发布&quot;
+                        &#125;,
+                        &#123;
+                            title: &quot;test2&quot;,
+                            category: &quot;c2&quot;,
+                            time: &quot;2023-09-02&quot;,
+                            status: &quot;已发布&quot;
+                        &#125;,
+                        &#123;
+                            title: &quot;test3&quot;,
+                            category: &quot;c3&quot;,
+                            time: &quot;2023-09-03&quot;,
+                            status: &quot;已发布&quot;
+                        &#125;,
+                        &#123;
+                            title: &quot;test4&quot;,
+                            category: &quot;c4&quot;,
+                            time: &quot;2023-09-04&quot;,
+                            status: &quot;未发布&quot;
+                        &#125;
+                    ]
+                &#125;
+            &#125;
+        &#125;).mount(&#39;#app&#39;)
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>演示效果</li>
+</ul>
+<p>![image-20240629185732594](Vue3 images&#x2F;image-20240629185732594.png)</p>
+</blockquote>
+<h3 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h3><p>![image-20240629211046673](Vue3 images&#x2F;image-20240629211046673.png)</p>
+<blockquote>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>Redis</title>
+    <url>/2024/03/10/Java/Redis/Redis/</url>
+    <content><![CDATA[<h1 id="01-Redis数据结构介绍"><a href="#01-Redis数据结构介绍" class="headerlink" title="01-Redis数据结构介绍"></a>01-Redis数据结构介绍</h1><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>String</td>
+<td><code>hello world</code></td>
+</tr>
+<tr>
+<td>Hash</td>
+<td><code>&#123;name: &quot;jack&quot;,age: 21&#125;</code></td>
+</tr>
+<tr>
+<td>List</td>
+<td><code>[A -&gt; B -&gt; C -&gt; C]</code></td>
+</tr>
+<tr>
+<td>Set</td>
+<td><code>&#123;A,B,C&#125;</code></td>
+</tr>
+<tr>
+<td>SortedSet</td>
+<td><code>&#123;A:1,B:2,C:3&#125;</code></td>
+</tr>
+<tr>
+<td>GEO</td>
+<td><code>&#123; A:(120.3,30.5) &#125;</code></td>
+</tr>
+<tr>
+<td>BitMap</td>
+<td><code>0110110101110101011</code></td>
+</tr>
+<tr>
+<td>HyperLog</td>
+<td><code>0110110101110101011</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><a href="https://redis.io/commands/https://redis.io/commands/">Redis命令文档</a></p>
+</blockquote>
+<h1 id="02-Redis命令"><a href="#02-Redis命令" class="headerlink" title="02-Redis命令"></a>02-Redis命令</h1><h2 id="01-Redis通用命令"><a href="#01-Redis通用命令" class="headerlink" title="01-Redis通用命令"></a>01-Redis通用命令</h2><blockquote>
+<p>通用指令是部分数据类型的，都可以使用的命令，常见的有:</p>
+<ul>
+<li><code>KEYS</code>: 查看符合模板的所有 key，&#x3D;&#x3D;不建议在生产环境使用&#x3D;&#x3D;<ul>
+<li><code>KEYS *n</code> : 查找包含n的所有key, * 为通配符</li>
+</ul>
+</li>
+<li><code>DEL</code>: 删除一个或多个key<ul>
+<li><code>DEL key [key ...]</code> DEL k1 k2 k3 k4</li>
+</ul>
+</li>
+<li><code>EXISTS</code>: 判断一个或多个 key 是否存在<ul>
+<li><code>EXISTS key [key ...]</code> EXISTS k1 k2 k3</li>
+</ul>
+</li>
+<li><code>EXPIRE</code>：给一个Key设置有效期，有效期到期时该key会自动被删除<ul>
+<li><code>EXIPRE key seconds</code> EXPIRE k1 10  #<em>设置k1十秒后删除</em></li>
+</ul>
+</li>
+<li><code>TTL</code> : 查看一个 Key所剩的有效时间，返回值为-1 永久有效，返回值-2为已过期，返回值为整数则暂未过期<ul>
+<li><code>TTL k1</code></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="02-String类型常用命令"><a href="#02-String类型常用命令" class="headerlink" title="02-String类型常用命令"></a>02-String类型常用命令</h2><p>String类型是字符串类型，是Redis最简单的存储类型</p>
+<p>其value是字符串，不过根据字符串的格式不同，又可以分为3类：</p>
+<ul>
+<li>String： 普通字符串</li>
+<li>int：整型类型，可以做自增、自减操</li>
+<li>float：浮点类型，可以做自增、自减操作</li>
+</ul>
+<blockquote>
+<p>字符串类型的最大存储空间不能超过512M</p>
+</blockquote>
+<h3 id="String类型的常见命令"><a href="#String类型的常见命令" class="headerlink" title="String类型的常见命令"></a>String类型的常见命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>set</td>
+<td>添加或者修改已经存在的一个String类型键值对</td>
+</tr>
+<tr>
+<td>get</td>
+<td>根据key获取String类型的value</td>
+</tr>
+<tr>
+<td>mset</td>
+<td>批量添加多个String的键值对</td>
+</tr>
+<tr>
+<td>mget</td>
+<td>根据多个key获取多个String类型的value</td>
+</tr>
+<tr>
+<td>incr</td>
+<td>让一个整型的key自增1</td>
+</tr>
+<tr>
+<td>incrby</td>
+<td>让一个整型的key自增并指定步长，例如: <code>incrby num 2</code> 就是让num自增2</td>
+</tr>
+<tr>
+<td>incrbyfloat</td>
+<td>让一个浮点类型的数字自增并指定步长</td>
+</tr>
+<tr>
+<td>setnx</td>
+<td>添加一个String类型的键值对，前提是这个key不存在，否则不执行</td>
+</tr>
+<tr>
+<td>setex</td>
+<td>添加一个String的键值对，并且指定有效期</td>
+</tr>
+</tbody></table>
+<h2 id="03-Key的层级格式"><a href="#03-Key的层级格式" class="headerlink" title="03-Key的层级格式"></a>03-Key的层级格式</h2><blockquote>
+<p>Redis的key允许又多个单词形成层级结构，多个单词之间使用<code>:</code>隔开，格式如下：</p>
+<blockquote>
+<p>项目名:业务名:类型:id</p>
+</blockquote>
+<p>该格式并非固定，具体根据需求定：</p>
+<ul>
+<li>user相关的key： <code>nancheng:user:1</code></li>
+<li>product相关的key：<code>nancheng:product:1</code></li>
+</ul>
+<p>如果Value是一个Java对象，例如User对象，则可以将对象序列化为JSON字符串后存储:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nancheng:user:1</td>
+<td>{“id”:1,”name”: “nancheng”,”age”:21}</td>
+</tr>
+<tr>
+<td>nancheng:product:1</td>
+<td>{“id”:1,”name”:”Redmi K60Ultra}</td>
+</tr>
+</tbody></table>
+</blockquote>
+<h2 id="04-Hash类型及常用命令"><a href="#04-Hash类型及常用命令" class="headerlink" title="04-Hash类型及常用命令"></a>04-Hash类型及常用命令</h2><blockquote>
+<p>Hash类型，也叫散列，其Value是一个无序字典，类似于Java中HashMap结构。</p>
+<p>String结构是将对象序列化为JSON字符串后存储，挡需要修改对象某个字段时很不方便。</p>
+</blockquote>
+<p>Hash结构可以将对象中的每个字段独立存储，可以针对单个字段做CRUD：</p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171024680.png" alt="image-20240313090902594"></p>
+<h3 id="Hash类型常见命令"><a href="#Hash类型常见命令" class="headerlink" title="Hash类型常见命令"></a>Hash类型常见命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>格式</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hset</td>
+<td>hset key filed value</td>
+<td>添加或者修改hash类型的key的field的值</td>
+</tr>
+<tr>
+<td>hget</td>
+<td>hget key filed</td>
+<td>获取一个hash类型key的field的值</td>
+</tr>
+<tr>
+<td>hmset</td>
+<td>hmset key filed value [filed value …]</td>
+<td>批量添加&#x2F;修改多个hash类型key的field的值</td>
+</tr>
+<tr>
+<td>hmget</td>
+<td>hmget key field [filed …]</td>
+<td>批量获取多个hash类型key的field的值</td>
+</tr>
+<tr>
+<td>hgetall</td>
+<td>hgetall key</td>
+<td>获取一个hash类型的key中所有的field喝value</td>
+</tr>
+<tr>
+<td>hkeys</td>
+<td>hkeys key</td>
+<td>获取一个hash类型的key中所偶的field</td>
+</tr>
+<tr>
+<td>hvals</td>
+<td>hvals key</td>
+<td>获取一个hash类型的key中所有的value</td>
+</tr>
+<tr>
+<td>hincrby</td>
+<td>hincryby key field <code>increment</code></td>
+<td>让一个hash类型的key的字段值自增并指定步长为 increment</td>
+</tr>
+<tr>
+<td>hsetnx</td>
+<td>hsetnx key field value</td>
+<td>添加一个hash类型的key的field值，前提是这个field不存在，否则不执行</td>
+</tr>
+</tbody></table>
+<h2 id="05-List类型"><a href="#05-List类型" class="headerlink" title="05-List类型"></a>05-List类型</h2><p>Redis中的List类型与Java中的LinkedList类型，可以看做是一个双向链表结构。既可以支持正向检索，也可以支持反向检索。</p>
+<p>特征：</p>
+<ul>
+<li>有序</li>
+<li>元素可以重复</li>
+<li>插入和删除快</li>
+<li>查询速度一般</li>
+</ul>
+<blockquote>
+<p>常用来存储一个有序数据就，例如：朋友圈点赞，评论列表</p>
+</blockquote>
+<h3 id="List常用命令"><a href="#List常用命令" class="headerlink" title="List常用命令"></a>List常用命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LPUSH key element…</td>
+<td>向列表左侧插入一个或多个元素</td>
+</tr>
+<tr>
+<td>LPOP key</td>
+<td>移除并返回列表左侧的第一个元素，没有则返回null</td>
+</tr>
+<tr>
+<td>RPUSH key element…</td>
+<td>向列表的右侧插入一个或多个元素</td>
+</tr>
+<tr>
+<td>RPOP key</td>
+<td>移出并返回列表右侧的第一个元素</td>
+</tr>
+<tr>
+<td>LRANGE key start end</td>
+<td>返回一段角标范围内的所有元素</td>
+</tr>
+<tr>
+<td>BLPOP和BRPOP</td>
+<td>于LPOP和RPOP类似，只不过在没有元素时等待指定时间，而不是直接返回null</td>
+</tr>
+</tbody></table>
+<h2 id="06-Set类型"><a href="#06-Set类型" class="headerlink" title="06-Set类型"></a>06-Set类型</h2><p>Set类型类似于HashSet，可以看作一个Value为null的HashMap。因为也是一个hash表，因此具备和HashSet类似的特征：</p>
+<ul>
+<li>无序</li>
+<li>元素不可重复</li>
+<li>查询快</li>
+<li>支持交集、并集、差集等功能</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://redis.com.cn/commands/sadd.html">SADD</a></td>
+<td>向集合添加一个或多个成员</td>
+</tr>
+<tr>
+<td><a href="https://redis.com.cn/commands/scard.html">SCARD</a></td>
+<td>获取集合的成员数</td>
+</tr>
+<tr>
+<td><a href="https://redis.com.cn/commands/sinter.html">SINTER</a></td>
+<td>返回给定所有集合的交集</td>
+</tr>
+<tr>
+<td><a href="https://redis.com.cn/commands/sismember.html">SISMEMBER</a></td>
+<td>判断 member 元素是否是集合 key 的成员</td>
+</tr>
+<tr>
+<td><a href="https://redis.com.cn/commands/smembers.html">SMEMBERS</a></td>
+<td>返回集合中的所有成员</td>
+</tr>
+<tr>
+<td><a href="https://redis.com.cn/commands/srem.html">SREM</a></td>
+<td>移除集合中一个或多个成员</td>
+</tr>
+<tr>
+<td>SDIFF</td>
+<td>返回给定所有集合的差集</td>
+</tr>
+<tr>
+<td>SUNION</td>
+<td>返回给定所有集合的并集</td>
+</tr>
+</tbody></table>
+<h2 id="07-SortedSet类型"><a href="#07-SortedSet类型" class="headerlink" title="07-SortedSet类型"></a>07-SortedSet类型</h2><blockquote>
+<p>Redis的SortedSet是一个可排序的Set集合，与Java中的TreeSet有些类似，但是底层数据结构却差别很大。SortedSet中的每一个元素都带有一个score属性，可以基于score属性对元素排序，底层的实现是一个跳表(SkipList)加hash表。</p>
+<p>SortedSet有以下特性：</p>
+<ul>
+<li>可排序</li>
+<li>元素不重复</li>
+<li>查询速度快</li>
+</ul>
+<p>因为SortedSet的可排序特性，经常被用来实现排行榜这样的功能。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a href="https://redis.com.cn/commands/zadd.html">ZADD</a></td>
+<td align="left">向有序集合添加一个或多个成员，或者更新已存在成员的分数</td>
+</tr>
+<tr>
+<td align="left"><a href="https://redis.com.cn/commands/zcard.html">ZCARD</a></td>
+<td align="left">获取有序集合的成员数</td>
+</tr>
+<tr>
+<td align="left"><a href="https://redis.com.cn/commands/zcount.html">ZCOUNT</a></td>
+<td align="left">计算在有序集合中指定区间分数的成员数</td>
+</tr>
+<tr>
+<td align="left"><a href="https://redis.com.cn/commands/zincrby.html">ZINCRBY</a></td>
+<td align="left">有序集合中对指定成员的分数加上增量 increment</td>
+</tr>
+<tr>
+<td align="left"><a href="https://redis.com.cn/commands/zrange.html">ZRANGE</a></td>
+<td align="left">通过索引区间返回有序集合成指定区间内的成员</td>
+</tr>
+<tr>
+<td align="left"><a href="https://redis.com.cn/commands/zrangebyscore.html">ZRANGEBYSCORE</a></td>
+<td align="left">通过分数返回有序集合指定区间内的成员</td>
+</tr>
+<tr>
+<td align="left"><a href="https://redis.com.cn/commands/zrank.html">ZRANK</a></td>
+<td align="left">返回有序集合中指定成员的索引</td>
+</tr>
+<tr>
+<td align="left"><a href="https://redis.com.cn/commands/zrem.html">ZREM</a></td>
+<td align="left">移除有序集合中的一个或多个成员</td>
+</tr>
+<tr>
+<td align="left"><a href="https://redis.com.cn/commands/zscore.html">ZSCORE</a></td>
+<td align="left">返回有序集中，成员的分数值</td>
+</tr>
+<tr>
+<td align="left">ZDIFF、ZINTER、ZUNION</td>
+<td align="left">求差、交、并集</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注： 所有的排名默认都是升序。如果要降序则要在命令的Z后面添加REV即可</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>中间件</category>
+        <category>缓存</category>
+      </categories>
+      <tags>
+        <tag>微服务</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git</title>
+    <url>/2024/06/22/Java/Git/GitStudy/</url>
+    <content><![CDATA[<h1 id="GitStudy"><a href="#GitStudy" class="headerlink" title="GitStudy"></a>GitStudy</h1><h3 id="一、Typora快捷键"><a href="#一、Typora快捷键" class="headerlink" title="一、Typora快捷键"></a>一、Typora快捷键</h3><p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406221112612.png" alt="image-20220704192711490"></p>
+<h3 id="二、Git"><a href="#二、Git" class="headerlink" title="二、Git"></a>二、Git</h3><h4 id="1、工作原理"><a href="#1、工作原理" class="headerlink" title="1、工作原理"></a>1、工作原理</h4><p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406221112613.png" alt="image-20220704192951341"></p>
+<p>Workspace：工作区<br> Index &#x2F; Stage：暂存区<br> Repository：仓库区（或本地仓库）<br> Remote：远程仓库</p>
+<h4 id="2、命令行"><a href="#2、命令行" class="headerlink" title="2、命令行"></a>2、命令行</h4><table>
+<thead>
+<tr>
+<th align="left">代码</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">git config –global user.name “xxx”</td>
+<td>添加用户名</td>
+</tr>
+<tr>
+<td align="left">git config –global user.email “xxx”</td>
+<td>添加邮箱</td>
+</tr>
+<tr>
+<td align="left">git config –list</td>
+<td>查看配置</td>
+</tr>
+<tr>
+<td align="left">pwd</td>
+<td>命令用于当前的目录</td>
+</tr>
+<tr>
+<td align="left">git init</td>
+<td>把当前目录变成git可以管理的仓库</td>
+</tr>
+<tr>
+<td align="left">git add <file></td>
+<td>把文件提交到暂存区</td>
+</tr>
+<tr>
+<td align="left">git commit -m “message”</td>
+<td>将文件提交，message是提交的注释</td>
+</tr>
+<tr>
+<td align="left">git status</td>
+<td>查看是否还有文件没有提交</td>
+</tr>
+<tr>
+<td align="left">git diff <file></td>
+<td>查看文件到底修改了什么额呢绒</td>
+</tr>
+<tr>
+<td align="left">git log</td>
+<td>查看历史记录</td>
+</tr>
+<tr>
+<td align="left">git log –pretty&#x3D;oneline</td>
+<td>查看简介的历史记录</td>
+</tr>
+<tr>
+<td align="left">git reset –hard HEAD^</td>
+<td>回退到上一个版本，如果需要回退两个版本，则git reset –hard HEAD^^</td>
+</tr>
+<tr>
+<td align="left">git reset –hard HEAD~10</td>
+<td>回退到前十个版本</td>
+</tr>
+<tr>
+<td align="left">cat <file></td>
+<td>查看文件内容</td>
+</tr>
+<tr>
+<td align="left">git reset –hard &lt;版本号&gt;</td>
+<td>回退到对应版本号</td>
+</tr>
+<tr>
+<td align="left">git reflog</td>
+<td>查看版本号</td>
+</tr>
+</tbody></table>
+<h4 id="3、理解工作区与暂存区的区别"><a href="#3、理解工作区与暂存区的区别" class="headerlink" title="3、理解工作区与暂存区的区别"></a>3、理解工作区与暂存区的区别</h4><p>第一步：是使用 git add 把文件添加进去，实际上就是把文件添加到暂存区。</p>
+<p>第二步：使用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支上。</p>
+<h4 id="4、Git撤销修改和删除文件操作"><a href="#4、Git撤销修改和删除文件操作" class="headerlink" title="4、Git撤销修改和删除文件操作"></a>4、Git撤销修改和删除文件操作</h4><h5 id="1、撤销修改"><a href="#1、撤销修改" class="headerlink" title="1、撤销修改:"></a>1、撤销修改:</h5><ul>
+<li><p>直接手动更改去掉那些需要的文件，然后add添加到暂存区，最后commit掉。</p>
+</li>
+<li><p>使用 git reset –hard HEAD^</p>
+</li>
+<li><p>使用git checkout – &lt;file&gt; 可以丢弃工作区的修改.</p>
+<blockquote>
+<p> 命令 git checkout –readme.txt 意思就是，把readme.txt文件在工作区做的修改全部撤销，这里有2种情况，如下：</p>
+</blockquote>
+<blockquote>
+<p> 1.readme.txt自动修改后，还没有放到暂存区，使用 撤销修改就回到和版本库一模一样的状态。<br> 2.另外一种是readme.txt已经放入暂存区了，接着又作了修改，撤销修改就回到添加暂存区后的状态.</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="2、删除文件"><a href="#2、删除文件" class="headerlink" title="2、删除文件"></a>2、删除文件</h5><p>​	rm &lt;file&gt;  删除文件</p>
+<blockquote>
+<p>如果我想彻底从版本库中删掉了此文件的话，可以再执行commit命令 提交掉</p>
+</blockquote>
+<h3 id="三、创建云端仓库"><a href="#三、创建云端仓库" class="headerlink" title="三、创建云端仓库"></a>三、创建云端仓库</h3><h4 id="一、创建GitHub或Gitee账户"><a href="#一、创建GitHub或Gitee账户" class="headerlink" title="一、创建GitHub或Gitee账户"></a>一、创建GitHub或Gitee账户</h4><h4 id="二、建立云端仓库"><a href="#二、建立云端仓库" class="headerlink" title="二、建立云端仓库"></a>二、建立云端仓库</h4><h4 id="三、将本地仓库与云端仓库建立连接"><a href="#三、将本地仓库与云端仓库建立连接" class="headerlink" title="三、将本地仓库与云端仓库建立连接"></a>三、将本地仓库与云端仓库建立连接</h4><p>​		git remote add origin &lt;仓库地址&gt;</p>
+<h4 id="四、上传流程"><a href="#四、上传流程" class="headerlink" title="四、上传流程"></a>四、上传流程</h4><h5 id="一、git-add"><a href="#一、git-add" class="headerlink" title="一、git add ."></a>一、git add .</h5><blockquote>
+<p>​		. 的意思是将当前位置工作区内所有文件添加到暂存区</p>
+</blockquote>
+<h5 id="二、git-commit-m-“massege”"><a href="#二、git-commit-m-“massege”" class="headerlink" title="二、git commit -m “massege”"></a>二、git commit -m “massege”</h5><blockquote>
+<p>​		提交文件，注释massege</p>
+</blockquote>
+<h5 id="三、git-remote-add-origin-“https-gitee-com-Nan-Cheng7-nan-cheng-itstudy-git“"><a href="#三、git-remote-add-origin-“https-gitee-com-Nan-Cheng7-nan-cheng-itstudy-git“" class="headerlink" title="三、git remote add origin “https://gitee.com/Nan_Cheng7/nan-cheng-itstudy.git“"></a>三、git remote add origin “<a href="https://gitee.com/Nan_Cheng7/nan-cheng-itstudy.git">https://gitee.com/Nan_Cheng7/nan-cheng-itstudy.git</a>“</h5><blockquote>
+<p>​		建立连接、</p>
+</blockquote>
+<h5 id="四、git-pull-–rebase-origin-master"><a href="#四、git-pull-–rebase-origin-master" class="headerlink" title="四、git pull –rebase origin master"></a>四、git pull –rebase origin master</h5><blockquote>
+<p>​		在当前文件夹内添加Readme文件</p>
+</blockquote>
+<h5 id="五、git-push-origin-master"><a href="#五、git-push-origin-master" class="headerlink" title="五、git push origin master"></a>五、git push origin master</h5><blockquote>
+<p>​		推送拉取的文件</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>中间件</category>
+        <category>计算机操作基础</category>
+      </categories>
+      <tags>
+        <tag>运维</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring</title>
+    <url>/2024/06/17/Java/SSM/Spring/</url>
+    <content><![CDATA[<h1 id="1、Spring"><a href="#1、Spring" class="headerlink" title="1、Spring"></a>1、Spring</h1><h2 id="1-1简介"><a href="#1-1简介" class="headerlink" title="1.1简介"></a>1.1简介</h2><ul>
+<li><p>Spring:春天—&gt;给软件行业带来了春天！</p>
+</li>
+<li><p>2002，首次推出了Spring框架的雏形，interface 21框架</p>
+</li>
+<li><p>2004年3月24号诞生，Spirng框架即以interface 21 框架为基础，经过重新设计，并不断丰富其内涵，发布了1.0正式版本。</p>
+</li>
+<li><p>Rod Johnson   Spring Franework的创始人，著名作者</p>
+</li>
+<li><p>Spring的理念：使现有的技术更加容易使用，本身是一个大杂烩，整合了现有的技术框架！</p>
+</li>
+<li><p>SSH：Struct2 + Spring + Hibernate!</p>
+</li>
+<li><p>SSM：SpringMvc + Spring + mybatis</p>
+</li>
+</ul>
+<p>官网：<a href="https://spring.io/">Spring | Home</a></p>
+<p>官方下载地址：<a href="https://repo.spring.io/ui/native/release/org/springframework/spring/">repo.spring.io</a></p>
+<p>GitHub地址：<a href="https://github.com/spring-projects/spring-framework">spring-projects&#x2F;spring-framework: Spring Framework (github.com)</a></p>
+<p><strong>Maven导入配置</strong></p>
+<pre><code class="xml">&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+    &lt;version&gt;5.3.23&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+    &lt;version&gt;5.3.23&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="1-2、优点"><a href="#1-2、优点" class="headerlink" title="1.2、优点"></a>1.2、优点</h2><ul>
+<li>Spring是一个开源的免费的框架(容器)！</li>
+<li>Spring是一个轻量级的、非入侵式的框架！</li>
+<li>控制反转(IOC)，面向切面编程(AOP)</li>
+<li>支持事务的处理，对框架整合的支持！</li>
+</ul>
+<p>&#x3D;&#x3D;总结一句话：Spring就是一个轻量级的控制反转(Ioc)和面向切面编程(AOP)的框架！&#x3D;&#x3D;</p>
+<h2 id="1-3、组成"><a href="#1-3、组成" class="headerlink" title="1.3、组成"></a>1.3、组成</h2><p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033574.png" alt="image-20220927143522505"></p>
+<h2 id="1-4、拓展"><a href="#1-4、拓展" class="headerlink" title="1.4、拓展"></a>1.4、拓展</h2><p>现代化的Java开发，就是基于Spring的开发</p>
+<p>构建一切：&#x3D;&#x3D;Springboot&#x3D;&#x3D;</p>
+<p>协调一切：&#x3D;&#x3D;Springcloud&#x3D;&#x3D;</p>
+<p>连接一切：SpringFlow</p>
+<ul>
+<li>Spring Boot<ul>
+<li>一个快速开发的脚手架</li>
+<li>基于Spring Boot可以快速的开发单个微服务</li>
+<li>约定大于配置！</li>
+</ul>
+</li>
+<li>Spring Cloud<ul>
+<li>Spring Cloud是基于Spring Boot实现的</li>
+</ul>
+</li>
+</ul>
+<p>因为现在大多数公司都在使用SpringBoot进行快速开发，学习SpringBoot的前提，需要完全掌握Spring及SpringMVC！</p>
+<p>承上启下的作用！</p>
+<p><strong>弊端：发展了太久之后，违背了原来的理念！配置十分繁琐，人称：”配置地狱！”</strong></p>
+<h1 id="2、IOC理论推导"><a href="#2、IOC理论推导" class="headerlink" title="2、IOC理论推导"></a>2、IOC理论推导</h1><ol>
+<li><p>UserDao接口</p>
+<pre><code class="java">package com.NanCheng.dao;
+
+public interface UserDao &#123;
+    void getUser();
+&#125;
+</code></pre>
+</li>
+<li><p>UserDaoImpl实现类</p>
+<pre><code class="java">package com.NanCheng.dao.impl;
+
+import com.NanCheng.dao.UserDao;
+
+public class UserDaoImpl implements UserDao &#123;
+    public void getUser() &#123;
+        System.out.println(&quot;默认获取用户的数据&quot;);
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="java">package com.NanCheng.dao.impl;
+
+import com.NanCheng.dao.UserDao;
+
+public class UserMysqlDaoImpl implements UserDao &#123;
+    public void getUser() &#123;
+        System.out.println(&quot;zhuru&quot;);
+    &#125;
+&#125;
+</code></pre>
+</li>
+<li><p>UserService业务接口</p>
+<pre><code class="java">package com.NanCheng.service;
+
+import com.NanCheng.dao.UserDao;
+
+public interface UserService &#123;
+    void getUser();
+    void setUserDao(UserDao userDao);
+&#125;
+</code></pre>
+</li>
+<li><p>UserServiceImpl业务实现类</p>
+<pre><code class="java">package com.NanCheng.service.impl;
+
+import com.NanCheng.dao.UserDao;
+import com.NanCheng.dao.impl.UserDaoImpl;
+import com.NanCheng.service.UserService;
+
+public class UserServiceImpl implements UserService &#123;
+    private UserDao userDao = new UserDaoImpl();
+
+    /**
+     * 利用set进行动态实现的注入
+     * @param userDao
+     */
+    public void setUserDao(UserDao userDao)&#123;
+        this.userDao=userDao;
+    &#125;
+    public void getUser() &#123;
+        userDao.getUser();
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ol>
+<p>在我们之前的业务中，用户的需求可能会影响我们原来的代码，我们需要根据用户的需求去修改源代码！如果程序代码量十分大，修改一次的成本代价十分昂贵！</p>
+<p>我们需要一个Set接口实现</p>
+<pre><code class="java">/**
+ * 利用set进行动态实现的注入
+ * @param userDao
+ */
+public void setUserDao(UserDao userDao)&#123;
+    this.userDao=userDao;
+&#125;
+</code></pre>
+<pre><code class="java">@Test
+public void test()&#123;
+    //用户实际调用的是业务层，不会去接触Dao层
+    UserService service = new UserServiceImpl();
+    service.setUserDao(new UserMysqlDaoImpl());
+    service.getUser();
+&#125;
+</code></pre>
+<ul>
+<li>之前，程序是主动创建对象！控制权在程序猿手上！</li>
+<li>使用了set注入后，程序不再具有主动性，而是变成了被动的接受对象。</li>
+</ul>
+<p>这种思想，从本质上解决了问题，我们程序猿不用再去管理对象的创建了。系统的耦合性大大降低，可以更加专注在业务的实现上。&#x3D;&#x3D;这是IOC的原型&#x3D;&#x3D;！，<code>控制反转</code></p>
+<h2 id="IOC本质控制反转"><a href="#IOC本质控制反转" class="headerlink" title="IOC本质控制反转"></a>IOC本质<code>控制反转</code></h2><p><strong>控制反转IoC(Inversion of Control)，是一种设计思想，DI(依赖注入)是实现IoC的一种方法</strong>，也有人认为DI只是IoC的另一种说法。没有IoC的程序中，我们使用面向对象编程，对象的创建与对象间的依赖关系完全硬编码在程序中，对象的创建由程序自己控制，控制反转后将对象的创建转移给第三方，个人认为所谓的控制反转就是：获得依赖对象的方式反转了。 </p>
+<p>采用XML方式配置Bean的时候，Bean的定义信息是和实现分离的，而采用注解的方式可以把两者合为一体，Bean的定义信息直接以注解的形式定义在实现类中，从而达到了零配置的目的。</p>
+<blockquote>
+<p> <strong>控制反转是一种通过描述(XML或注解)并通过第三方去生产或获取特定对象的方式。在Spring中实现控制反转的是IoC容器，其实现方法是依赖注入(Dependency Injection,DI)。</strong></p>
+</blockquote>
+<h1 id="3、HelloSpring"><a href="#3、HelloSpring" class="headerlink" title="3、HelloSpring"></a>3、HelloSpring</h1><p>实体类：</p>
+<pre><code class="java">package com.NanCheng.pojo;
+
+import lombok.Data;
+
+@Data
+public class Hello &#123;
+    private String name;
+&#125;
+</code></pre>
+<p>Beans配置文件：</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+    &lt;bean id=&quot;mysqlImpl&quot; class=&quot;com.NanCheng.dao.impl.UserMysqlDaoImpl&quot;&gt;
+    
+    &lt;/bean&gt;
+    &lt;bean id=&quot;daoImpl&quot; class=&quot;com.NanCheng.dao.impl.UserDaoImpl&quot;&gt;
+    
+    &lt;/bean&gt;
+    &lt;bean id=&quot;userServiceImpl&quot; class=&quot;com.NanCheng.service.impl.UserServiceImpl&quot;&gt;
+        &lt;!--ref:   引用Spring容器中创建好的对象
+            value:
+            引用具体的值
+        --&gt;
+        &lt;property name = &quot;userDao&quot; ref=&quot;mysqlImpl&quot;/&gt;
+    &lt;/bean&gt;
+    
+&lt;/beans&gt;
+</code></pre>
+<p>测试类：</p>
+<pre><code class="java">import com.NanCheng.pojo.Hello;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MyTest &#123;
+    public static void main(String[] args) &#123;
+        //获取Spring 的上下文对象！
+        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+        //我们的对象现在都在Spring中的管理了，我们要使用，直接去里面取出来就可以
+        Hello hello = (Hello) context.getBean(&quot;hello&quot;);
+        System.out.println(hello);
+
+
+    &#125;
+&#125;
+</code></pre>
+<p>类图：</p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033575.png" alt="image-20220927171815501"></p>
+<h2 id="思考问题？"><a href="#思考问题？" class="headerlink" title="思考问题？"></a>思考问题？</h2><ul>
+<li>Hello对象是谁创建的？<br><code>hello对象由Spring创建</code></li>
+<li>Hello对象的属性是怎么设置的？<br><code>hello对象的属性是由Spring容器中bean标签下的property标签设置的</code></li>
+</ul>
+<p>这个过程叫做控制反转：</p>
+<p>控制：谁来控制对象的创建，传统应用程序的对象是由程序本身控制创建的，使用Spring后，对象是由Spring来创建的。</p>
+<p>反转：程序本身不创建对象，而变成被动的接收对象。</p>
+<p>依赖注入：就是利用set方法来进行注入的</p>
+<p>IoC是一种编程思想，由主动的编程变成被动的接收</p>
+<p>可以通过new ClassPathXmlApplicationContext去浏览一下底层源码</p>
+<p><strong>OK，到了现在，我们彻底不用在程序中去改动了，要实现不同的操作，只需要在xml配置文件中修改，所谓的IoC，一句话搞得：对象由Spring来创建，管理，装配！</strong></p>
+<h1 id="4、IoC创建对象的方式"><a href="#4、IoC创建对象的方式" class="headerlink" title="4、IoC创建对象的方式"></a>4、IoC创建对象的方式</h1><ol>
+<li><p>使用无参构造创建对象，默认！</p>
+</li>
+<li><p>假设我们要使用有参构造创造对象。</p>
+<ol>
+<li><p>下标创建</p>
+<pre><code class="xml">&lt;!--通过参数的下标创建--&gt;
+&lt;constructor-arg index=&quot;0&quot; value=&quot;NanCheng&quot;/&gt;
+</code></pre>
+</li>
+<li><p>通过参数类型匹配</p>
+<pre><code class="xml">&lt;!--不建议使用--&gt;
+&lt;!--通过参数类型创建--&gt;
+&lt;constructor-arg type=&quot;java.lang.String&quot; value=&quot;NanCheng&quot;/&gt;
+</code></pre>
+</li>
+<li><p>通过参数名来创建</p>
+<pre><code class="xml">&lt;!--直接通过参数名创建--&gt;
+&lt;constructor-arg name=&quot;name&quot; value=&quot;NanCheng&quot;/&gt;
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<p>总结：在配置文件加载的时候，容器中管理的对象已经初始化了。</p>
+<h1 id="5、Spring配置"><a href="#5、Spring配置" class="headerlink" title="5、Spring配置"></a>5、Spring配置</h1><h2 id="5-1、别名"><a href="#5-1、别名" class="headerlink" title="5.1、别名"></a>5.1、别名</h2><pre><code class="xml">&lt;!--别名：如果添加了别名，我们也可以通过别名取到对象--&gt;
+&lt;alias name = &quot;user&quot; alias = &quot;NanCheng&quot;/&gt;
+</code></pre>
+<h2 id="5-2、Bean的配置"><a href="#5-2、Bean的配置" class="headerlink" title="5.2、Bean的配置"></a>5.2、Bean的配置</h2><pre><code class="xml">&lt;!--
+id: bean 的唯一标识符，也就是相当于我们学的对象名
+class: bean对象所对应的全限定名:包名+属性
+name：也是相当于别名,name可以取得多个别名，name的值可以通过逗号、分号、空格来分割
+--&gt;
+&lt;bean id=&quot;userT&quot; class=&quot;com.NanCheng.bean.UserT&quot; name=&quot;t&quot;&gt;
+
+&lt;/bean&gt;
+</code></pre>
+<h2 id="5-3、import"><a href="#5-3、import" class="headerlink" title="5.3、import"></a>5.3、import</h2><p>这个import，一般用于团队开发使用，他可以将多个配置文件导入合并为一个</p>
+<p>假设，现在项目中有多个人开发，这三个人复制不同的类开发，不同的类需要注册证不同的bean中，我们可以利用import将所有人的beans.xml合并为一个总的！</p>
+<ul>
+<li>张三</li>
+<li>里斯</li>
+<li>王五</li>
+<li>applicationContext.xml</li>
+</ul>
+<pre><code class="xml">&lt;import resource = &quot;Bean.xml&quot;/&gt;
+&lt;import resource = &quot;Bean2.xml&quot;/&gt;
+&lt;import resource = &quot;Bean3.xml&quot;/&gt;
+</code></pre>
+<p>使用的时候，直接使用总的配置就行了</p>
+<h1 id="6、依赖注入："><a href="#6、依赖注入：" class="headerlink" title="6、依赖注入："></a>6、依赖注入：</h1><h2 id="6-1、构造器注入"><a href="#6-1、构造器注入" class="headerlink" title="6.1、构造器注入"></a>6.1、构造器注入</h2><p>前面已经说过</p>
+<h2 id="6-2、Set方式注入-重点"><a href="#6-2、Set方式注入-重点" class="headerlink" title="6.2、Set方式注入&#x3D;&#x3D;重点&#x3D;&#x3D;"></a>6.2、Set方式注入&#x3D;&#x3D;<code>重点</code>&#x3D;&#x3D;</h2><ul>
+<li>依赖注入：Set注入！<ul>
+<li>依赖：bean对象的创建依赖于容器</li>
+<li>注入：bean对象中的所有属性，由容器来注入</li>
+</ul>
+</li>
+</ul>
+<p>【环境搭建】</p>
+<ol>
+<li><p>复杂类型</p>
+<pre><code class="java">package com.NanCheng.bean;
+
+import lombok.Data;
+
+@Data
+public class Address &#123;
+    private String address;
+&#125;
+</code></pre>
+</li>
+<li><p>测试对象</p>
+<pre><code class="java">package com.NanCheng.bean;
+
+import lombok.*;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+public class Student &#123;
+    private String name;
+    private Address address;
+    private String[] books;
+    private List&lt;String&gt; hobbies;
+    private Map&lt;String,String&gt; card;
+    private Set&lt;String&gt; game;
+    private String wife;
+    private Properties info;
+&#125;
+</code></pre>
+</li>
+<li><p>beans.xml</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+    
+    &lt;bean id=&quot;student&quot; class=&quot;com.NanCheng.bean.Student&quot;&gt;
+        &lt;property name = &quot;name&quot; value=&quot;NanCheng&quot;/&gt;
+    &lt;/bean&gt;
+   
+&lt;/beans&gt;
+</code></pre>
+</li>
+<li><p>测试类</p>
+<pre><code class="java">import com.NanCheng.bean.Student;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MyTest &#123;
+    public static void main(String[] args) &#123;
+        ApplicationContext Context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
+        Student student = (Student) Context.getBean(&quot;student&quot;);
+        System.out.println(student.getName());
+
+
+    &#125;
+&#125;
+</code></pre>
+</li>
+<li><p>完善注入信息</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+    &lt;bean id=&quot;address&quot; class=&quot;com.NanCheng.bean.Address&quot;&gt;
+        &lt;property name = &quot;address&quot; value=&quot;湖北师范大学~&quot;/&gt;
+    &lt;/bean&gt;
+    
+    &lt;bean id=&quot;student&quot; class=&quot;com.NanCheng.bean.Student&quot;&gt;
+        &lt;!--第一种，普通注入--&gt;
+        &lt;property name = &quot;name&quot; value=&quot;NanCheng&quot;/&gt;
+        &lt;!--第二种，Bean注入，ref--&gt;
+        &lt;property name = &quot;address&quot; ref=&quot;address&quot;/&gt;
+        &lt;!--数组注入--&gt;
+        &lt;property name = &quot;books&quot;&gt;
+            &lt;array&gt;
+                &lt;value&gt;红楼梦&lt;/value&gt;
+                &lt;value&gt;水浒传&lt;/value&gt;
+                &lt;value&gt;三国演义&lt;/value&gt;
+                &lt;value&gt;西游记&lt;/value&gt;
+            &lt;/array&gt;
+        &lt;/property&gt;
+        &lt;!--list注入--&gt;
+        &lt;property name = &quot;hobbies&quot;&gt;
+            &lt;list&gt;
+                &lt;value&gt;听歌&lt;/value&gt;
+                &lt;value&gt;吃饭&lt;/value&gt;
+                &lt;value&gt;睡觉&lt;/value&gt;
+            &lt;/list&gt;
+        &lt;/property&gt;
+        &lt;!--map注入--&gt;
+        &lt;property name = &quot;card&quot;&gt;
+            &lt;map&gt;
+                &lt;entry key=&quot;学号&quot; value=&quot;3150744212&quot;/&gt;
+                &lt;entry key=&quot;身份证&quot; value=&quot;456123&quot;/&gt;
+            &lt;/map&gt;
+        &lt;/property&gt;
+        &lt;!--set注入--&gt;
+        &lt;property name = &quot;game&quot;&gt;
+            &lt;set&gt;
+                &lt;value&gt;lol&lt;/value&gt;
+                &lt;value&gt;coc&lt;/value&gt;
+                &lt;value&gt;bob&lt;/value&gt;
+            &lt;/set&gt;
+        &lt;/property&gt;
+        &lt;!--null注入--&gt;
+        &lt;property name = &quot;wife&quot;&gt;
+            &lt;null/&gt;
+        &lt;/property&gt;
+        &lt;!--property注入--&gt;
+        &lt;property name = &quot;info&quot;&gt;
+            &lt;props&gt;
+                &lt;prop key = &quot;学号&quot;&gt;3150744212&lt;/prop&gt;
+                &lt;prop key = &quot;性别&quot;&gt;男&lt;/prop&gt;
+            &lt;/props&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+   
+&lt;/beans&gt;
+</code></pre>
+</li>
+</ol>
+<h2 id="6-3、拓展注入"><a href="#6-3、拓展注入" class="headerlink" title="6.3、拓展注入"></a>6.3、拓展注入</h2><p>我们可以使用p命名空间喝c命名空间进行注入</p>
+<p>官方解释：</p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033576.png" alt="image-20220927214718955"></p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xmlns:p=&quot;http://www.springframework.org/schema/p&quot;
+        xmlns:c=&quot;http://www.springframework.org/schema/c&quot;
+        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+   &lt;!--p命名空间注入，可以直接注入属性的值--&gt;
+   &lt;bean id=&quot;user&quot; class=&quot;com.NanCheng.bean.User&quot; p:name=&quot;user2&quot; p:age=&quot;18&quot;/&gt;
+   &lt;!--c命名空间注入，通过构造器注入：construct-args--&gt;
+   &lt;bean id=&quot;user2&quot; class=&quot;com.NanCheng.bean.User&quot; c:name=&quot;NanCheng&quot; c:age=&quot;18&quot;&gt;
+   
+   &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+<p>测试：</p>
+<pre><code class="java">@Test
+public void iTest()&#123;
+    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;userbeans.xml&quot;);
+    User user =  context.getBean(&quot;user2&quot;,User.class);
+    System.out.println(user);
+&#125;
+</code></pre>
+<blockquote>
+<p>注意点：p命名和c命名空间不能直接使用，需要导入xml约束</p>
+<ul>
+<li><p>xmlns:p&#x3D;”<a href="http://www.springframework.org/schema/p">http://www.springframework.org/schema/p</a>“</p>
+</li>
+<li><p>xmlns:c&#x3D;”<a href="http://www.springframework.org/schema/c">http://www.springframework.org/schema/c</a>“</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="6-4、bean的作用域"><a href="#6-4、bean的作用域" class="headerlink" title="6.4、bean的作用域"></a>6.4、bean的作用域</h2><p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033577.png" alt="image-20220927215124582"></p>
+<ol>
+<li><p>代理模式(Spring默认机制)</p>
+<pre><code class="xml">   &lt;bean id=&quot;address&quot; class=&quot;com.NanCheng.bean.Address&quot; scope=&quot;singleton&quot;&gt;
+        &lt;property name = &quot;address&quot; value=&quot;湖北师范大学~&quot;/&gt;
+    &lt;/bean&gt;
+</code></pre>
+</li>
+<li><p>原型模式：每次从容器中get 的时候，都会产生一个新对象</p>
+<pre><code class="xml">&lt;bean id=&quot;address&quot; class=&quot;com.NanCheng.bean.Address&quot; scope=&quot;prototype&quot;&gt;
+    &lt;property name = &quot;address&quot; value=&quot;湖北师范大学~&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+</li>
+<li><p>骑鱼的request、session、application，这些只能在web开发中使用到。</p>
+</li>
+</ol>
+<h1 id="7、自动装配"><a href="#7、自动装配" class="headerlink" title="7、自动装配"></a>7、自动装配</h1><ul>
+<li>自动装配是Spring满足bean依赖的一种方式!</li>
+<li>Spring会在上下文中自动寻找，并自动给bean装配属性</li>
+</ul>
+<p>在Spring中有三种装配的方式</p>
+<ol>
+<li>在xml中显示的配置</li>
+<li>在java中显示配置</li>
+<li>隐式的自动装配bean【重要】</li>
+</ol>
+<h2 id="7-1、测试"><a href="#7-1、测试" class="headerlink" title="7.1、测试"></a>7.1、测试</h2><p>搭建环境：一个人有两个宠物！</p>
+<h2 id="7-2、byName自动装配"><a href="#7-2、byName自动装配" class="headerlink" title="7.2、byName自动装配"></a>7.2、byName自动装配</h2><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+    &lt;bean id=&quot;cat&quot; class=&quot;com.NanCheng.bean.Cat&quot;/&gt;
+    
+    &lt;bean id=&quot;dog&quot; class=&quot;com.NanCheng.bean.Dog&quot;/&gt;
+    &lt;!--
+    byName：会自动容器上下文中查找，和自己对象set方法后面的值对应的bean id
+    
+    --&gt;
+    &lt;bean id=&quot;person&quot; class=&quot;com.NanCheng.bean.Person&quot; autowire=&quot;byType&quot;&gt;
+        &lt;property name = &quot;name&quot; value=&quot;NanCheng&quot;/&gt;
+    &lt;/bean&gt;
+    
+&lt;/beans&gt;
+</code></pre>
+<h2 id="7-3、byType自动装配"><a href="#7-3、byType自动装配" class="headerlink" title="7.3、byType自动装配"></a>7.3、byType自动装配</h2><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+    &lt;bean id=&quot;cat&quot; class=&quot;com.NanCheng.bean.Cat&quot;/&gt;
+    
+    &lt;bean id=&quot;dog&quot; class=&quot;com.NanCheng.bean.Dog&quot;/&gt;
+    &lt;!--
+    byName：会自动容器上下文中查找，和自己对象set方法后面的值对应的bean id
+    byType：会自动容器上下文中查找，和自己对象类型相同的bean
+    
+    --&gt;
+    &lt;bean id=&quot;person&quot; class=&quot;com.NanCheng.bean.Person&quot; autowire=&quot;byType&quot;&gt;
+        &lt;property name = &quot;name&quot; value=&quot;NanCheng&quot;/&gt;
+    &lt;/bean&gt;
+    
+&lt;/beans&gt;
+</code></pre>
+<blockquote>
+<p>小结：</p>
+<ul>
+<li>byName的时候，需要保证所有的bean的id唯一，标签这个bean需要和自动注入的属性的set方法的值一致！</li>
+<li>byType的时候，需要保证所有的bean的class唯一，标签这个bean需要和自动注入的属性类型一致！</li>
+</ul>
+</blockquote>
+<h2 id="7-4使用注解实现自动装配"><a href="#7-4使用注解实现自动装配" class="headerlink" title="7.4使用注解实现自动装配"></a>7.4使用注解实现自动装配</h2><p>jdk1.5支持注解，Spring2.5支持注解。</p>
+<p>要使用注解须知：</p>
+<ol>
+<li><p>导入约束	<code>context约束</code></p>
+</li>
+<li><p>配置注解的支持 <code>&lt;context:annotation-config/&gt;</code>【重点】</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+    xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+
+    &lt;context:annotation-config/&gt;
+
+&lt;/beans&gt;
+</code></pre>
+</li>
+</ol>
+<h2 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h2><p>直接在属性上使用即可！也可以在set方法上使用！</p>
+<p>使用Autowired我们可以不用编写Set方法了，前提是你这个自动装配的属性在IOC(Spring)容器中存在，切符合类型byType!</p>
+<p>拓展：</p>
+<pre><code class="java">@Nullable	字段标记了这个是注解，说明这个字段可以为null
+</code></pre>
+<p>注解@Autowired有一个属性为required属性，其默认值是true。<code>如果默认值是false，则其对应的对象可以为null，否则报错</code></p>
+<pre><code class="java">public @interface Autowired&#123;
+    boolean required() default true;
+&#125;
+</code></pre>
+<pre><code class="java">package com.NanCheng.bean;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Person &#123;
+
+    private String name;
+    @Autowired(required = false)
+    private Cat cat;
+    @Autowired
+    private Dog dog;
+&#125;
+</code></pre>
+<p>如果@Autowired自动装配的环境比较复杂，自动装配无法通过一个注解<code>@Autowired</code>完成的时候，我们可以使用注解<code>@Qualifier</code>中通过value对应的值，指定唯一一个装配的bean。<code>即通过class+id</code></p>
+<p>&#x3D;&#x3D;@Qualifier(value&#x3D;”xxx”)&#x3D;&#x3D;</p>
+<pre><code class="java">package com.NanCheng.bean;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Person &#123;
+
+    private String name;
+    @Autowired(required = false)
+    private Cat cat;
+    @Autowired
+    @Qualifier(value = &quot;dog222&quot;)
+    private Dog dog;
+&#125;
+</code></pre>
+<pre><code class="xml">&lt;bean id=&quot;dog222&quot; class=&quot;com.NanCheng.bean.Dog&quot;/&gt;
+</code></pre>
+<h2 id="Resource注解常用"><a href="#Resource注解常用" class="headerlink" title="@Resource注解常用"></a>@Resource注解<code>常用</code></h2><pre><code class="java">package com.NanCheng.bean;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import javax.annotation.Resource;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Person &#123;
+
+    private String name;
+    @Resource
+    private Cat cat;
+    @Resource(name = &quot;dog222&quot;)  
+    private Dog dog;
+&#125;
+</code></pre>
+<blockquote>
+<p>小结：</p>
+<p>@Resource和@Autowired 的区别：</p>
+<ul>
+<li>都是用来自动装配的，都可以放在属性字段上</li>
+<li>@Autowired通过byType 的方式实现，对象必须不为空</li>
+<li>@Resource默认通过byName的方式实现，如果找不到，则通过byType实现！如果两个都找不到的情况下，就会报错<code>常用</code></li>
+<li>执行顺序不同：@Autowired通过byType的方式实现。</li>
+</ul>
+</blockquote>
+<h1 id="8、使用注解开发"><a href="#8、使用注解开发" class="headerlink" title="8、使用注解开发"></a>8、使用注解开发</h1><p>在Spring4之后，要使用注解开发，必须要保证AOP导入。</p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033578.png" alt="image-20221002210749574"></p>
+<p>使用注解需要导入context约束，增加注解的支持！</p>
+<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
+        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
+
+    &lt;!--指定要扫描的包，这个包下的注解就会生效--&gt;
+    &lt;context:component-scan base-package = &quot;com.NanCheng.bean&quot;/&gt;
+    &lt;!--注解驱动的支持--&gt;
+    &lt;context:annotation-config/&gt;
+    
+
+&lt;/beans&gt;
+</code></pre>
+<h2 id="bean"><a href="#bean" class="headerlink" title="bean"></a>bean</h2><p><code>@Component</code>注解装载bean</p>
+<h2 id="属性如何注入Value-value"><a href="#属性如何注入Value-value" class="headerlink" title="属性如何注入Value(&quot;value&quot;)"></a>属性如何注入<code>Value(&quot;value&quot;)</code></h2><pre><code class="java">package com.NanCheng.bean;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+//等价于&lt;bean id = &quot;user&quot; class = &quot;com.NanCheng.bean.User/&gt;
+//@Component 组件
+@Component
+public class User &#123;
+    //相当于
+    // &lt;bean id = &quot;user&quot; class = &quot;com.NanCheng.bean.User&quot;&gt;
+    //        &lt;property name = &quot;name&quot; value=&quot;NanCheng&quot;/&gt;
+    // &lt;/bean&gt;
+    @Value(&quot;NanCheng&quot;)
+    public String name;
+&#125;
+</code></pre>
+<h2 id="衍生的注解"><a href="#衍生的注解" class="headerlink" title="衍生的注解"></a>衍生的注解</h2><p><code>@Component</code>有几个衍生注释，我们在web开发中，会按照mvc三层架构分层！</p>
+<ul>
+<li>dao<code>@Repository</code></li>
+<li>service层<code>@Service</code></li>
+<li>controller层<code>@Controller</code></li>
+</ul>
+<p>这四个注解功能都是一样的，都是代表将某个类注册到Spring中，装配bean</p>
+<h2 id="自动装配"><a href="#自动装配" class="headerlink" title="自动装配"></a>自动装配</h2><ul>
+<li>@Autowired：自动装配通过类型。<br>如果Autowired不能唯一自动装配上属性，则需要通过@Qualifier(value&#x3D;”xxx”)</li>
+<li>@Nullable：字段标记了这个注解，说明这个字段可以为空</li>
+<li>@Resource：自动装配通过名字、类型</li>
+</ul>
+<h2 id="作用域-Scope"><a href="#作用域-Scope" class="headerlink" title="作用域@Scope"></a>作用域<code>@Scope</code></h2><pre><code class="java">package com.NanCheng.bean;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+//等价于&lt;bean id = &quot;user&quot; class = &quot;com.NanCheng.bean.User/&gt;
+//@Component 组件
+@Component
+@Scope(&quot;prototype&quot;)
+public class User &#123;
+    //相当于
+    // &lt;bean id = &quot;user&quot; class = &quot;com.NanCheng.bean.User&quot;&gt;
+    //        &lt;property name = &quot;name&quot; value=&quot;NanCheng&quot;/&gt;
+    // &lt;/bean&gt;
+
+    @Value(&quot;NanCheng&quot;)
+    public String name;
+&#125;
+</code></pre>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>xml与注解：</p>
+<ul>
+<li>xml更加万能，适用于任何场合！维护简单方便</li>
+<li>注解，不是自己的类使用不了，维护相对复杂</li>
+</ul>
+<p>xml与注解最佳实践：</p>
+<ul>
+<li><p>xml用来管理bean</p>
+</li>
+<li><p>注解只负责完成属性的注入</p>
+</li>
+<li><p>我们在使用的过程中，只需要注意一个问题：必须让注解生效，就需要开启注解的支持</p>
+<pre><code class="xml">&lt;!--指定要扫描的包，这个包下的注解就会生效--&gt;
+&lt;context:component-scan base-package = &quot;com.NanCheng&quot;/&gt;
+&lt;!--注解驱动的支持--&gt;
+&lt;context:annotation-config/&gt;
+</code></pre>
+</li>
+</ul>
+<h1 id="9、使用Java的方式配置Spring"><a href="#9、使用Java的方式配置Spring" class="headerlink" title="9、使用Java的方式配置Spring"></a>9、使用Java的方式配置Spring</h1><p>我们现在要完全不使用Spring的xml配置了，全权交给Java来做！</p>
+<p>JavaConfig是Spring的一个子项目，在Spring4之后，它成为了一个核心功能。</p>
+<pre><code class="java">package com.NanCheng.bean;
+
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Data
+@Component
+/*
+ 这里这个注解的意思，就是说明这个类被Spring接管了，注册到了容器中#endregion
+*/
+public class User &#123;
+    @Value(&quot;NanCheng&quot;)//属性注入值
+    private String name;
+&#125;
+</code></pre>
+<p>配置类</p>
+<pre><code class="java">package com.NanCheng.config;
+
+import com.NanCheng.bean.User;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+
+@Configuration
+//这个也会被Spring容器托管，注册到容器中，因为他本来就是一个@Component。
+//@Configuration代表这是一个配置类，就和我们之前看的applicationContext一样
+@ComponentScan(&quot;com.NanCheng.bean&quot;)
+@Import(NanCheng_Config2.class)
+public class NanCheng_Config &#123;
+    //注册一个bean，就相当于我们之前写的一个bean标签
+    // 这个方法的名字就相当于bean标签中的id属性
+    //方法的返回值就相当于bean标签中的class属性
+    @Bean
+    public User getUser()&#123;
+        return new User();//就是返回要注入到bean中的对象
+    &#125;
+&#125;
+</code></pre>
+<p>测试类：</p>
+<pre><code class="java">import com.NanCheng.bean.User;
+import com.NanCheng.config.NanCheng_Config;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class MyTest &#123;
+    public static void main(String[] args) &#123;
+        //如果完全使用了配置类方式去做，我们就只能通过AnnotationConfig 上下文来获取容器，通过配置类的class对象加载！
+        ApplicationContext context = new AnnotationConfigApplicationContext(NanCheng_Config.class);
+        User getUser = context.getBean(&quot;getUser&quot;, User.class);
+        System.out.println(getUser);
+    &#125;
+&#125;
+</code></pre>
+<p>这种纯java的配置方式，在SpringBoot中随处可见！</p>
+<h1 id="10、代理模式AOP"><a href="#10、代理模式AOP" class="headerlink" title="10、代理模式AOP"></a>10、代理模式<code>AOP</code></h1><p>为什么要学习代理模式？因为这就是SpringAOP的底层！&#x3D;&#x3D;SpringAOP和SpringMVC&#x3D;&#x3D;</p>
+<p>代理模式的分类：</p>
+<ul>
+<li>静态代理</li>
+<li>动态代理</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033579.png" alt="image-20221002210910805"></p>
+<h2 id="10-1、静态代理"><a href="#10-1、静态代理" class="headerlink" title="10.1、静态代理"></a>10.1、静态代理</h2><p>角色分析：</p>
+<ul>
+<li>抽象角色：一般使用接口或者抽象类来解决</li>
+<li>真实角色：被代理的角色</li>
+<li>代理角色：代理真实的角色，代理真实角色后，我们一般会做一些附属操作</li>
+<li>客户：访问代理对象的人</li>
+</ul>
+<p>代码步骤：</p>
+<ol>
+<li><p>接口</p>
+<pre><code class="java">package com.NanCheng.client.demo01;
+//租房接口
+public interface Rent &#123;
+    void rent();
+&#125;
+</code></pre>
+</li>
+<li><p>真实角色</p>
+<pre><code class="java">package com.NanCheng.client.demo01;
+
+public class Host implements Rent&#123;
+    @Override
+    public void rent() &#123;
+        System.out.println(&quot;房东要出租房子&quot;);
+    &#125;
+&#125;
+</code></pre>
+</li>
+<li><p>代理角色</p>
+<pre><code class="java">package com.NanCheng.client.demo01;
+
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+public class Proxy implements Rent&#123;
+    private Host host;
+
+    public Proxy(Host host) &#123;
+        this.host = host;
+    &#125;
+
+    @Override
+    public void rent() &#123;
+        seeHouse();
+        host.rent();
+        getItem();
+        fare();
+    &#125;
+
+    //看房
+    public void seeHouse()&#123;
+        System.out.println(&quot;中介带你看房&quot;);
+    &#125;
+    //收中介费
+    public void fare()&#123;
+        System.out.println(&quot;中介收费&quot;);
+    &#125;
+    //签合同
+    public void getItem()&#123;
+        System.out.println(&quot;和中介签租赁合同&quot;);
+    &#125;
+
+&#125;
+</code></pre>
+</li>
+<li><p>客户端访问代理角色</p>
+<pre><code class="java">package com.NanCheng.client.demo01;
+
+public class Client &#123;
+    public static void main(String[] args) &#123;
+        Host host = new Host();
+        //代理,中介帮房东租房子，但是代理角色一般会有一些附属操作！
+        Proxy proxy = new Proxy(host);
+        //你不用面对房东，直接找中介租房即可
+        proxy.rent();
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ol>
+<p>代理模式的好处：</p>
+<ul>
+<li>可以使真实角色的操作更加纯粹！不用去关注一些公共的业务</li>
+<li>公共业务就交给代理角色！实现了业务的分工</li>
+<li>公共业务发生扩展的时候，方便集中管理</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>一个真实角色，就会产生一个代理角色，代码量会翻倍~开发效率会变低~</li>
+</ul>
+<h2 id="10-2、加深理解"><a href="#10-2、加深理解" class="headerlink" title="10.2、加深理解"></a>10.2、加深理解</h2><p>对应demo02</p>
+<p>接口：</p>
+<pre><code class="java">package com.NanCheng.client.demo02;
+
+public interface UserService &#123;
+    void add();
+    void delete();
+    void update();
+    void query();
+&#125;
+</code></pre>
+<p>真实对象：</p>
+<pre><code class="java">package com.NanCheng.client.demo02;
+
+public class UserServiceImpl implements UserService&#123;
+    @Override
+    public void add() &#123;
+        System.out.println(&quot;增加了一个用户&quot;);
+    &#125;
+
+    @Override
+    public void delete() &#123;
+        System.out.println(&quot;删除了一个用户&quot;);
+    &#125;
+
+    @Override
+    public void update() &#123;
+        System.out.println(&quot;修改了一个用户&quot;);
+    &#125;
+
+    @Override
+    public void query() &#123;
+        System.out.println(&quot;修改了一个用户&quot;);
+    &#125;
+    //改动原有的业务代码在企业中是大忌
+&#125;
+</code></pre>
+<p>代理对象：</p>
+<pre><code class="java">package com.NanCheng.client.demo02;
+
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+public class UserServiceProxy implements UserService&#123;
+    public UserServiceImpl userService;
+
+    public UserServiceProxy(UserServiceImpl userService)&#123;
+        this.userService=userService;
+    &#125;
+
+    @Override
+    public void add() &#123;
+        log(&quot;add&quot;);
+        userService.add();
+    &#125;
+
+    @Override
+    public void delete() &#123;
+        log(&quot;delete&quot;);
+        userService.delete();
+    &#125;
+
+    public void setUserService(UserServiceImpl userService) &#123;
+        this.userService = userService;
+    &#125;
+
+    @Override
+    public void update() &#123;
+        log(&quot;update&quot;);
+        userService.update();
+    &#125;
+
+    @Override
+    public void query() &#123;
+        log(&quot;query&quot;);
+        userService.query();
+    &#125;
+
+    //日志方法
+    public void log(String message)&#123;
+        System.out.println(&quot;[Debug] 使用了&quot;+message+&quot;方法&quot;);
+
+    &#125;
+&#125;
+</code></pre>
+<p>客户端使用：</p>
+<pre><code class="java">package com.NanCheng.client.demo02;
+
+public class Client &#123;
+    public static void main(String[] args) &#123;
+        UserServiceImpl userService = new UserServiceImpl();
+
+        UserServiceProxy proxy = new UserServiceProxy();
+        proxy.setUserService(userService);
+
+        proxy.add();
+    &#125;
+&#125;
+</code></pre>
+<p>AOP实现机制<code>横向开发</code></p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033580.png" alt="image-20221002211359945"></p>
+<h2 id="10-3、动态代理"><a href="#10-3、动态代理" class="headerlink" title="10.3、动态代理"></a>10.3、动态代理</h2><ul>
+<li>动态代理和静态代理角色一样</li>
+<li>动态代理的戴丽丽是动态生成的，不是我们直接写好的</li>
+<li>动态代理分为两大类：基于接口的动态代理，基于类的动态代理<ul>
+<li>基于接口  —JDK动态代理	【我们在这里使用】</li>
+<li>基于类：cglib</li>
+<li>java字节码实现：Javasist</li>
+</ul>
+</li>
+</ul>
+<p>需要了解两个类：Proxy：代理、InvocationHandler：调用处理程序</p>
+<p>动态代理的好处：</p>
+<ul>
+<li>可以使真实角色的操作更加纯粹！不用去关注一些公共的业务</li>
+<li>公共业务就交给代理角色！实现了业务的分工</li>
+<li>公共业务发生扩展的时候，方便集中管理</li>
+<li>一个动态代理类代理的是一个接口，一般就是对应的一类业务</li>
+<li>一个动态代理类可以代理多个类，只要是实现类同一个接口即可</li>
+</ul>
+<p>代码：</p>
+<ol>
+<li><p>接口：</p>
+<pre><code class="java">package com.NanCheng.client.demo02;
+//增删改查
+public interface UserService &#123;
+    void add();
+    void delete();
+    void update();
+    void query();
+&#125;
+</code></pre>
+</li>
+<li><p>被代理类<code>接口的任一实现类</code>：</p>
+<pre><code class="java">package com.NanCheng.client.demo02;
+
+public class UserServiceImpl implements UserService&#123;
+
+    public void add() &#123;
+        System.out.println(&quot;增加了一个用户&quot;);
+    &#125;
+
+    public void delete() &#123;
+        System.out.println(&quot;删除了一个用户&quot;);
+    &#125;
+
+    public void update() &#123;
+        System.out.println(&quot;修改了一个用户&quot;);
+    &#125;
+
+    public void query() &#123;
+        System.out.println(&quot;修改了一个用户&quot;);
+    &#125;
+    //改动原有的业务代码在企业中是大忌
+&#125;
+</code></pre>
+</li>
+<li><p>自定义的代理处理程序&lt;<code>InvocationHandler</code>&gt;</p>
+<pre><code class="java">package com.NanCheng.client.demo04;
+
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
+//我们自定义一个InvocationHandler来控制invoke()方法的处理逻辑
+public class ProxyInvocationHandler implements InvocationHandler &#123;
+    //被代理的接口&lt;目标接口&gt;
+    private Object target;
+
+
+    public ProxyInvocationHandler(Object target) &#123;
+        this.target = target;
+    &#125;
+
+    //生成得到代理类
+    public Object getProxy()&#123;
+        return Proxy.newProxyInstance(this.getClass().getClassLoader(),target.getClass().getInterfaces(),this );
+    &#125;
+    //实现接口内的invoke方法，自定义代理类的处理逻辑&lt;因为每次访问&gt;
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;
+        seeHouse();
+        //动态代理的本质，就是使用反射机制实现
+        Object result = method.invoke(target, args);
+        fare();
+        return result;
+    &#125;
+    public void seeHouse()&#123;
+        System.out.println(&quot;看房子&quot;);
+    &#125;
+    public void fare()&#123;
+        ystem.out.println(&quot;收中介费&quot;);
+    &#125;
+&#125;
+</code></pre>
+</li>
+<li><p>测试：</p>
+<pre><code class="java">package com.NanCheng.client.demo04;
+
+import com.NanCheng.client.demo02.UserService;
+import com.NanCheng.client.demo02.UserServiceImpl;
+
+public class Client &#123;
+    public static void main(String[] args) &#123;
+        //真实角色
+        UserServiceImpl userService = new UserServiceImpl();
+        //代理角色，现在不存在
+        //通过 调用 代理处理类 来处理我们要调用的接口对象
+        UserService proxy = (UserService)
+                (new ProxyInvocationHandler(userService).getProxy());//这里的proxy就是动态生成的，我们并没有new或者其他手段构造
+        proxy.update();
+        proxy.add();
+        proxy.delete();
+        proxy.query();
+    &#125;
+&#125;
+</code></pre>
+</li>
+<li><p>测试结果</p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033581.png" alt="image-20221002211132543"></p>
+</li>
+</ol>
+<p>由此我们可以看出，每调用一次接口内的方法，都会访问一次invoke()方法，这样可以减少业务代码中的重复性代码。</p>
+<blockquote>
+<p> <strong>代理流程</strong>：</p>
+<p> 首先，我们要先创建一个实现了目标接口的真实对象&#96;，也就是&#x3D;&#x3D;被代理的对象&#x3D;&#x3D;。</p>
+<p> 然后我们要调用我们自己编写的<code>ProxyInvocationHandler</code>类中的<code>newProxyInstance(ClassLoader,Class&lt;?&gt;[] interfaces,InvocationHandler)</code>方法</p>
+<p> 其中对参数进行分析：</p>
+<ul>
+<li><p>其中，<code>ClassLoader</code>中我们传入的是<code>this.getClass().gerClassLoader</code>目的是获取目标接口的类加载器，我们先是将&#x3D;&#x3D;this&#x3D;&#x3D;，也就是我们自己写的&#x3D;&#x3D;代理处理程序&#x3D;&#x3D;转为了后缀名为class的类，也就是<code>ProxyInvocationHandler.class</code>再调用&#x3D;&#x3D;class类的getClassLoader()方法&#x3D;&#x3D;获取类加载器，由于类加载器中，我们java程序内的&#x3D;&#x3D;自定义类都是由AppClassLoader加载&#x3D;&#x3D;，所以&#x3D;&#x3D;虽然我们在方法中使用的是this来获取加载器，但其实和我们要返回的接口加载器是同一个&#x3D;&#x3D;。<br>  <img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033582.png" alt="image-20221002211158353"></p>
+</li>
+<li><p>然后就是<code>Class&lt;?&gt;[] interfaces</code>,目的是获取&#x3D;&#x3D;目标接口&#x3D;&#x3D;的&#x3D;&#x3D;class对象&#x3D;&#x3D;，我们直接使用<code>target.getClass()</code>即可得到。</p>
+</li>
+<li><p>最后一个是<code>InvocationHandler</code>对象，目的是<code>获取一个代理处理程序</code>，并且启动其中的<code>invoke(Object proxy,Method method,Object[] args)</code>方法，这个方法可以处理 &#x3D;&#x3D;代理实例&#x3D;&#x3D;(<code>传入的proxy</code>) 上的方法调用，并返回结果。在与其(<code>我们创建的InvocationHandler类</code>)关联的 &#x3D;&#x3D;代理实例&#x3D;&#x3D;(<code>proxy</code>)上调用方法时，将在 &#x3D;&#x3D;调用处理程序上&#x3D;&#x3D; 调用此方法。<code>返回一个结果集，也就是装载着我们需要返回的接口类以及参数</code>。</p>
+</li>
+<li><p>执行到最后，会&#x3D;&#x3D;返回指定的接口的代理实例&#x3D;&#x3D;，并且&#x3D;&#x3D;该接口在实现方法调用的时候&#x3D;&#x3D;，会分派给指定的&#x3D;&#x3D;调用处理程序&#x3D;&#x3D;(<code>invoke()</code>方法)。**&#x3D;&#x3D;也就是说，我们使用生成的代理实例中的接口方法时，每使用一次接口方法，都会使用一次代理接口对应的invoke()方法&#x3D;&#x3D;**。</p>
+</li>
+</ul>
+</blockquote>
+<p>换句话说：</p>
+<p>只需要对其进行传入需要代理的接口<br>就可以让他代理其他同样实现了同一个接口的真实类去调用方法</p>
+<p>就比如说，皇帝驾崩了，没有儿子继承皇位<br>他的兄弟(或者儿子的兄弟)就可以代替他继承皇位，因为他们都有皇家血统(都实现了同一个接口)</p>
+<h1 id="11、AOP"><a href="#11、AOP" class="headerlink" title="11、AOP"></a>11、AOP</h1><h2 id="11-1、什么是AOP"><a href="#11-1、什么是AOP" class="headerlink" title="11.1、什么是AOP"></a>11.1、什么是AOP</h2><p>AOP(Aspect Oriented Programming)意为：面向切面编程，通过预编译的方式和运行期间动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。</p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033583.png" alt="image-20221002211245284"></p>
+<h2 id="11-2、AOP在Spring中的作用"><a href="#11-2、AOP在Spring中的作用" class="headerlink" title="11.2、AOP在Spring中的作用"></a>11.2、AOP在Spring中的作用</h2><p>&#x3D;&#x3D;提供声明式事务：允许用户自定义切面&#x3D;&#x3D;</p>
+<ul>
+<li>横切关注点：跨越应用程序多个模块的方法或功能。即是，与我们业务逻辑无关的，但是我们更需要关注的部分，就是横切关注点。如日志，安全，缓存，事务等等……</li>
+<li>切面(Aspect)：横切关注点，被模块化的特殊对象。即，它是一个类</li>
+<li>通知（Advice）：切面必须要完成的工作。即，它是类中的一个方法。</li>
+<li>目标（Target）：被通知对象。</li>
+<li>代理（Proxy）：向目标对象应用通知之后创建的对象。</li>
+<li>切入点（PointCut）：切面通知 执行的 “地点”的定义。</li>
+<li>连接点（JointPoint）：与切入点匹配的执行点。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033584.png" alt="image-20221002211257771"></p>
+<p>SpringAOP中，通过Advice定义横切逻辑，Spring中支持5种类型的Advice:</p>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033585.png" alt="image-20221002211310483"></p>
+<p>即 Aop 在 不改变原有代码的情况下 , 去增加新的功能 .</p>
+<h2 id="11-3使用Spring实现AOP"><a href="#11-3使用Spring实现AOP" class="headerlink" title="11.3使用Spring实现AOP"></a>11.3使用Spring实现AOP</h2><p>【重点】使用AOP植入，需要一个依赖包</p>
+<pre><code class="xml">&lt;dependency&gt;
+            &lt;groupId&gt;org.aspectj&lt;/groupId&gt;
+            &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;
+            &lt;version&gt;1.9.9.1&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<blockquote>
+<p>对execution()的解释：</p>
+<p>方法的返回值 方法(参数1，参数2)</p>
+<p>返回值使用<code>*</code>代表所有类型	方法则是使用绝对地址如<code>com.NanCheng.service.UserServiceImpl.add()</code></p>
+<p>其中方法名可以使用*代替，表示类中的<code>所有实现了接口得到的方法</code>，参数使用<code>..</code>表示所有任何参数</p>
+</blockquote>
+<h3 id="方式一：使用Spring的API接口【主要是SpringAPI接口实现】"><a href="#方式一：使用Spring的API接口【主要是SpringAPI接口实现】" class="headerlink" title="方式一：使用Spring的API接口【主要是SpringAPI接口实现】"></a>方式一：使用Spring的API接口【主要是SpringAPI接口实现】</h3><p>前置方法：</p>
+<pre><code class="java">package com.NanCheng.log;
+
+import org.springframework.aop.MethodBeforeAdvice;
+
+import java.lang.reflect.Method;
+
+//在方法执行之前切入
+public class Log implements MethodBeforeAdvice &#123;
+    //method：要执行的目标对象的方法
+    //args：参数
+    //target：目标对象
+    public void before(Method method, Object[] args, Object target) throws Throwable &#123;
+        System.out.println(target.getClass().getName()+&quot;的&quot;+method.getName()+&quot;被执行了&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>后置方法：</p>
+<pre><code class="java">package com.NanCheng.log;
+
+
+import org.springframework.aop.AfterReturningAdvice;
+
+import java.lang.reflect.Method;
+
+//在返回值返回之后切入
+public class AfterLog implements AfterReturningAdvice &#123;
+
+    //returnValue：返回值
+    public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable &#123;
+        System.out.println(&quot;执行了&quot;+target.getClass().getName()+&quot;方法，返回结果为&quot;+returnValue);
+    &#125;
+&#125;
+</code></pre>
+<p>核心配置文件：</p>
+<pre><code class="xml">&lt;!--方式一：使用原生Spring API接口--&gt;
+&lt;!--配置aop:需要导入aop的约束--&gt;
+&lt;aop:config&gt;
+    
+    &lt;!--切入点：expression:表达式，execution(要执行的位置：* * * *)--&gt;
+    &lt;aop:pointcut id = &quot;pointcut&quot; expression = &quot;execution(* com.NanCheng.service.UserServiceImpl.*(..))&quot; /&gt;
+    
+    &lt;!--执行环绕登场--&gt;
+    &lt;aop:advisor advice-ref = &quot;log&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
+    &lt;aop:advisor advice-ref = &quot;afterLog&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
+
+&lt;/aop:config&gt;
+</code></pre>
+<h3 id="方式二：自定义来实现AOP【主要是切面】"><a href="#方式二：自定义来实现AOP【主要是切面】" class="headerlink" title="方式二：自定义来实现AOP【主要是切面】"></a>方式二：自定义来实现AOP【主要是切面】</h3><p>将前置方法与后置方法存放在同一个类并且不需要任何的接口，自定义一个切面：</p>
+<p>Diy类：</p>
+<pre><code class="java">package com.NanCheng.diy;
+
+public class DiyPointCut &#123;
+    public void before()&#123;
+        System.out.println(&quot;===========方法执行前&quot;);
+    &#125;
+    public void after()&#123;
+        System.out.println(&quot;===========方法执行后&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>xml配置文件：</p>
+<pre><code class="xml">&lt;!--方式二：自定义类--&gt;
+&lt;bean id=&quot;diy&quot; class=&quot;com.NanCheng.diy.DiyPointCut&quot;/&gt;
+&lt;aop:config&gt;
+    &lt;!--自定义切面，ref  要引用的类--&gt;
+    &lt;aop:aspect ref=&quot;diy&quot;&gt;
+        &lt;!--切入点--&gt;
+        &lt;aop:pointcut id = &quot;point&quot; expression = &quot;execution(* com.NanCheng.service.UserServiceImpl.*(..))&quot; /&gt;
+        &lt;!--通知--&gt;
+        &lt;aop:before method = &quot;before&quot; pointcut-ref=&quot;point&quot;/&gt;
+        &lt;aop:after method = &quot;after&quot; pointcut-ref=&quot;point&quot;/&gt;
+        
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;
+</code></pre>
+<h3 id="方式三：使用注解实现"><a href="#方式三：使用注解实现" class="headerlink" title="方式三：使用注解实现"></a>方式三：使用注解实现</h3><p>业务代码如上</p>
+<p>注解配置的自定义AOP类：</p>
+<pre><code class="java">package com.NanCheng.diy;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+
+//声明式事务
+@Aspect//标注这个类是一个切面
+public class AnnotationPointCut &#123;
+    @Before(&quot;execution(* com.NanCheng.service.UserServiceImpl.*(..))&quot;)
+    public void before()&#123;
+        System.out.println(&quot;======在方法之前&quot;);
+    &#125;
+    @After(&quot;execution(* com.NanCheng.service.UserServiceImpl.*(..))&quot;)
+    public void after()&#123;
+        System.out.println(&quot;======在方法之后&quot;);
+    &#125;
+    //在环绕增强中，我们可以给定一个参数，代表我们要获取处理切入的点
+    @Around(&quot;execution(* com.NanCheng.service.UserServiceImpl.*(..))&quot;)
+    public void around(ProceedingJoinPoint pjp) throws Throwable &#123;
+        System.out.println(&quot;环绕前&quot;);
+        System.out.println(pjp.getSignature());
+        //执行方法
+        Object proceed = pjp.proceed();
+
+        System.out.println(&quot;环绕后&quot;);
+        System.out.println(proceed);
+    &#125;
+&#125;
+</code></pre>
+<p>xml配置文件：</p>
+<pre><code class="java">&lt;bean id=&quot;userService&quot; class=&quot;com.NanCheng.service.UserServiceImpl&quot;/&gt;
+&lt;bean id=&quot;log&quot; class=&quot;com.NanCheng.log.Log&quot;/&gt;
+&lt;bean id=&quot;afterLog&quot; class=&quot;com.NanCheng.log.AfterLog&quot;/&gt;
+&lt;!--方式三--&gt;
+&lt;bean id=&quot;annotationPointCut&quot; class=&quot;com.NanCheng.diy.AnnotationPointCut&quot;/&gt;
+&lt;!--开启注解支持！ JDK（默认  proxy-target-class=&quot;false&quot;）cglib（proxy-target-class=&quot;false&quot;）--&gt;
+&lt;aop:aspectj-autoproxy proxy-target-class=&quot;true&quot;/&gt;
+</code></pre>
+<h1 id="12、整合Mybatis"><a href="#12、整合Mybatis" class="headerlink" title="12、整合Mybatis"></a>12、整合Mybatis</h1><p>步骤：</p>
+<ol>
+<li>导入相关jar包<ul>
+<li>junit</li>
+<li>mybatis</li>
+<li>mysql</li>
+<li>spring相关的</li>
+<li>aop织入</li>
+<li>mybatis-spring【new知识点】</li>
+</ul>
+</li>
+<li>编写配置文件</li>
+<li>测试</li>
+</ol>
+<pre><code class="xml">&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;junit&lt;/groupId&gt;
+        &lt;artifactId&gt;junit&lt;/artifactId&gt;
+        &lt;version&gt;4.13.2&lt;/version&gt;
+        &lt;scope&gt;test&lt;/scope&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;mysql&lt;/groupId&gt;
+        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+        &lt;version&gt;8.0.30&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+        &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+        &lt;version&gt;3.5.11&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+        &lt;version&gt;1.2.6&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!--Spring操作数据库的话，还需要一个jdbc包--&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+        &lt;version&gt;5.3.23&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.aspectj&lt;/groupId&gt;
+        &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;
+        &lt;version&gt;1.9.9.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+        &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
+        &lt;version&gt;2.0.7&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre>
+<h2 id="12-1、回忆mybatis"><a href="#12-1、回忆mybatis" class="headerlink" title="12.1、回忆mybatis"></a>12.1、回忆mybatis</h2><ol>
+<li>编写实体类</li>
+<li>编写核心配置文件</li>
+<li>编写接口</li>
+<li>编写Mapper.xml文件</li>
+<li>测试</li>
+</ol>
+<h2 id="12-2、Mybatis-Spring"><a href="#12-2、Mybatis-Spring" class="headerlink" title="12.2、Mybatis-Spring"></a>12.2、Mybatis-Spring</h2><ol>
+<li><p>编写数据源</p>
+<pre><code class="xml">&lt;!--
+DataSource：使用Spring的数据源替换mybatis的配置 c3p0  dbcp druid
+我们这里使用Spring提供的JDBC : org.springframework.jdbc.datasource.DriverManagerDataSource
+--&gt;
+
+&lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
+    &lt;property name = &quot;driverClassName&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;/&gt;
+    &lt;property name = &quot;url&quot;
+            value=&quot;jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8&quot;/&gt;
+    &lt;property name = &quot;username&quot; value=&quot;root&quot;/&gt;
+    &lt;property name = &quot;password&quot; value=&quot;123456&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>在这里我们相当于讲mybatis的配置文件中的</p>
+<pre><code class="xml">&lt;environments default = &quot;development&quot;&gt;
+    &lt;environment id = &quot;development&quot;&gt;
+        &lt;transactionManager type = &quot;JDBC&quot; /&gt;
+        &lt;dataSource type = &quot;POOLED&quot;&gt;
+            &lt;property name = &quot;driver&quot; value = &quot;$&#123;driver&#125;&quot; /&gt;
+            &lt;property name = &quot;url&quot; value = &quot;$&#123;url&#125;&quot; /&gt;
+            &lt;property name = &quot;username&quot; value = &quot;$&#123;username&#125;&quot; /&gt;
+            &lt;property name = &quot;password&quot; value = &quot;$&#123;password&#125;&quot; /&gt;
+        &lt;/dataSource&gt;
+    &lt;/environment&gt;
+&lt;/environments&gt;
+</code></pre>
+<p>搬运了过来。</p>
+</li>
+<li><p>sqlSessionFactory</p>
+<pre><code class="xml">&lt;!--sqlSessionFactory--&gt;
+&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+    &lt;property name = &quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+    &lt;!--绑定mybatis配置文件--&gt;
+    &lt;property name = &quot;configLocation&quot; value=&quot;classpath:mybatis.xml&quot;/&gt;
+    
+    &lt;property name = &quot;mapperLocations&quot; value=&quot;classpath:com/NanCheng/mapper/*.xml&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>这里相当于代替了我们创建sqlSessionFactory的操作。</p>
+</li>
+<li><p>sqlSessionTemplate</p>
+<pre><code class="xml">&lt;!--sqlSessionTemplate：就是我们使用的sqlSession--&gt;
+&lt;bean id=&quot;sqlSession&quot; class=&quot;org.mybatis.spring.SqlSessionTemplate&quot;&gt;
+    &lt;!--只能使用构造器注入sqlSessionFactory，因为它没有set方法--&gt;
+    &lt;constructor-arg index=&quot;0&quot; ref=&quot;sqlSessionFactory&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>这里相当于我们在原来操作中创建工具类，然后返回sqlSession的操作。</p>
+</li>
+<li><p>需要给接口加实现类</p>
+<pre><code class="java">package com.NanCheng.mapper;
+
+import com.NanCheng.pojo.User;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+//注解标记类，注入bean中，创建实例
+@Component
+@Scope(&quot;prototype&quot;)//作用域
+public class UserMapperImpl &#123;
+    //我们的所有操作，都是使用sqlSession来执行，在原来，现在都使用SqlSessionTemplate;
+    private SqlSessionTemplate sqlSession;
+    @Autowired()//自动装配模式
+    @Qualifier(value = &quot;sqlSession&quot;)//使用注解指定唯一属性值
+    public void setSqlSession(SqlSessionTemplate sqlSession) &#123;
+        this.sqlSession = sqlSession;
+    &#125;
+
+    public List&lt;User&gt; selectUser() &#123;
+        return sqlSession.getMapper(UserMapper.class).selectUser();
+    &#125;
+&#125;
+</code></pre>
+</li>
+<li><p>将自己写的实现类注入到Spring中：</p>
+<p>直接使用@Component注解将其注入bean中，再通过自动装配将其属性值配对。</p>
+</li>
+<li><p>测试</p>
+<pre><code class="java">@Test
+public void test() &#123;
+    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+
+    UserMapperImpl userMapper = context.getBean(&quot;userMapperImpl&quot;, UserMapperImpl.class);
+    for (User user : userMapper.selectUser()) &#123;
+        System.out.println(user);
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ol>
+<p>注：我们后面是直接在类中使用的注解将实现类注入到容器中，并且我们可以将前面的有关sqlSession的所有bean放入一个独立的xml文件中，只是在主的配置上下文 文件中导入就行。</p>
+<blockquote>
+<p>实现mybatis-spring的第二种方式:</p>
+<pre><code class="xml">&lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
+    &lt;property name = &quot;driverClassName&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;/&gt;
+    &lt;property name = &quot;url&quot;
+            value=&quot;jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8&quot;/&gt;
+    &lt;property name = &quot;username&quot; value=&quot;root&quot;/&gt;
+    &lt;property name = &quot;password&quot; value=&quot;123456&quot;/&gt;
+&lt;/bean&gt;
+&lt;!--sqlSessionFactory--&gt;
+&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+    &lt;property name = &quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
+    &lt;!--绑定mybatis配置文件--&gt;
+    &lt;property name = &quot;configLocation&quot; value=&quot;classpath:mybatis.xml&quot;/&gt;
+    
+    &lt;property name = &quot;mapperLocations&quot; value=&quot;classpath:com/NanCheng/mapper/*.xml&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>在spring-dao中编写数据源以及工厂类的bean就可以</p>
+<p>然后编写实现类，实现类继承SqlSessionDaoSupport类</p>
+<pre><code class="java">package com.NanCheng.mapper;
+
+import com.NanCheng.pojo.User;
+import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+
+public class UserMapperImpl2 extends SqlSessionDaoSupport implements UserMapper&#123;
+//父类的getSqlSession()方法会返回一个sqlSession的实例，该实例由我们传入的SqlSessionFactory工厂类构建
+    public List&lt;User&gt; selectUser() &#123;
+        return getSqlSession().getMapper(UserMapper.class).selectUser();
+    &#125;
+&#125;
+</code></pre>
+<p>我们通过观察源码发现：<img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033586.png" alt="image-20221022012927129"></p>
+<p>其实该类的内部构造和第一种方式相同，也是内部封装了一个<code>SqlSessionTemplate</code>类，但其构造方法需要传参<code>SqlSessionFactory</code></p>
+<p>所以我们需要将实体类导入容器，并且对其，传入我们容器内的<code>SqlSessionFactory</code>类</p>
+<pre><code class="xml">&lt;bean id=&quot;userMapper2&quot; class=&quot;com.NanCheng.mapper.UserMapperImpl2&quot;&gt;
+    &lt;property name = &quot;sqlSessionFactory&quot; ref=&quot;sqlSessionFactory&quot;/&gt;
+&lt;/bean&gt;
+</code></pre>
+<p>最后编写测试类就可以使用了</p>
+<pre><code class="java">@Test
+public void test() &#123;
+    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
+
+    UserMapper userMapper = context.getBean(&quot;userMapper2&quot;, UserMapper.class);
+    for (User user : userMapper.selectUser()) &#123;
+        System.out.println(user);
+    &#125;
+&#125;
+</code></pre>
+</blockquote>
+<h1 id="13、声明式事务"><a href="#13、声明式事务" class="headerlink" title="13、声明式事务"></a>13、声明式事务</h1><h2 id="1、回顾事务"><a href="#1、回顾事务" class="headerlink" title="1、回顾事务"></a>1、回顾事务</h2><ul>
+<li>把一组业务当成一个业务来做，要么都成功，要么都失败</li>
+<li>事务在项目开发中，十分的重要，涉及到数据的一致性问题，不能马虎！</li>
+<li>确保完整性和一致性</li>
+</ul>
+<blockquote>
+<p> 事务的ACID原则：</p>
+<p><code>原子性（atomicity）</code></p>
+<p>​	事务是原子性操作，由一系列动作组成，事务的原子性确保动作要么全部完成，要么完全不起作用</p>
+<p><code>一致性（consistency）</code></p>
+<p>​	一旦所有事务动作完成，事务就要被提交。数据和资源处于一种满足业务规则的一致性状态中</p>
+<p><code>隔离性（isolation）</code></p>
+<p>​	可能多个事务会同时处理相同的数据，因此每个事务都应该与其他事务隔离开来，防止数据损坏</p>
+<p><code>持久性（durability）</code></p>
+<p>​	事务一旦完成，无论系统发生什么错误，结果都不会受到影响。通常情况下，事务的结果被写到持久化存储器中</p>
+</blockquote>
+<h3 id="12-2、测试"><a href="#12-2、测试" class="headerlink" title="12.2、测试"></a>12.2、测试</h3><p>将上面的代码拷贝到一个新项目中</p>
+<p>在之前的案例中，我们给userDao接口新增两个方法，删除和增加用户；</p>
+<pre><code class="java">//添加一个用户
+int addUser(User user);
+//根据id删除用户
+int deleteUser(int id);
+</code></pre>
+<p>mapper文件，我们故意把 deletes 写错，测试！</p>
+<pre><code class="xml"> &lt;insert id=&quot;addUser&quot; parameterType=&quot;com.kuang.pojo.User&quot;&gt; 
+     insert into user (id,name,pwd) values (#&#123;id&#125;,#&#123;name&#125;,#&#123;pwd&#125;) 
+&lt;/insert&gt; 
+&lt;delete id=&quot;deleteUser&quot; parameterType=&quot;int&quot;&gt;
+    deletes from user where id = #&#123;id&#125;
+&lt;/delete&gt;
+</code></pre>
+<p>编写接口的实现类，在实现类中，我们去操作一波</p>
+<pre><code class="java">public class UserDaoImpl extends SqlSessionDaoSupport implements UserMapper &#123;  
+    //增加一些操作  
+    public List&lt;User&gt; selectUser() &#123;      
+        User user = new User(4,&quot;小明&quot;,&quot;123456&quot;);     
+        UserMapper mapper = getSqlSession().getMapper(UserMapper.class); 
+        mapper.addUser(user);       
+        mapper.deleteUser(4);      
+        return mapper.selectUser();
+    &#125;  
+    //新增    
+    public int addUser(User user) &#123;    
+        UserMapper mapper = getSqlSession().getMapper(UserMapper.class);   
+        return mapper.addUser(user);  
+    &#125;  
+    //删除   
+    public int deleteUser(int id) &#123;       
+        UserMapper mapper = getSqlSession().getMapper(UserMapper.class);       
+        return mapper.deleteUser(id);   
+    &#125;
+&#125;
+</code></pre>
+<p>测试</p>
+<pre><code class="java">@Test
+public void test2()&#123;   
+    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);   
+    UserMapper mapper = (UserMapper) context.getBean(&quot;userDao&quot;);    
+    List&lt;User&gt; user = mapper.selectUser();   
+    System.out.println(user);
+&#125;
+</code></pre>
+<p>报错：sql异常，delete写错了</p>
+<p>结果 ：插入成功！</p>
+<p>没有进行事务的管理；我们想让他们都成功才成功，有一个失败，就都失败，我们就应该需要<strong>事务！</strong></p>
+<p>以前我们都需要自己手动管理事务，十分麻烦！</p>
+<p>但是Spring给我们提供了事务管理，我们只需要配置即可；</p>
+<h3 id="12-3、Spring中的事务管理"><a href="#12-3、Spring中的事务管理" class="headerlink" title="12.3、Spring中的事务管理"></a>12.3、Spring中的事务管理</h3><p>Spring在不同的事务管理API之上定义了一个抽象层，使得开发人员不必了解底层的事务管理API就可以使用Spring的事务管理机制。Spring支持编程式事务管理和声明式的事务管理。</p>
+<p><strong>编程式事务管理</strong></p>
+<ul>
+<li>将事务管理代码嵌到业务方法中来控制事务的提交和回滚</li>
+<li>缺点：必须在每个事务操作业务逻辑中包含额外的事务管理代码</li>
+</ul>
+<p><strong>声明式事务管理</strong></p>
+<ul>
+<li>一般情况下比编程式事务好用。</li>
+<li>将事务管理代码从业务方法中分离出来，以声明的方式来实现事务管理。</li>
+<li>将事务管理作为横切关注点，通过aop方法模块化。Spring中通过Spring AOP框架支持声明式事务管理。</li>
+</ul>
+<p><strong>使用Spring管理事务，注意头文件的约束导入 : tx</strong></p>
+<pre><code class="xml">xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd&quot;
+&gt;
+</code></pre>
+<p><strong>事务管理器</strong></p>
+<ul>
+<li>无论使用Spring的哪种事务管理策略（编程式或者声明式）事务管理器都是必须的。</li>
+<li>就是 Spring的核心事务管理抽象，管理封装了一组独立于技术的方法。</li>
+</ul>
+<p><strong>JDBC事务</strong></p>
+<pre><code class="xml">&lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
+&lt;/bean&gt;
+</code></pre>
+<p><strong>配置好事务管理器后我们需要去配置事务的通知</strong></p>
+<pre><code class="xml">&lt;!--配置事务通知--&gt;
+&lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;transactionManager&quot;&gt;
+    &lt;tx:attributes&gt;   
+        &lt;!--配置哪些方法使用什么样的事务,配置事务的传播特性--&gt;       
+        &lt;tx:method name=&quot;add&quot; propagation=&quot;REQUIRED&quot;/&gt;      
+        &lt;tx:method name=&quot;delete&quot; propagation=&quot;REQUIRED&quot;/&gt;     
+        &lt;tx:method name=&quot;update&quot; propagation=&quot;REQUIRED&quot;/&gt;     
+        &lt;tx:method name=&quot;search*&quot; propagation=&quot;REQUIRED&quot;/&gt;      
+        &lt;tx:method name=&quot;get&quot; read-only=&quot;true&quot;/&gt;     
+        &lt;tx:method name=&quot;*&quot; propagation=&quot;REQUIRED&quot;/&gt; 
+    &lt;/tx:attributes&gt;
+&lt;/tx:advice&gt;
+</code></pre>
+<p><strong>spring事务传播特性：</strong></p>
+<p>事务传播行为就是多个事务方法相互调用时，事务如何在这些方法间传播。spring支持7种事务传播行为：</p>
+<ul>
+<li>propagation_requierd：如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中，这是最常见的选择。</li>
+<li>propagation_supports：支持当前事务，如果没有当前事务，就以非事务方法执行。</li>
+<li>propagation_mandatory：使用当前事务，如果没有当前事务，就抛出异常。</li>
+<li>propagation_required_new：新建事务，如果当前存在事务，把当前事务挂起。</li>
+<li>propagation_not_supported：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</li>
+<li>propagation_never：以非事务方式执行操作，如果当前事务存在则抛出异常。</li>
+<li>propagation_nested：如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与propagation_required类似的操作</li>
+</ul>
+<p>Spring 默认的事务传播行为是 &#x3D;&#x3D;PROPAGATION_REQUIRED&#x3D;&#x3D;，它适合于绝大多数的情况。</p>
+<p>假设 ServiveX#methodX() 都工作在事务环境下（即都被 Spring 事务增强了），假设程序中存在如下的调用链：Service1#method1()-&gt;Service2#method2()-&gt;Service3#method3()，那么这 3 个服务类的 3 个方法通过 Spring 的事务传播机制都工作在同一个事务中。</p>
+<p>就好比，我们刚才的几个方法存在调用，所以会被放在一组事务当中！</p>
+<p><strong>配置AOP</strong></p>
+<p>导入aop的头文件！</p>
+<pre><code class="xml">&lt;!--配置aop织入事务--&gt;
+&lt;aop:config&gt;   
+    &lt;aop:pointcut id=&quot;txPointcut&quot; expression=&quot;execution(* com.kuang.dao.*.*(..))&quot;/&gt;   
+    &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;txPointcut&quot;/&gt;
+&lt;/aop:config&gt;
+</code></pre>
+<p><strong>进行测试</strong></p>
+<p>删掉刚才插入的数据，再次测试！</p>
+<pre><code class="java">@Test
+public void test2()&#123;  
+    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);    
+    UserMapper mapper = (UserMapper) context.getBean(&quot;userDao&quot;);   
+    List&lt;User&gt; user = mapper.selectUser();    System.out.println(user);
+&#125;
+</code></pre>
+<h3 id="思考问题？-1"><a href="#思考问题？-1" class="headerlink" title="思考问题？"></a>思考问题？</h3><p>为什么需要配置事务？</p>
+<ul>
+<li>如果不配置，就需要我们手动提交控制事务；</li>
+<li>事务在项目开发过程非常重要，涉及到数据的一致性的问题，不容马虎！</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>Spring全家桶</category>
+      </categories>
+      <tags>
+        <tag>SSMP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mybatis-9.28</title>
     <url>/2024/06/17/Java/SSM/Mybatis9.28/</url>
     <content><![CDATA[<h1 id="Mybatis-9-28"><a href="#Mybatis-9-28" class="headerlink" title="Mybatis-9.28"></a>Mybatis-9.28</h1><p>环境：</p>
@@ -1823,2125 +4099,6 @@ public class MyTest &#123;
       </categories>
       <tags>
         <tag>SSMP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring</title>
-    <url>/2024/06/17/Java/SSM/Spring/</url>
-    <content><![CDATA[<h1 id="1、Spring"><a href="#1、Spring" class="headerlink" title="1、Spring"></a>1、Spring</h1><h2 id="1-1简介"><a href="#1-1简介" class="headerlink" title="1.1简介"></a>1.1简介</h2><ul>
-<li><p>Spring:春天—&gt;给软件行业带来了春天！</p>
-</li>
-<li><p>2002，首次推出了Spring框架的雏形，interface 21框架</p>
-</li>
-<li><p>2004年3月24号诞生，Spirng框架即以interface 21 框架为基础，经过重新设计，并不断丰富其内涵，发布了1.0正式版本。</p>
-</li>
-<li><p>Rod Johnson   Spring Franework的创始人，著名作者</p>
-</li>
-<li><p>Spring的理念：使现有的技术更加容易使用，本身是一个大杂烩，整合了现有的技术框架！</p>
-</li>
-<li><p>SSH：Struct2 + Spring + Hibernate!</p>
-</li>
-<li><p>SSM：SpringMvc + Spring + mybatis</p>
-</li>
-</ul>
-<p>官网：<a href="https://spring.io/">Spring | Home</a></p>
-<p>官方下载地址：<a href="https://repo.spring.io/ui/native/release/org/springframework/spring/">repo.spring.io</a></p>
-<p>GitHub地址：<a href="https://github.com/spring-projects/spring-framework">spring-projects&#x2F;spring-framework: Spring Framework (github.com)</a></p>
-<p><strong>Maven导入配置</strong></p>
-<pre><code class="xml">&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
-    &lt;version&gt;5.3.23&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
-    &lt;version&gt;5.3.23&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
-<h2 id="1-2、优点"><a href="#1-2、优点" class="headerlink" title="1.2、优点"></a>1.2、优点</h2><ul>
-<li>Spring是一个开源的免费的框架(容器)！</li>
-<li>Spring是一个轻量级的、非入侵式的框架！</li>
-<li>控制反转(IOC)，面向切面编程(AOP)</li>
-<li>支持事务的处理，对框架整合的支持！</li>
-</ul>
-<p>&#x3D;&#x3D;总结一句话：Spring就是一个轻量级的控制反转(Ioc)和面向切面编程(AOP)的框架！&#x3D;&#x3D;</p>
-<h2 id="1-3、组成"><a href="#1-3、组成" class="headerlink" title="1.3、组成"></a>1.3、组成</h2><p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033574.png" alt="image-20220927143522505"></p>
-<h2 id="1-4、拓展"><a href="#1-4、拓展" class="headerlink" title="1.4、拓展"></a>1.4、拓展</h2><p>现代化的Java开发，就是基于Spring的开发</p>
-<p>构建一切：&#x3D;&#x3D;Springboot&#x3D;&#x3D;</p>
-<p>协调一切：&#x3D;&#x3D;Springcloud&#x3D;&#x3D;</p>
-<p>连接一切：SpringFlow</p>
-<ul>
-<li>Spring Boot<ul>
-<li>一个快速开发的脚手架</li>
-<li>基于Spring Boot可以快速的开发单个微服务</li>
-<li>约定大于配置！</li>
-</ul>
-</li>
-<li>Spring Cloud<ul>
-<li>Spring Cloud是基于Spring Boot实现的</li>
-</ul>
-</li>
-</ul>
-<p>因为现在大多数公司都在使用SpringBoot进行快速开发，学习SpringBoot的前提，需要完全掌握Spring及SpringMVC！</p>
-<p>承上启下的作用！</p>
-<p><strong>弊端：发展了太久之后，违背了原来的理念！配置十分繁琐，人称：”配置地狱！”</strong></p>
-<h1 id="2、IOC理论推导"><a href="#2、IOC理论推导" class="headerlink" title="2、IOC理论推导"></a>2、IOC理论推导</h1><ol>
-<li><p>UserDao接口</p>
-<pre><code class="java">package com.NanCheng.dao;
-
-public interface UserDao &#123;
-    void getUser();
-&#125;
-</code></pre>
-</li>
-<li><p>UserDaoImpl实现类</p>
-<pre><code class="java">package com.NanCheng.dao.impl;
-
-import com.NanCheng.dao.UserDao;
-
-public class UserDaoImpl implements UserDao &#123;
-    public void getUser() &#123;
-        System.out.println(&quot;默认获取用户的数据&quot;);
-    &#125;
-&#125;
-</code></pre>
-<pre><code class="java">package com.NanCheng.dao.impl;
-
-import com.NanCheng.dao.UserDao;
-
-public class UserMysqlDaoImpl implements UserDao &#123;
-    public void getUser() &#123;
-        System.out.println(&quot;zhuru&quot;);
-    &#125;
-&#125;
-</code></pre>
-</li>
-<li><p>UserService业务接口</p>
-<pre><code class="java">package com.NanCheng.service;
-
-import com.NanCheng.dao.UserDao;
-
-public interface UserService &#123;
-    void getUser();
-    void setUserDao(UserDao userDao);
-&#125;
-</code></pre>
-</li>
-<li><p>UserServiceImpl业务实现类</p>
-<pre><code class="java">package com.NanCheng.service.impl;
-
-import com.NanCheng.dao.UserDao;
-import com.NanCheng.dao.impl.UserDaoImpl;
-import com.NanCheng.service.UserService;
-
-public class UserServiceImpl implements UserService &#123;
-    private UserDao userDao = new UserDaoImpl();
-
-    /**
-     * 利用set进行动态实现的注入
-     * @param userDao
-     */
-    public void setUserDao(UserDao userDao)&#123;
-        this.userDao=userDao;
-    &#125;
-    public void getUser() &#123;
-        userDao.getUser();
-    &#125;
-&#125;
-</code></pre>
-</li>
-</ol>
-<p>在我们之前的业务中，用户的需求可能会影响我们原来的代码，我们需要根据用户的需求去修改源代码！如果程序代码量十分大，修改一次的成本代价十分昂贵！</p>
-<p>我们需要一个Set接口实现</p>
-<pre><code class="java">/**
- * 利用set进行动态实现的注入
- * @param userDao
- */
-public void setUserDao(UserDao userDao)&#123;
-    this.userDao=userDao;
-&#125;
-</code></pre>
-<pre><code class="java">@Test
-public void test()&#123;
-    //用户实际调用的是业务层，不会去接触Dao层
-    UserService service = new UserServiceImpl();
-    service.setUserDao(new UserMysqlDaoImpl());
-    service.getUser();
-&#125;
-</code></pre>
-<ul>
-<li>之前，程序是主动创建对象！控制权在程序猿手上！</li>
-<li>使用了set注入后，程序不再具有主动性，而是变成了被动的接受对象。</li>
-</ul>
-<p>这种思想，从本质上解决了问题，我们程序猿不用再去管理对象的创建了。系统的耦合性大大降低，可以更加专注在业务的实现上。&#x3D;&#x3D;这是IOC的原型&#x3D;&#x3D;！，<code>控制反转</code></p>
-<h2 id="IOC本质控制反转"><a href="#IOC本质控制反转" class="headerlink" title="IOC本质控制反转"></a>IOC本质<code>控制反转</code></h2><p><strong>控制反转IoC(Inversion of Control)，是一种设计思想，DI(依赖注入)是实现IoC的一种方法</strong>，也有人认为DI只是IoC的另一种说法。没有IoC的程序中，我们使用面向对象编程，对象的创建与对象间的依赖关系完全硬编码在程序中，对象的创建由程序自己控制，控制反转后将对象的创建转移给第三方，个人认为所谓的控制反转就是：获得依赖对象的方式反转了。 </p>
-<p>采用XML方式配置Bean的时候，Bean的定义信息是和实现分离的，而采用注解的方式可以把两者合为一体，Bean的定义信息直接以注解的形式定义在实现类中，从而达到了零配置的目的。</p>
-<blockquote>
-<p> <strong>控制反转是一种通过描述(XML或注解)并通过第三方去生产或获取特定对象的方式。在Spring中实现控制反转的是IoC容器，其实现方法是依赖注入(Dependency Injection,DI)。</strong></p>
-</blockquote>
-<h1 id="3、HelloSpring"><a href="#3、HelloSpring" class="headerlink" title="3、HelloSpring"></a>3、HelloSpring</h1><p>实体类：</p>
-<pre><code class="java">package com.NanCheng.pojo;
-
-import lombok.Data;
-
-@Data
-public class Hello &#123;
-    private String name;
-&#125;
-</code></pre>
-<p>Beans配置文件：</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
-        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-    &lt;bean id=&quot;mysqlImpl&quot; class=&quot;com.NanCheng.dao.impl.UserMysqlDaoImpl&quot;&gt;
-    
-    &lt;/bean&gt;
-    &lt;bean id=&quot;daoImpl&quot; class=&quot;com.NanCheng.dao.impl.UserDaoImpl&quot;&gt;
-    
-    &lt;/bean&gt;
-    &lt;bean id=&quot;userServiceImpl&quot; class=&quot;com.NanCheng.service.impl.UserServiceImpl&quot;&gt;
-        &lt;!--ref:   引用Spring容器中创建好的对象
-            value:
-            引用具体的值
-        --&gt;
-        &lt;property name = &quot;userDao&quot; ref=&quot;mysqlImpl&quot;/&gt;
-    &lt;/bean&gt;
-    
-&lt;/beans&gt;
-</code></pre>
-<p>测试类：</p>
-<pre><code class="java">import com.NanCheng.pojo.Hello;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-public class MyTest &#123;
-    public static void main(String[] args) &#123;
-        //获取Spring 的上下文对象！
-        ApplicationContext context = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
-        //我们的对象现在都在Spring中的管理了，我们要使用，直接去里面取出来就可以
-        Hello hello = (Hello) context.getBean(&quot;hello&quot;);
-        System.out.println(hello);
-
-
-    &#125;
-&#125;
-</code></pre>
-<p>类图：</p>
-<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033575.png" alt="image-20220927171815501"></p>
-<h2 id="思考问题？"><a href="#思考问题？" class="headerlink" title="思考问题？"></a>思考问题？</h2><ul>
-<li>Hello对象是谁创建的？<br><code>hello对象由Spring创建</code></li>
-<li>Hello对象的属性是怎么设置的？<br><code>hello对象的属性是由Spring容器中bean标签下的property标签设置的</code></li>
-</ul>
-<p>这个过程叫做控制反转：</p>
-<p>控制：谁来控制对象的创建，传统应用程序的对象是由程序本身控制创建的，使用Spring后，对象是由Spring来创建的。</p>
-<p>反转：程序本身不创建对象，而变成被动的接收对象。</p>
-<p>依赖注入：就是利用set方法来进行注入的</p>
-<p>IoC是一种编程思想，由主动的编程变成被动的接收</p>
-<p>可以通过new ClassPathXmlApplicationContext去浏览一下底层源码</p>
-<p><strong>OK，到了现在，我们彻底不用在程序中去改动了，要实现不同的操作，只需要在xml配置文件中修改，所谓的IoC，一句话搞得：对象由Spring来创建，管理，装配！</strong></p>
-<h1 id="4、IoC创建对象的方式"><a href="#4、IoC创建对象的方式" class="headerlink" title="4、IoC创建对象的方式"></a>4、IoC创建对象的方式</h1><ol>
-<li><p>使用无参构造创建对象，默认！</p>
-</li>
-<li><p>假设我们要使用有参构造创造对象。</p>
-<ol>
-<li><p>下标创建</p>
-<pre><code class="xml">&lt;!--通过参数的下标创建--&gt;
-&lt;constructor-arg index=&quot;0&quot; value=&quot;NanCheng&quot;/&gt;
-</code></pre>
-</li>
-<li><p>通过参数类型匹配</p>
-<pre><code class="xml">&lt;!--不建议使用--&gt;
-&lt;!--通过参数类型创建--&gt;
-&lt;constructor-arg type=&quot;java.lang.String&quot; value=&quot;NanCheng&quot;/&gt;
-</code></pre>
-</li>
-<li><p>通过参数名来创建</p>
-<pre><code class="xml">&lt;!--直接通过参数名创建--&gt;
-&lt;constructor-arg name=&quot;name&quot; value=&quot;NanCheng&quot;/&gt;
-</code></pre>
-</li>
-</ol>
-</li>
-</ol>
-<p>总结：在配置文件加载的时候，容器中管理的对象已经初始化了。</p>
-<h1 id="5、Spring配置"><a href="#5、Spring配置" class="headerlink" title="5、Spring配置"></a>5、Spring配置</h1><h2 id="5-1、别名"><a href="#5-1、别名" class="headerlink" title="5.1、别名"></a>5.1、别名</h2><pre><code class="xml">&lt;!--别名：如果添加了别名，我们也可以通过别名取到对象--&gt;
-&lt;alias name = &quot;user&quot; alias = &quot;NanCheng&quot;/&gt;
-</code></pre>
-<h2 id="5-2、Bean的配置"><a href="#5-2、Bean的配置" class="headerlink" title="5.2、Bean的配置"></a>5.2、Bean的配置</h2><pre><code class="xml">&lt;!--
-id: bean 的唯一标识符，也就是相当于我们学的对象名
-class: bean对象所对应的全限定名:包名+属性
-name：也是相当于别名,name可以取得多个别名，name的值可以通过逗号、分号、空格来分割
---&gt;
-&lt;bean id=&quot;userT&quot; class=&quot;com.NanCheng.bean.UserT&quot; name=&quot;t&quot;&gt;
-
-&lt;/bean&gt;
-</code></pre>
-<h2 id="5-3、import"><a href="#5-3、import" class="headerlink" title="5.3、import"></a>5.3、import</h2><p>这个import，一般用于团队开发使用，他可以将多个配置文件导入合并为一个</p>
-<p>假设，现在项目中有多个人开发，这三个人复制不同的类开发，不同的类需要注册证不同的bean中，我们可以利用import将所有人的beans.xml合并为一个总的！</p>
-<ul>
-<li>张三</li>
-<li>里斯</li>
-<li>王五</li>
-<li>applicationContext.xml</li>
-</ul>
-<pre><code class="xml">&lt;import resource = &quot;Bean.xml&quot;/&gt;
-&lt;import resource = &quot;Bean2.xml&quot;/&gt;
-&lt;import resource = &quot;Bean3.xml&quot;/&gt;
-</code></pre>
-<p>使用的时候，直接使用总的配置就行了</p>
-<h1 id="6、依赖注入："><a href="#6、依赖注入：" class="headerlink" title="6、依赖注入："></a>6、依赖注入：</h1><h2 id="6-1、构造器注入"><a href="#6-1、构造器注入" class="headerlink" title="6.1、构造器注入"></a>6.1、构造器注入</h2><p>前面已经说过</p>
-<h2 id="6-2、Set方式注入-重点"><a href="#6-2、Set方式注入-重点" class="headerlink" title="6.2、Set方式注入&#x3D;&#x3D;重点&#x3D;&#x3D;"></a>6.2、Set方式注入&#x3D;&#x3D;<code>重点</code>&#x3D;&#x3D;</h2><ul>
-<li>依赖注入：Set注入！<ul>
-<li>依赖：bean对象的创建依赖于容器</li>
-<li>注入：bean对象中的所有属性，由容器来注入</li>
-</ul>
-</li>
-</ul>
-<p>【环境搭建】</p>
-<ol>
-<li><p>复杂类型</p>
-<pre><code class="java">package com.NanCheng.bean;
-
-import lombok.Data;
-
-@Data
-public class Address &#123;
-    private String address;
-&#125;
-</code></pre>
-</li>
-<li><p>测试对象</p>
-<pre><code class="java">package com.NanCheng.bean;
-
-import lombok.*;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-
-@Getter
-@Setter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
-public class Student &#123;
-    private String name;
-    private Address address;
-    private String[] books;
-    private List&lt;String&gt; hobbies;
-    private Map&lt;String,String&gt; card;
-    private Set&lt;String&gt; game;
-    private String wife;
-    private Properties info;
-&#125;
-</code></pre>
-</li>
-<li><p>beans.xml</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
-        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-    
-    &lt;bean id=&quot;student&quot; class=&quot;com.NanCheng.bean.Student&quot;&gt;
-        &lt;property name = &quot;name&quot; value=&quot;NanCheng&quot;/&gt;
-    &lt;/bean&gt;
-   
-&lt;/beans&gt;
-</code></pre>
-</li>
-<li><p>测试类</p>
-<pre><code class="java">import com.NanCheng.bean.Student;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-public class MyTest &#123;
-    public static void main(String[] args) &#123;
-        ApplicationContext Context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);
-        Student student = (Student) Context.getBean(&quot;student&quot;);
-        System.out.println(student.getName());
-
-
-    &#125;
-&#125;
-</code></pre>
-</li>
-<li><p>完善注入信息</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
-        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-    &lt;bean id=&quot;address&quot; class=&quot;com.NanCheng.bean.Address&quot;&gt;
-        &lt;property name = &quot;address&quot; value=&quot;湖北师范大学~&quot;/&gt;
-    &lt;/bean&gt;
-    
-    &lt;bean id=&quot;student&quot; class=&quot;com.NanCheng.bean.Student&quot;&gt;
-        &lt;!--第一种，普通注入--&gt;
-        &lt;property name = &quot;name&quot; value=&quot;NanCheng&quot;/&gt;
-        &lt;!--第二种，Bean注入，ref--&gt;
-        &lt;property name = &quot;address&quot; ref=&quot;address&quot;/&gt;
-        &lt;!--数组注入--&gt;
-        &lt;property name = &quot;books&quot;&gt;
-            &lt;array&gt;
-                &lt;value&gt;红楼梦&lt;/value&gt;
-                &lt;value&gt;水浒传&lt;/value&gt;
-                &lt;value&gt;三国演义&lt;/value&gt;
-                &lt;value&gt;西游记&lt;/value&gt;
-            &lt;/array&gt;
-        &lt;/property&gt;
-        &lt;!--list注入--&gt;
-        &lt;property name = &quot;hobbies&quot;&gt;
-            &lt;list&gt;
-                &lt;value&gt;听歌&lt;/value&gt;
-                &lt;value&gt;吃饭&lt;/value&gt;
-                &lt;value&gt;睡觉&lt;/value&gt;
-            &lt;/list&gt;
-        &lt;/property&gt;
-        &lt;!--map注入--&gt;
-        &lt;property name = &quot;card&quot;&gt;
-            &lt;map&gt;
-                &lt;entry key=&quot;学号&quot; value=&quot;3150744212&quot;/&gt;
-                &lt;entry key=&quot;身份证&quot; value=&quot;456123&quot;/&gt;
-            &lt;/map&gt;
-        &lt;/property&gt;
-        &lt;!--set注入--&gt;
-        &lt;property name = &quot;game&quot;&gt;
-            &lt;set&gt;
-                &lt;value&gt;lol&lt;/value&gt;
-                &lt;value&gt;coc&lt;/value&gt;
-                &lt;value&gt;bob&lt;/value&gt;
-            &lt;/set&gt;
-        &lt;/property&gt;
-        &lt;!--null注入--&gt;
-        &lt;property name = &quot;wife&quot;&gt;
-            &lt;null/&gt;
-        &lt;/property&gt;
-        &lt;!--property注入--&gt;
-        &lt;property name = &quot;info&quot;&gt;
-            &lt;props&gt;
-                &lt;prop key = &quot;学号&quot;&gt;3150744212&lt;/prop&gt;
-                &lt;prop key = &quot;性别&quot;&gt;男&lt;/prop&gt;
-            &lt;/props&gt;
-        &lt;/property&gt;
-    &lt;/bean&gt;
-   
-&lt;/beans&gt;
-</code></pre>
-</li>
-</ol>
-<h2 id="6-3、拓展注入"><a href="#6-3、拓展注入" class="headerlink" title="6.3、拓展注入"></a>6.3、拓展注入</h2><p>我们可以使用p命名空间喝c命名空间进行注入</p>
-<p>官方解释：</p>
-<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033576.png" alt="image-20220927214718955"></p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
-        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-        xmlns:p=&quot;http://www.springframework.org/schema/p&quot;
-        xmlns:c=&quot;http://www.springframework.org/schema/c&quot;
-        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-   &lt;!--p命名空间注入，可以直接注入属性的值--&gt;
-   &lt;bean id=&quot;user&quot; class=&quot;com.NanCheng.bean.User&quot; p:name=&quot;user2&quot; p:age=&quot;18&quot;/&gt;
-   &lt;!--c命名空间注入，通过构造器注入：construct-args--&gt;
-   &lt;bean id=&quot;user2&quot; class=&quot;com.NanCheng.bean.User&quot; c:name=&quot;NanCheng&quot; c:age=&quot;18&quot;&gt;
-   
-   &lt;/bean&gt;
-&lt;/beans&gt;
-</code></pre>
-<p>测试：</p>
-<pre><code class="java">@Test
-public void iTest()&#123;
-    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;userbeans.xml&quot;);
-    User user =  context.getBean(&quot;user2&quot;,User.class);
-    System.out.println(user);
-&#125;
-</code></pre>
-<blockquote>
-<p>注意点：p命名和c命名空间不能直接使用，需要导入xml约束</p>
-<ul>
-<li><p>xmlns:p&#x3D;”<a href="http://www.springframework.org/schema/p">http://www.springframework.org/schema/p</a>“</p>
-</li>
-<li><p>xmlns:c&#x3D;”<a href="http://www.springframework.org/schema/c">http://www.springframework.org/schema/c</a>“</p>
-</li>
-</ul>
-</blockquote>
-<h2 id="6-4、bean的作用域"><a href="#6-4、bean的作用域" class="headerlink" title="6.4、bean的作用域"></a>6.4、bean的作用域</h2><p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033577.png" alt="image-20220927215124582"></p>
-<ol>
-<li><p>代理模式(Spring默认机制)</p>
-<pre><code class="xml">   &lt;bean id=&quot;address&quot; class=&quot;com.NanCheng.bean.Address&quot; scope=&quot;singleton&quot;&gt;
-        &lt;property name = &quot;address&quot; value=&quot;湖北师范大学~&quot;/&gt;
-    &lt;/bean&gt;
-</code></pre>
-</li>
-<li><p>原型模式：每次从容器中get 的时候，都会产生一个新对象</p>
-<pre><code class="xml">&lt;bean id=&quot;address&quot; class=&quot;com.NanCheng.bean.Address&quot; scope=&quot;prototype&quot;&gt;
-    &lt;property name = &quot;address&quot; value=&quot;湖北师范大学~&quot;/&gt;
-&lt;/bean&gt;
-</code></pre>
-</li>
-<li><p>骑鱼的request、session、application，这些只能在web开发中使用到。</p>
-</li>
-</ol>
-<h1 id="7、自动装配"><a href="#7、自动装配" class="headerlink" title="7、自动装配"></a>7、自动装配</h1><ul>
-<li>自动装配是Spring满足bean依赖的一种方式!</li>
-<li>Spring会在上下文中自动寻找，并自动给bean装配属性</li>
-</ul>
-<p>在Spring中有三种装配的方式</p>
-<ol>
-<li>在xml中显示的配置</li>
-<li>在java中显示配置</li>
-<li>隐式的自动装配bean【重要】</li>
-</ol>
-<h2 id="7-1、测试"><a href="#7-1、测试" class="headerlink" title="7.1、测试"></a>7.1、测试</h2><p>搭建环境：一个人有两个宠物！</p>
-<h2 id="7-2、byName自动装配"><a href="#7-2、byName自动装配" class="headerlink" title="7.2、byName自动装配"></a>7.2、byName自动装配</h2><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
-        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-    &lt;bean id=&quot;cat&quot; class=&quot;com.NanCheng.bean.Cat&quot;/&gt;
-    
-    &lt;bean id=&quot;dog&quot; class=&quot;com.NanCheng.bean.Dog&quot;/&gt;
-    &lt;!--
-    byName：会自动容器上下文中查找，和自己对象set方法后面的值对应的bean id
-    
-    --&gt;
-    &lt;bean id=&quot;person&quot; class=&quot;com.NanCheng.bean.Person&quot; autowire=&quot;byType&quot;&gt;
-        &lt;property name = &quot;name&quot; value=&quot;NanCheng&quot;/&gt;
-    &lt;/bean&gt;
-    
-&lt;/beans&gt;
-</code></pre>
-<h2 id="7-3、byType自动装配"><a href="#7-3、byType自动装配" class="headerlink" title="7.3、byType自动装配"></a>7.3、byType自动装配</h2><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
-        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-    &lt;bean id=&quot;cat&quot; class=&quot;com.NanCheng.bean.Cat&quot;/&gt;
-    
-    &lt;bean id=&quot;dog&quot; class=&quot;com.NanCheng.bean.Dog&quot;/&gt;
-    &lt;!--
-    byName：会自动容器上下文中查找，和自己对象set方法后面的值对应的bean id
-    byType：会自动容器上下文中查找，和自己对象类型相同的bean
-    
-    --&gt;
-    &lt;bean id=&quot;person&quot; class=&quot;com.NanCheng.bean.Person&quot; autowire=&quot;byType&quot;&gt;
-        &lt;property name = &quot;name&quot; value=&quot;NanCheng&quot;/&gt;
-    &lt;/bean&gt;
-    
-&lt;/beans&gt;
-</code></pre>
-<blockquote>
-<p>小结：</p>
-<ul>
-<li>byName的时候，需要保证所有的bean的id唯一，标签这个bean需要和自动注入的属性的set方法的值一致！</li>
-<li>byType的时候，需要保证所有的bean的class唯一，标签这个bean需要和自动注入的属性类型一致！</li>
-</ul>
-</blockquote>
-<h2 id="7-4使用注解实现自动装配"><a href="#7-4使用注解实现自动装配" class="headerlink" title="7.4使用注解实现自动装配"></a>7.4使用注解实现自动装配</h2><p>jdk1.5支持注解，Spring2.5支持注解。</p>
-<p>要使用注解须知：</p>
-<ol>
-<li><p>导入约束	<code>context约束</code></p>
-</li>
-<li><p>配置注解的支持 <code>&lt;context:annotation-config/&gt;</code>【重点】</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-    xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        https://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
-
-    &lt;context:annotation-config/&gt;
-
-&lt;/beans&gt;
-</code></pre>
-</li>
-</ol>
-<h2 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h2><p>直接在属性上使用即可！也可以在set方法上使用！</p>
-<p>使用Autowired我们可以不用编写Set方法了，前提是你这个自动装配的属性在IOC(Spring)容器中存在，切符合类型byType!</p>
-<p>拓展：</p>
-<pre><code class="java">@Nullable	字段标记了这个是注解，说明这个字段可以为null
-</code></pre>
-<p>注解@Autowired有一个属性为required属性，其默认值是true。<code>如果默认值是false，则其对应的对象可以为null，否则报错</code></p>
-<pre><code class="java">public @interface Autowired&#123;
-    boolean required() default true;
-&#125;
-</code></pre>
-<pre><code class="java">package com.NanCheng.bean;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Person &#123;
-
-    private String name;
-    @Autowired(required = false)
-    private Cat cat;
-    @Autowired
-    private Dog dog;
-&#125;
-</code></pre>
-<p>如果@Autowired自动装配的环境比较复杂，自动装配无法通过一个注解<code>@Autowired</code>完成的时候，我们可以使用注解<code>@Qualifier</code>中通过value对应的值，指定唯一一个装配的bean。<code>即通过class+id</code></p>
-<p>&#x3D;&#x3D;@Qualifier(value&#x3D;”xxx”)&#x3D;&#x3D;</p>
-<pre><code class="java">package com.NanCheng.bean;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Person &#123;
-
-    private String name;
-    @Autowired(required = false)
-    private Cat cat;
-    @Autowired
-    @Qualifier(value = &quot;dog222&quot;)
-    private Dog dog;
-&#125;
-</code></pre>
-<pre><code class="xml">&lt;bean id=&quot;dog222&quot; class=&quot;com.NanCheng.bean.Dog&quot;/&gt;
-</code></pre>
-<h2 id="Resource注解常用"><a href="#Resource注解常用" class="headerlink" title="@Resource注解常用"></a>@Resource注解<code>常用</code></h2><pre><code class="java">package com.NanCheng.bean;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
-import javax.annotation.Resource;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Person &#123;
-
-    private String name;
-    @Resource
-    private Cat cat;
-    @Resource(name = &quot;dog222&quot;)  
-    private Dog dog;
-&#125;
-</code></pre>
-<blockquote>
-<p>小结：</p>
-<p>@Resource和@Autowired 的区别：</p>
-<ul>
-<li>都是用来自动装配的，都可以放在属性字段上</li>
-<li>@Autowired通过byType 的方式实现，对象必须不为空</li>
-<li>@Resource默认通过byName的方式实现，如果找不到，则通过byType实现！如果两个都找不到的情况下，就会报错<code>常用</code></li>
-<li>执行顺序不同：@Autowired通过byType的方式实现。</li>
-</ul>
-</blockquote>
-<h1 id="8、使用注解开发"><a href="#8、使用注解开发" class="headerlink" title="8、使用注解开发"></a>8、使用注解开发</h1><p>在Spring4之后，要使用注解开发，必须要保证AOP导入。</p>
-<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033578.png" alt="image-20221002210749574"></p>
-<p>使用注解需要导入context约束，增加注解的支持！</p>
-<pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;
-        xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-        xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
-        xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        https://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
-
-    &lt;!--指定要扫描的包，这个包下的注解就会生效--&gt;
-    &lt;context:component-scan base-package = &quot;com.NanCheng.bean&quot;/&gt;
-    &lt;!--注解驱动的支持--&gt;
-    &lt;context:annotation-config/&gt;
-    
-
-&lt;/beans&gt;
-</code></pre>
-<h2 id="bean"><a href="#bean" class="headerlink" title="bean"></a>bean</h2><p><code>@Component</code>注解装载bean</p>
-<h2 id="属性如何注入Value-value"><a href="#属性如何注入Value-value" class="headerlink" title="属性如何注入Value(&quot;value&quot;)"></a>属性如何注入<code>Value(&quot;value&quot;)</code></h2><pre><code class="java">package com.NanCheng.bean;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-//等价于&lt;bean id = &quot;user&quot; class = &quot;com.NanCheng.bean.User/&gt;
-//@Component 组件
-@Component
-public class User &#123;
-    //相当于
-    // &lt;bean id = &quot;user&quot; class = &quot;com.NanCheng.bean.User&quot;&gt;
-    //        &lt;property name = &quot;name&quot; value=&quot;NanCheng&quot;/&gt;
-    // &lt;/bean&gt;
-    @Value(&quot;NanCheng&quot;)
-    public String name;
-&#125;
-</code></pre>
-<h2 id="衍生的注解"><a href="#衍生的注解" class="headerlink" title="衍生的注解"></a>衍生的注解</h2><p><code>@Component</code>有几个衍生注释，我们在web开发中，会按照mvc三层架构分层！</p>
-<ul>
-<li>dao<code>@Repository</code></li>
-<li>service层<code>@Service</code></li>
-<li>controller层<code>@Controller</code></li>
-</ul>
-<p>这四个注解功能都是一样的，都是代表将某个类注册到Spring中，装配bean</p>
-<h2 id="自动装配"><a href="#自动装配" class="headerlink" title="自动装配"></a>自动装配</h2><ul>
-<li>@Autowired：自动装配通过类型。<br>如果Autowired不能唯一自动装配上属性，则需要通过@Qualifier(value&#x3D;”xxx”)</li>
-<li>@Nullable：字段标记了这个注解，说明这个字段可以为空</li>
-<li>@Resource：自动装配通过名字、类型</li>
-</ul>
-<h2 id="作用域-Scope"><a href="#作用域-Scope" class="headerlink" title="作用域@Scope"></a>作用域<code>@Scope</code></h2><pre><code class="java">package com.NanCheng.bean;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-//等价于&lt;bean id = &quot;user&quot; class = &quot;com.NanCheng.bean.User/&gt;
-//@Component 组件
-@Component
-@Scope(&quot;prototype&quot;)
-public class User &#123;
-    //相当于
-    // &lt;bean id = &quot;user&quot; class = &quot;com.NanCheng.bean.User&quot;&gt;
-    //        &lt;property name = &quot;name&quot; value=&quot;NanCheng&quot;/&gt;
-    // &lt;/bean&gt;
-
-    @Value(&quot;NanCheng&quot;)
-    public String name;
-&#125;
-</code></pre>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>xml与注解：</p>
-<ul>
-<li>xml更加万能，适用于任何场合！维护简单方便</li>
-<li>注解，不是自己的类使用不了，维护相对复杂</li>
-</ul>
-<p>xml与注解最佳实践：</p>
-<ul>
-<li><p>xml用来管理bean</p>
-</li>
-<li><p>注解只负责完成属性的注入</p>
-</li>
-<li><p>我们在使用的过程中，只需要注意一个问题：必须让注解生效，就需要开启注解的支持</p>
-<pre><code class="xml">&lt;!--指定要扫描的包，这个包下的注解就会生效--&gt;
-&lt;context:component-scan base-package = &quot;com.NanCheng&quot;/&gt;
-&lt;!--注解驱动的支持--&gt;
-&lt;context:annotation-config/&gt;
-</code></pre>
-</li>
-</ul>
-<h1 id="9、使用Java的方式配置Spring"><a href="#9、使用Java的方式配置Spring" class="headerlink" title="9、使用Java的方式配置Spring"></a>9、使用Java的方式配置Spring</h1><p>我们现在要完全不使用Spring的xml配置了，全权交给Java来做！</p>
-<p>JavaConfig是Spring的一个子项目，在Spring4之后，它成为了一个核心功能。</p>
-<pre><code class="java">package com.NanCheng.bean;
-
-import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
-@Data
-@Component
-/*
- 这里这个注解的意思，就是说明这个类被Spring接管了，注册到了容器中#endregion
-*/
-public class User &#123;
-    @Value(&quot;NanCheng&quot;)//属性注入值
-    private String name;
-&#125;
-</code></pre>
-<p>配置类</p>
-<pre><code class="java">package com.NanCheng.config;
-
-import com.NanCheng.bean.User;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-
-@Configuration
-//这个也会被Spring容器托管，注册到容器中，因为他本来就是一个@Component。
-//@Configuration代表这是一个配置类，就和我们之前看的applicationContext一样
-@ComponentScan(&quot;com.NanCheng.bean&quot;)
-@Import(NanCheng_Config2.class)
-public class NanCheng_Config &#123;
-    //注册一个bean，就相当于我们之前写的一个bean标签
-    // 这个方法的名字就相当于bean标签中的id属性
-    //方法的返回值就相当于bean标签中的class属性
-    @Bean
-    public User getUser()&#123;
-        return new User();//就是返回要注入到bean中的对象
-    &#125;
-&#125;
-</code></pre>
-<p>测试类：</p>
-<pre><code class="java">import com.NanCheng.bean.User;
-import com.NanCheng.config.NanCheng_Config;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-public class MyTest &#123;
-    public static void main(String[] args) &#123;
-        //如果完全使用了配置类方式去做，我们就只能通过AnnotationConfig 上下文来获取容器，通过配置类的class对象加载！
-        ApplicationContext context = new AnnotationConfigApplicationContext(NanCheng_Config.class);
-        User getUser = context.getBean(&quot;getUser&quot;, User.class);
-        System.out.println(getUser);
-    &#125;
-&#125;
-</code></pre>
-<p>这种纯java的配置方式，在SpringBoot中随处可见！</p>
-<h1 id="10、代理模式AOP"><a href="#10、代理模式AOP" class="headerlink" title="10、代理模式AOP"></a>10、代理模式<code>AOP</code></h1><p>为什么要学习代理模式？因为这就是SpringAOP的底层！&#x3D;&#x3D;SpringAOP和SpringMVC&#x3D;&#x3D;</p>
-<p>代理模式的分类：</p>
-<ul>
-<li>静态代理</li>
-<li>动态代理</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033579.png" alt="image-20221002210910805"></p>
-<h2 id="10-1、静态代理"><a href="#10-1、静态代理" class="headerlink" title="10.1、静态代理"></a>10.1、静态代理</h2><p>角色分析：</p>
-<ul>
-<li>抽象角色：一般使用接口或者抽象类来解决</li>
-<li>真实角色：被代理的角色</li>
-<li>代理角色：代理真实的角色，代理真实角色后，我们一般会做一些附属操作</li>
-<li>客户：访问代理对象的人</li>
-</ul>
-<p>代码步骤：</p>
-<ol>
-<li><p>接口</p>
-<pre><code class="java">package com.NanCheng.client.demo01;
-//租房接口
-public interface Rent &#123;
-    void rent();
-&#125;
-</code></pre>
-</li>
-<li><p>真实角色</p>
-<pre><code class="java">package com.NanCheng.client.demo01;
-
-public class Host implements Rent&#123;
-    @Override
-    public void rent() &#123;
-        System.out.println(&quot;房东要出租房子&quot;);
-    &#125;
-&#125;
-</code></pre>
-</li>
-<li><p>代理角色</p>
-<pre><code class="java">package com.NanCheng.client.demo01;
-
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-public class Proxy implements Rent&#123;
-    private Host host;
-
-    public Proxy(Host host) &#123;
-        this.host = host;
-    &#125;
-
-    @Override
-    public void rent() &#123;
-        seeHouse();
-        host.rent();
-        getItem();
-        fare();
-    &#125;
-
-    //看房
-    public void seeHouse()&#123;
-        System.out.println(&quot;中介带你看房&quot;);
-    &#125;
-    //收中介费
-    public void fare()&#123;
-        System.out.println(&quot;中介收费&quot;);
-    &#125;
-    //签合同
-    public void getItem()&#123;
-        System.out.println(&quot;和中介签租赁合同&quot;);
-    &#125;
-
-&#125;
-</code></pre>
-</li>
-<li><p>客户端访问代理角色</p>
-<pre><code class="java">package com.NanCheng.client.demo01;
-
-public class Client &#123;
-    public static void main(String[] args) &#123;
-        Host host = new Host();
-        //代理,中介帮房东租房子，但是代理角色一般会有一些附属操作！
-        Proxy proxy = new Proxy(host);
-        //你不用面对房东，直接找中介租房即可
-        proxy.rent();
-    &#125;
-&#125;
-</code></pre>
-</li>
-</ol>
-<p>代理模式的好处：</p>
-<ul>
-<li>可以使真实角色的操作更加纯粹！不用去关注一些公共的业务</li>
-<li>公共业务就交给代理角色！实现了业务的分工</li>
-<li>公共业务发生扩展的时候，方便集中管理</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>一个真实角色，就会产生一个代理角色，代码量会翻倍~开发效率会变低~</li>
-</ul>
-<h2 id="10-2、加深理解"><a href="#10-2、加深理解" class="headerlink" title="10.2、加深理解"></a>10.2、加深理解</h2><p>对应demo02</p>
-<p>接口：</p>
-<pre><code class="java">package com.NanCheng.client.demo02;
-
-public interface UserService &#123;
-    void add();
-    void delete();
-    void update();
-    void query();
-&#125;
-</code></pre>
-<p>真实对象：</p>
-<pre><code class="java">package com.NanCheng.client.demo02;
-
-public class UserServiceImpl implements UserService&#123;
-    @Override
-    public void add() &#123;
-        System.out.println(&quot;增加了一个用户&quot;);
-    &#125;
-
-    @Override
-    public void delete() &#123;
-        System.out.println(&quot;删除了一个用户&quot;);
-    &#125;
-
-    @Override
-    public void update() &#123;
-        System.out.println(&quot;修改了一个用户&quot;);
-    &#125;
-
-    @Override
-    public void query() &#123;
-        System.out.println(&quot;修改了一个用户&quot;);
-    &#125;
-    //改动原有的业务代码在企业中是大忌
-&#125;
-</code></pre>
-<p>代理对象：</p>
-<pre><code class="java">package com.NanCheng.client.demo02;
-
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-public class UserServiceProxy implements UserService&#123;
-    public UserServiceImpl userService;
-
-    public UserServiceProxy(UserServiceImpl userService)&#123;
-        this.userService=userService;
-    &#125;
-
-    @Override
-    public void add() &#123;
-        log(&quot;add&quot;);
-        userService.add();
-    &#125;
-
-    @Override
-    public void delete() &#123;
-        log(&quot;delete&quot;);
-        userService.delete();
-    &#125;
-
-    public void setUserService(UserServiceImpl userService) &#123;
-        this.userService = userService;
-    &#125;
-
-    @Override
-    public void update() &#123;
-        log(&quot;update&quot;);
-        userService.update();
-    &#125;
-
-    @Override
-    public void query() &#123;
-        log(&quot;query&quot;);
-        userService.query();
-    &#125;
-
-    //日志方法
-    public void log(String message)&#123;
-        System.out.println(&quot;[Debug] 使用了&quot;+message+&quot;方法&quot;);
-
-    &#125;
-&#125;
-</code></pre>
-<p>客户端使用：</p>
-<pre><code class="java">package com.NanCheng.client.demo02;
-
-public class Client &#123;
-    public static void main(String[] args) &#123;
-        UserServiceImpl userService = new UserServiceImpl();
-
-        UserServiceProxy proxy = new UserServiceProxy();
-        proxy.setUserService(userService);
-
-        proxy.add();
-    &#125;
-&#125;
-</code></pre>
-<p>AOP实现机制<code>横向开发</code></p>
-<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033580.png" alt="image-20221002211359945"></p>
-<h2 id="10-3、动态代理"><a href="#10-3、动态代理" class="headerlink" title="10.3、动态代理"></a>10.3、动态代理</h2><ul>
-<li>动态代理和静态代理角色一样</li>
-<li>动态代理的戴丽丽是动态生成的，不是我们直接写好的</li>
-<li>动态代理分为两大类：基于接口的动态代理，基于类的动态代理<ul>
-<li>基于接口  —JDK动态代理	【我们在这里使用】</li>
-<li>基于类：cglib</li>
-<li>java字节码实现：Javasist</li>
-</ul>
-</li>
-</ul>
-<p>需要了解两个类：Proxy：代理、InvocationHandler：调用处理程序</p>
-<p>动态代理的好处：</p>
-<ul>
-<li>可以使真实角色的操作更加纯粹！不用去关注一些公共的业务</li>
-<li>公共业务就交给代理角色！实现了业务的分工</li>
-<li>公共业务发生扩展的时候，方便集中管理</li>
-<li>一个动态代理类代理的是一个接口，一般就是对应的一类业务</li>
-<li>一个动态代理类可以代理多个类，只要是实现类同一个接口即可</li>
-</ul>
-<p>代码：</p>
-<ol>
-<li><p>接口：</p>
-<pre><code class="java">package com.NanCheng.client.demo02;
-//增删改查
-public interface UserService &#123;
-    void add();
-    void delete();
-    void update();
-    void query();
-&#125;
-</code></pre>
-</li>
-<li><p>被代理类<code>接口的任一实现类</code>：</p>
-<pre><code class="java">package com.NanCheng.client.demo02;
-
-public class UserServiceImpl implements UserService&#123;
-
-    public void add() &#123;
-        System.out.println(&quot;增加了一个用户&quot;);
-    &#125;
-
-    public void delete() &#123;
-        System.out.println(&quot;删除了一个用户&quot;);
-    &#125;
-
-    public void update() &#123;
-        System.out.println(&quot;修改了一个用户&quot;);
-    &#125;
-
-    public void query() &#123;
-        System.out.println(&quot;修改了一个用户&quot;);
-    &#125;
-    //改动原有的业务代码在企业中是大忌
-&#125;
-</code></pre>
-</li>
-<li><p>自定义的代理处理程序&lt;<code>InvocationHandler</code>&gt;</p>
-<pre><code class="java">package com.NanCheng.client.demo04;
-
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-
-//我们自定义一个InvocationHandler来控制invoke()方法的处理逻辑
-public class ProxyInvocationHandler implements InvocationHandler &#123;
-    //被代理的接口&lt;目标接口&gt;
-    private Object target;
-
-
-    public ProxyInvocationHandler(Object target) &#123;
-        this.target = target;
-    &#125;
-
-    //生成得到代理类
-    public Object getProxy()&#123;
-        return Proxy.newProxyInstance(this.getClass().getClassLoader(),target.getClass().getInterfaces(),this );
-    &#125;
-    //实现接口内的invoke方法，自定义代理类的处理逻辑&lt;因为每次访问&gt;
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;
-        seeHouse();
-        //动态代理的本质，就是使用反射机制实现
-        Object result = method.invoke(target, args);
-        fare();
-        return result;
-    &#125;
-    public void seeHouse()&#123;
-        System.out.println(&quot;看房子&quot;);
-    &#125;
-    public void fare()&#123;
-        ystem.out.println(&quot;收中介费&quot;);
-    &#125;
-&#125;
-</code></pre>
-</li>
-<li><p>测试：</p>
-<pre><code class="java">package com.NanCheng.client.demo04;
-
-import com.NanCheng.client.demo02.UserService;
-import com.NanCheng.client.demo02.UserServiceImpl;
-
-public class Client &#123;
-    public static void main(String[] args) &#123;
-        //真实角色
-        UserServiceImpl userService = new UserServiceImpl();
-        //代理角色，现在不存在
-        //通过 调用 代理处理类 来处理我们要调用的接口对象
-        UserService proxy = (UserService)
-                (new ProxyInvocationHandler(userService).getProxy());//这里的proxy就是动态生成的，我们并没有new或者其他手段构造
-        proxy.update();
-        proxy.add();
-        proxy.delete();
-        proxy.query();
-    &#125;
-&#125;
-</code></pre>
-</li>
-<li><p>测试结果</p>
-<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033581.png" alt="image-20221002211132543"></p>
-</li>
-</ol>
-<p>由此我们可以看出，每调用一次接口内的方法，都会访问一次invoke()方法，这样可以减少业务代码中的重复性代码。</p>
-<blockquote>
-<p> <strong>代理流程</strong>：</p>
-<p> 首先，我们要先创建一个实现了目标接口的真实对象&#96;，也就是&#x3D;&#x3D;被代理的对象&#x3D;&#x3D;。</p>
-<p> 然后我们要调用我们自己编写的<code>ProxyInvocationHandler</code>类中的<code>newProxyInstance(ClassLoader,Class&lt;?&gt;[] interfaces,InvocationHandler)</code>方法</p>
-<p> 其中对参数进行分析：</p>
-<ul>
-<li><p>其中，<code>ClassLoader</code>中我们传入的是<code>this.getClass().gerClassLoader</code>目的是获取目标接口的类加载器，我们先是将&#x3D;&#x3D;this&#x3D;&#x3D;，也就是我们自己写的&#x3D;&#x3D;代理处理程序&#x3D;&#x3D;转为了后缀名为class的类，也就是<code>ProxyInvocationHandler.class</code>再调用&#x3D;&#x3D;class类的getClassLoader()方法&#x3D;&#x3D;获取类加载器，由于类加载器中，我们java程序内的&#x3D;&#x3D;自定义类都是由AppClassLoader加载&#x3D;&#x3D;，所以&#x3D;&#x3D;虽然我们在方法中使用的是this来获取加载器，但其实和我们要返回的接口加载器是同一个&#x3D;&#x3D;。<br>  <img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033582.png" alt="image-20221002211158353"></p>
-</li>
-<li><p>然后就是<code>Class&lt;?&gt;[] interfaces</code>,目的是获取&#x3D;&#x3D;目标接口&#x3D;&#x3D;的&#x3D;&#x3D;class对象&#x3D;&#x3D;，我们直接使用<code>target.getClass()</code>即可得到。</p>
-</li>
-<li><p>最后一个是<code>InvocationHandler</code>对象，目的是<code>获取一个代理处理程序</code>，并且启动其中的<code>invoke(Object proxy,Method method,Object[] args)</code>方法，这个方法可以处理 &#x3D;&#x3D;代理实例&#x3D;&#x3D;(<code>传入的proxy</code>) 上的方法调用，并返回结果。在与其(<code>我们创建的InvocationHandler类</code>)关联的 &#x3D;&#x3D;代理实例&#x3D;&#x3D;(<code>proxy</code>)上调用方法时，将在 &#x3D;&#x3D;调用处理程序上&#x3D;&#x3D; 调用此方法。<code>返回一个结果集，也就是装载着我们需要返回的接口类以及参数</code>。</p>
-</li>
-<li><p>执行到最后，会&#x3D;&#x3D;返回指定的接口的代理实例&#x3D;&#x3D;，并且&#x3D;&#x3D;该接口在实现方法调用的时候&#x3D;&#x3D;，会分派给指定的&#x3D;&#x3D;调用处理程序&#x3D;&#x3D;(<code>invoke()</code>方法)。**&#x3D;&#x3D;也就是说，我们使用生成的代理实例中的接口方法时，每使用一次接口方法，都会使用一次代理接口对应的invoke()方法&#x3D;&#x3D;**。</p>
-</li>
-</ul>
-</blockquote>
-<p>换句话说：</p>
-<p>只需要对其进行传入需要代理的接口<br>就可以让他代理其他同样实现了同一个接口的真实类去调用方法</p>
-<p>就比如说，皇帝驾崩了，没有儿子继承皇位<br>他的兄弟(或者儿子的兄弟)就可以代替他继承皇位，因为他们都有皇家血统(都实现了同一个接口)</p>
-<h1 id="11、AOP"><a href="#11、AOP" class="headerlink" title="11、AOP"></a>11、AOP</h1><h2 id="11-1、什么是AOP"><a href="#11-1、什么是AOP" class="headerlink" title="11.1、什么是AOP"></a>11.1、什么是AOP</h2><p>AOP(Aspect Oriented Programming)意为：面向切面编程，通过预编译的方式和运行期间动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，是软件开发的一个热点，也是Spring框架中的一个重要内容，是函数式编程的一种衍生范型。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。</p>
-<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033583.png" alt="image-20221002211245284"></p>
-<h2 id="11-2、AOP在Spring中的作用"><a href="#11-2、AOP在Spring中的作用" class="headerlink" title="11.2、AOP在Spring中的作用"></a>11.2、AOP在Spring中的作用</h2><p>&#x3D;&#x3D;提供声明式事务：允许用户自定义切面&#x3D;&#x3D;</p>
-<ul>
-<li>横切关注点：跨越应用程序多个模块的方法或功能。即是，与我们业务逻辑无关的，但是我们更需要关注的部分，就是横切关注点。如日志，安全，缓存，事务等等……</li>
-<li>切面(Aspect)：横切关注点，被模块化的特殊对象。即，它是一个类</li>
-<li>通知（Advice）：切面必须要完成的工作。即，它是类中的一个方法。</li>
-<li>目标（Target）：被通知对象。</li>
-<li>代理（Proxy）：向目标对象应用通知之后创建的对象。</li>
-<li>切入点（PointCut）：切面通知 执行的 “地点”的定义。</li>
-<li>连接点（JointPoint）：与切入点匹配的执行点。</li>
-</ul>
-<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033584.png" alt="image-20221002211257771"></p>
-<p>SpringAOP中，通过Advice定义横切逻辑，Spring中支持5种类型的Advice:</p>
-<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033585.png" alt="image-20221002211310483"></p>
-<p>即 Aop 在 不改变原有代码的情况下 , 去增加新的功能 .</p>
-<h2 id="11-3使用Spring实现AOP"><a href="#11-3使用Spring实现AOP" class="headerlink" title="11.3使用Spring实现AOP"></a>11.3使用Spring实现AOP</h2><p>【重点】使用AOP植入，需要一个依赖包</p>
-<pre><code class="xml">&lt;dependency&gt;
-            &lt;groupId&gt;org.aspectj&lt;/groupId&gt;
-            &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;
-            &lt;version&gt;1.9.9.1&lt;/version&gt;
-        &lt;/dependency&gt;
-</code></pre>
-<blockquote>
-<p>对execution()的解释：</p>
-<p>方法的返回值 方法(参数1，参数2)</p>
-<p>返回值使用<code>*</code>代表所有类型	方法则是使用绝对地址如<code>com.NanCheng.service.UserServiceImpl.add()</code></p>
-<p>其中方法名可以使用*代替，表示类中的<code>所有实现了接口得到的方法</code>，参数使用<code>..</code>表示所有任何参数</p>
-</blockquote>
-<h3 id="方式一：使用Spring的API接口【主要是SpringAPI接口实现】"><a href="#方式一：使用Spring的API接口【主要是SpringAPI接口实现】" class="headerlink" title="方式一：使用Spring的API接口【主要是SpringAPI接口实现】"></a>方式一：使用Spring的API接口【主要是SpringAPI接口实现】</h3><p>前置方法：</p>
-<pre><code class="java">package com.NanCheng.log;
-
-import org.springframework.aop.MethodBeforeAdvice;
-
-import java.lang.reflect.Method;
-
-//在方法执行之前切入
-public class Log implements MethodBeforeAdvice &#123;
-    //method：要执行的目标对象的方法
-    //args：参数
-    //target：目标对象
-    public void before(Method method, Object[] args, Object target) throws Throwable &#123;
-        System.out.println(target.getClass().getName()+&quot;的&quot;+method.getName()+&quot;被执行了&quot;);
-    &#125;
-&#125;
-</code></pre>
-<p>后置方法：</p>
-<pre><code class="java">package com.NanCheng.log;
-
-
-import org.springframework.aop.AfterReturningAdvice;
-
-import java.lang.reflect.Method;
-
-//在返回值返回之后切入
-public class AfterLog implements AfterReturningAdvice &#123;
-
-    //returnValue：返回值
-    public void afterReturning(Object returnValue, Method method, Object[] args, Object target) throws Throwable &#123;
-        System.out.println(&quot;执行了&quot;+target.getClass().getName()+&quot;方法，返回结果为&quot;+returnValue);
-    &#125;
-&#125;
-</code></pre>
-<p>核心配置文件：</p>
-<pre><code class="xml">&lt;!--方式一：使用原生Spring API接口--&gt;
-&lt;!--配置aop:需要导入aop的约束--&gt;
-&lt;aop:config&gt;
-    
-    &lt;!--切入点：expression:表达式，execution(要执行的位置：* * * *)--&gt;
-    &lt;aop:pointcut id = &quot;pointcut&quot; expression = &quot;execution(* com.NanCheng.service.UserServiceImpl.*(..))&quot; /&gt;
-    
-    &lt;!--执行环绕登场--&gt;
-    &lt;aop:advisor advice-ref = &quot;log&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
-    &lt;aop:advisor advice-ref = &quot;afterLog&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
-
-&lt;/aop:config&gt;
-</code></pre>
-<h3 id="方式二：自定义来实现AOP【主要是切面】"><a href="#方式二：自定义来实现AOP【主要是切面】" class="headerlink" title="方式二：自定义来实现AOP【主要是切面】"></a>方式二：自定义来实现AOP【主要是切面】</h3><p>将前置方法与后置方法存放在同一个类并且不需要任何的接口，自定义一个切面：</p>
-<p>Diy类：</p>
-<pre><code class="java">package com.NanCheng.diy;
-
-public class DiyPointCut &#123;
-    public void before()&#123;
-        System.out.println(&quot;===========方法执行前&quot;);
-    &#125;
-    public void after()&#123;
-        System.out.println(&quot;===========方法执行后&quot;);
-    &#125;
-&#125;
-</code></pre>
-<p>xml配置文件：</p>
-<pre><code class="xml">&lt;!--方式二：自定义类--&gt;
-&lt;bean id=&quot;diy&quot; class=&quot;com.NanCheng.diy.DiyPointCut&quot;/&gt;
-&lt;aop:config&gt;
-    &lt;!--自定义切面，ref  要引用的类--&gt;
-    &lt;aop:aspect ref=&quot;diy&quot;&gt;
-        &lt;!--切入点--&gt;
-        &lt;aop:pointcut id = &quot;point&quot; expression = &quot;execution(* com.NanCheng.service.UserServiceImpl.*(..))&quot; /&gt;
-        &lt;!--通知--&gt;
-        &lt;aop:before method = &quot;before&quot; pointcut-ref=&quot;point&quot;/&gt;
-        &lt;aop:after method = &quot;after&quot; pointcut-ref=&quot;point&quot;/&gt;
-        
-    &lt;/aop:aspect&gt;
-&lt;/aop:config&gt;
-</code></pre>
-<h3 id="方式三：使用注解实现"><a href="#方式三：使用注解实现" class="headerlink" title="方式三：使用注解实现"></a>方式三：使用注解实现</h3><p>业务代码如上</p>
-<p>注解配置的自定义AOP类：</p>
-<pre><code class="java">package com.NanCheng.diy;
-
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-
-//声明式事务
-@Aspect//标注这个类是一个切面
-public class AnnotationPointCut &#123;
-    @Before(&quot;execution(* com.NanCheng.service.UserServiceImpl.*(..))&quot;)
-    public void before()&#123;
-        System.out.println(&quot;======在方法之前&quot;);
-    &#125;
-    @After(&quot;execution(* com.NanCheng.service.UserServiceImpl.*(..))&quot;)
-    public void after()&#123;
-        System.out.println(&quot;======在方法之后&quot;);
-    &#125;
-    //在环绕增强中，我们可以给定一个参数，代表我们要获取处理切入的点
-    @Around(&quot;execution(* com.NanCheng.service.UserServiceImpl.*(..))&quot;)
-    public void around(ProceedingJoinPoint pjp) throws Throwable &#123;
-        System.out.println(&quot;环绕前&quot;);
-        System.out.println(pjp.getSignature());
-        //执行方法
-        Object proceed = pjp.proceed();
-
-        System.out.println(&quot;环绕后&quot;);
-        System.out.println(proceed);
-    &#125;
-&#125;
-</code></pre>
-<p>xml配置文件：</p>
-<pre><code class="java">&lt;bean id=&quot;userService&quot; class=&quot;com.NanCheng.service.UserServiceImpl&quot;/&gt;
-&lt;bean id=&quot;log&quot; class=&quot;com.NanCheng.log.Log&quot;/&gt;
-&lt;bean id=&quot;afterLog&quot; class=&quot;com.NanCheng.log.AfterLog&quot;/&gt;
-&lt;!--方式三--&gt;
-&lt;bean id=&quot;annotationPointCut&quot; class=&quot;com.NanCheng.diy.AnnotationPointCut&quot;/&gt;
-&lt;!--开启注解支持！ JDK（默认  proxy-target-class=&quot;false&quot;）cglib（proxy-target-class=&quot;false&quot;）--&gt;
-&lt;aop:aspectj-autoproxy proxy-target-class=&quot;true&quot;/&gt;
-</code></pre>
-<h1 id="12、整合Mybatis"><a href="#12、整合Mybatis" class="headerlink" title="12、整合Mybatis"></a>12、整合Mybatis</h1><p>步骤：</p>
-<ol>
-<li>导入相关jar包<ul>
-<li>junit</li>
-<li>mybatis</li>
-<li>mysql</li>
-<li>spring相关的</li>
-<li>aop织入</li>
-<li>mybatis-spring【new知识点】</li>
-</ul>
-</li>
-<li>编写配置文件</li>
-<li>测试</li>
-</ol>
-<pre><code class="xml">&lt;dependencies&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;junit&lt;/groupId&gt;
-        &lt;artifactId&gt;junit&lt;/artifactId&gt;
-        &lt;version&gt;4.13.2&lt;/version&gt;
-        &lt;scope&gt;test&lt;/scope&gt;
-    &lt;/dependency&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;mysql&lt;/groupId&gt;
-        &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-        &lt;version&gt;8.0.30&lt;/version&gt;
-    &lt;/dependency&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
-        &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
-        &lt;version&gt;3.5.11&lt;/version&gt;
-    &lt;/dependency&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;springframework&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
-        &lt;version&gt;1.2.6&lt;/version&gt;
-    &lt;/dependency&gt;
-    &lt;!--Spring操作数据库的话，还需要一个jdbc包--&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.springframework&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
-        &lt;version&gt;5.3.23&lt;/version&gt;
-    &lt;/dependency&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.aspectj&lt;/groupId&gt;
-        &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;
-        &lt;version&gt;1.9.9.1&lt;/version&gt;
-    &lt;/dependency&gt;
-    &lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring --&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
-        &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
-        &lt;version&gt;2.0.7&lt;/version&gt;
-    &lt;/dependency&gt;
-&lt;/dependencies&gt;
-</code></pre>
-<h2 id="12-1、回忆mybatis"><a href="#12-1、回忆mybatis" class="headerlink" title="12.1、回忆mybatis"></a>12.1、回忆mybatis</h2><ol>
-<li>编写实体类</li>
-<li>编写核心配置文件</li>
-<li>编写接口</li>
-<li>编写Mapper.xml文件</li>
-<li>测试</li>
-</ol>
-<h2 id="12-2、Mybatis-Spring"><a href="#12-2、Mybatis-Spring" class="headerlink" title="12.2、Mybatis-Spring"></a>12.2、Mybatis-Spring</h2><ol>
-<li><p>编写数据源</p>
-<pre><code class="xml">&lt;!--
-DataSource：使用Spring的数据源替换mybatis的配置 c3p0  dbcp druid
-我们这里使用Spring提供的JDBC : org.springframework.jdbc.datasource.DriverManagerDataSource
---&gt;
-
-&lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
-    &lt;property name = &quot;driverClassName&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;/&gt;
-    &lt;property name = &quot;url&quot;
-            value=&quot;jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8&quot;/&gt;
-    &lt;property name = &quot;username&quot; value=&quot;root&quot;/&gt;
-    &lt;property name = &quot;password&quot; value=&quot;123456&quot;/&gt;
-&lt;/bean&gt;
-</code></pre>
-<p>在这里我们相当于讲mybatis的配置文件中的</p>
-<pre><code class="xml">&lt;environments default = &quot;development&quot;&gt;
-    &lt;environment id = &quot;development&quot;&gt;
-        &lt;transactionManager type = &quot;JDBC&quot; /&gt;
-        &lt;dataSource type = &quot;POOLED&quot;&gt;
-            &lt;property name = &quot;driver&quot; value = &quot;$&#123;driver&#125;&quot; /&gt;
-            &lt;property name = &quot;url&quot; value = &quot;$&#123;url&#125;&quot; /&gt;
-            &lt;property name = &quot;username&quot; value = &quot;$&#123;username&#125;&quot; /&gt;
-            &lt;property name = &quot;password&quot; value = &quot;$&#123;password&#125;&quot; /&gt;
-        &lt;/dataSource&gt;
-    &lt;/environment&gt;
-&lt;/environments&gt;
-</code></pre>
-<p>搬运了过来。</p>
-</li>
-<li><p>sqlSessionFactory</p>
-<pre><code class="xml">&lt;!--sqlSessionFactory--&gt;
-&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-    &lt;property name = &quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
-    &lt;!--绑定mybatis配置文件--&gt;
-    &lt;property name = &quot;configLocation&quot; value=&quot;classpath:mybatis.xml&quot;/&gt;
-    
-    &lt;property name = &quot;mapperLocations&quot; value=&quot;classpath:com/NanCheng/mapper/*.xml&quot;/&gt;
-&lt;/bean&gt;
-</code></pre>
-<p>这里相当于代替了我们创建sqlSessionFactory的操作。</p>
-</li>
-<li><p>sqlSessionTemplate</p>
-<pre><code class="xml">&lt;!--sqlSessionTemplate：就是我们使用的sqlSession--&gt;
-&lt;bean id=&quot;sqlSession&quot; class=&quot;org.mybatis.spring.SqlSessionTemplate&quot;&gt;
-    &lt;!--只能使用构造器注入sqlSessionFactory，因为它没有set方法--&gt;
-    &lt;constructor-arg index=&quot;0&quot; ref=&quot;sqlSessionFactory&quot;/&gt;
-&lt;/bean&gt;
-</code></pre>
-<p>这里相当于我们在原来操作中创建工具类，然后返回sqlSession的操作。</p>
-</li>
-<li><p>需要给接口加实现类</p>
-<pre><code class="java">package com.NanCheng.mapper;
-
-import com.NanCheng.pojo.User;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
-//注解标记类，注入bean中，创建实例
-@Component
-@Scope(&quot;prototype&quot;)//作用域
-public class UserMapperImpl &#123;
-    //我们的所有操作，都是使用sqlSession来执行，在原来，现在都使用SqlSessionTemplate;
-    private SqlSessionTemplate sqlSession;
-    @Autowired()//自动装配模式
-    @Qualifier(value = &quot;sqlSession&quot;)//使用注解指定唯一属性值
-    public void setSqlSession(SqlSessionTemplate sqlSession) &#123;
-        this.sqlSession = sqlSession;
-    &#125;
-
-    public List&lt;User&gt; selectUser() &#123;
-        return sqlSession.getMapper(UserMapper.class).selectUser();
-    &#125;
-&#125;
-</code></pre>
-</li>
-<li><p>将自己写的实现类注入到Spring中：</p>
-<p>直接使用@Component注解将其注入bean中，再通过自动装配将其属性值配对。</p>
-</li>
-<li><p>测试</p>
-<pre><code class="java">@Test
-public void test() &#123;
-    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
-
-    UserMapperImpl userMapper = context.getBean(&quot;userMapperImpl&quot;, UserMapperImpl.class);
-    for (User user : userMapper.selectUser()) &#123;
-        System.out.println(user);
-    &#125;
-&#125;
-</code></pre>
-</li>
-</ol>
-<p>注：我们后面是直接在类中使用的注解将实现类注入到容器中，并且我们可以将前面的有关sqlSession的所有bean放入一个独立的xml文件中，只是在主的配置上下文 文件中导入就行。</p>
-<blockquote>
-<p>实现mybatis-spring的第二种方式:</p>
-<pre><code class="xml">&lt;bean id=&quot;dataSource&quot; class=&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&gt;
-    &lt;property name = &quot;driverClassName&quot; value=&quot;com.mysql.cj.jdbc.Driver&quot;/&gt;
-    &lt;property name = &quot;url&quot;
-            value=&quot;jdbc:mysql://localhost:3306/mybatis?useSSL=true&amp;amp;useUnicode=true&amp;amp;characterEncoding=UTF-8&quot;/&gt;
-    &lt;property name = &quot;username&quot; value=&quot;root&quot;/&gt;
-    &lt;property name = &quot;password&quot; value=&quot;123456&quot;/&gt;
-&lt;/bean&gt;
-&lt;!--sqlSessionFactory--&gt;
-&lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-    &lt;property name = &quot;dataSource&quot; ref=&quot;dataSource&quot;/&gt;
-    &lt;!--绑定mybatis配置文件--&gt;
-    &lt;property name = &quot;configLocation&quot; value=&quot;classpath:mybatis.xml&quot;/&gt;
-    
-    &lt;property name = &quot;mapperLocations&quot; value=&quot;classpath:com/NanCheng/mapper/*.xml&quot;/&gt;
-&lt;/bean&gt;
-</code></pre>
-<p>在spring-dao中编写数据源以及工厂类的bean就可以</p>
-<p>然后编写实现类，实现类继承SqlSessionDaoSupport类</p>
-<pre><code class="java">package com.NanCheng.mapper;
-
-import com.NanCheng.pojo.User;
-import org.apache.ibatis.session.SqlSession;
-import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
-
-public class UserMapperImpl2 extends SqlSessionDaoSupport implements UserMapper&#123;
-//父类的getSqlSession()方法会返回一个sqlSession的实例，该实例由我们传入的SqlSessionFactory工厂类构建
-    public List&lt;User&gt; selectUser() &#123;
-        return getSqlSession().getMapper(UserMapper.class).selectUser();
-    &#125;
-&#125;
-</code></pre>
-<p>我们通过观察源码发现：<img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171033586.png" alt="image-20221022012927129"></p>
-<p>其实该类的内部构造和第一种方式相同，也是内部封装了一个<code>SqlSessionTemplate</code>类，但其构造方法需要传参<code>SqlSessionFactory</code></p>
-<p>所以我们需要将实体类导入容器，并且对其，传入我们容器内的<code>SqlSessionFactory</code>类</p>
-<pre><code class="xml">&lt;bean id=&quot;userMapper2&quot; class=&quot;com.NanCheng.mapper.UserMapperImpl2&quot;&gt;
-    &lt;property name = &quot;sqlSessionFactory&quot; ref=&quot;sqlSessionFactory&quot;/&gt;
-&lt;/bean&gt;
-</code></pre>
-<p>最后编写测试类就可以使用了</p>
-<pre><code class="java">@Test
-public void test() &#123;
-    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);
-
-    UserMapper userMapper = context.getBean(&quot;userMapper2&quot;, UserMapper.class);
-    for (User user : userMapper.selectUser()) &#123;
-        System.out.println(user);
-    &#125;
-&#125;
-</code></pre>
-</blockquote>
-<h1 id="13、声明式事务"><a href="#13、声明式事务" class="headerlink" title="13、声明式事务"></a>13、声明式事务</h1><h2 id="1、回顾事务"><a href="#1、回顾事务" class="headerlink" title="1、回顾事务"></a>1、回顾事务</h2><ul>
-<li>把一组业务当成一个业务来做，要么都成功，要么都失败</li>
-<li>事务在项目开发中，十分的重要，涉及到数据的一致性问题，不能马虎！</li>
-<li>确保完整性和一致性</li>
-</ul>
-<blockquote>
-<p> 事务的ACID原则：</p>
-<p><code>原子性（atomicity）</code></p>
-<p>​	事务是原子性操作，由一系列动作组成，事务的原子性确保动作要么全部完成，要么完全不起作用</p>
-<p><code>一致性（consistency）</code></p>
-<p>​	一旦所有事务动作完成，事务就要被提交。数据和资源处于一种满足业务规则的一致性状态中</p>
-<p><code>隔离性（isolation）</code></p>
-<p>​	可能多个事务会同时处理相同的数据，因此每个事务都应该与其他事务隔离开来，防止数据损坏</p>
-<p><code>持久性（durability）</code></p>
-<p>​	事务一旦完成，无论系统发生什么错误，结果都不会受到影响。通常情况下，事务的结果被写到持久化存储器中</p>
-</blockquote>
-<h3 id="12-2、测试"><a href="#12-2、测试" class="headerlink" title="12.2、测试"></a>12.2、测试</h3><p>将上面的代码拷贝到一个新项目中</p>
-<p>在之前的案例中，我们给userDao接口新增两个方法，删除和增加用户；</p>
-<pre><code class="java">//添加一个用户
-int addUser(User user);
-//根据id删除用户
-int deleteUser(int id);
-</code></pre>
-<p>mapper文件，我们故意把 deletes 写错，测试！</p>
-<pre><code class="xml"> &lt;insert id=&quot;addUser&quot; parameterType=&quot;com.kuang.pojo.User&quot;&gt; 
-     insert into user (id,name,pwd) values (#&#123;id&#125;,#&#123;name&#125;,#&#123;pwd&#125;) 
-&lt;/insert&gt; 
-&lt;delete id=&quot;deleteUser&quot; parameterType=&quot;int&quot;&gt;
-    deletes from user where id = #&#123;id&#125;
-&lt;/delete&gt;
-</code></pre>
-<p>编写接口的实现类，在实现类中，我们去操作一波</p>
-<pre><code class="java">public class UserDaoImpl extends SqlSessionDaoSupport implements UserMapper &#123;  
-    //增加一些操作  
-    public List&lt;User&gt; selectUser() &#123;      
-        User user = new User(4,&quot;小明&quot;,&quot;123456&quot;);     
-        UserMapper mapper = getSqlSession().getMapper(UserMapper.class); 
-        mapper.addUser(user);       
-        mapper.deleteUser(4);      
-        return mapper.selectUser();
-    &#125;  
-    //新增    
-    public int addUser(User user) &#123;    
-        UserMapper mapper = getSqlSession().getMapper(UserMapper.class);   
-        return mapper.addUser(user);  
-    &#125;  
-    //删除   
-    public int deleteUser(int id) &#123;       
-        UserMapper mapper = getSqlSession().getMapper(UserMapper.class);       
-        return mapper.deleteUser(id);   
-    &#125;
-&#125;
-</code></pre>
-<p>测试</p>
-<pre><code class="java">@Test
-public void test2()&#123;   
-    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);   
-    UserMapper mapper = (UserMapper) context.getBean(&quot;userDao&quot;);    
-    List&lt;User&gt; user = mapper.selectUser();   
-    System.out.println(user);
-&#125;
-</code></pre>
-<p>报错：sql异常，delete写错了</p>
-<p>结果 ：插入成功！</p>
-<p>没有进行事务的管理；我们想让他们都成功才成功，有一个失败，就都失败，我们就应该需要<strong>事务！</strong></p>
-<p>以前我们都需要自己手动管理事务，十分麻烦！</p>
-<p>但是Spring给我们提供了事务管理，我们只需要配置即可；</p>
-<h3 id="12-3、Spring中的事务管理"><a href="#12-3、Spring中的事务管理" class="headerlink" title="12.3、Spring中的事务管理"></a>12.3、Spring中的事务管理</h3><p>Spring在不同的事务管理API之上定义了一个抽象层，使得开发人员不必了解底层的事务管理API就可以使用Spring的事务管理机制。Spring支持编程式事务管理和声明式的事务管理。</p>
-<p><strong>编程式事务管理</strong></p>
-<ul>
-<li>将事务管理代码嵌到业务方法中来控制事务的提交和回滚</li>
-<li>缺点：必须在每个事务操作业务逻辑中包含额外的事务管理代码</li>
-</ul>
-<p><strong>声明式事务管理</strong></p>
-<ul>
-<li>一般情况下比编程式事务好用。</li>
-<li>将事务管理代码从业务方法中分离出来，以声明的方式来实现事务管理。</li>
-<li>将事务管理作为横切关注点，通过aop方法模块化。Spring中通过Spring AOP框架支持声明式事务管理。</li>
-</ul>
-<p><strong>使用Spring管理事务，注意头文件的约束导入 : tx</strong></p>
-<pre><code class="xml">xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;
-http://www.springframework.org/schema/tx
-http://www.springframework.org/schema/tx/spring-tx.xsd&quot;
-&gt;
-</code></pre>
-<p><strong>事务管理器</strong></p>
-<ul>
-<li>无论使用Spring的哪种事务管理策略（编程式或者声明式）事务管理器都是必须的。</li>
-<li>就是 Spring的核心事务管理抽象，管理封装了一组独立于技术的方法。</li>
-</ul>
-<p><strong>JDBC事务</strong></p>
-<pre><code class="xml">&lt;bean id=&quot;transactionManager&quot; class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;        &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;
-&lt;/bean&gt;
-</code></pre>
-<p><strong>配置好事务管理器后我们需要去配置事务的通知</strong></p>
-<pre><code class="xml">&lt;!--配置事务通知--&gt;
-&lt;tx:advice id=&quot;txAdvice&quot; transaction-manager=&quot;transactionManager&quot;&gt;
-    &lt;tx:attributes&gt;   
-        &lt;!--配置哪些方法使用什么样的事务,配置事务的传播特性--&gt;       
-        &lt;tx:method name=&quot;add&quot; propagation=&quot;REQUIRED&quot;/&gt;      
-        &lt;tx:method name=&quot;delete&quot; propagation=&quot;REQUIRED&quot;/&gt;     
-        &lt;tx:method name=&quot;update&quot; propagation=&quot;REQUIRED&quot;/&gt;     
-        &lt;tx:method name=&quot;search*&quot; propagation=&quot;REQUIRED&quot;/&gt;      
-        &lt;tx:method name=&quot;get&quot; read-only=&quot;true&quot;/&gt;     
-        &lt;tx:method name=&quot;*&quot; propagation=&quot;REQUIRED&quot;/&gt; 
-    &lt;/tx:attributes&gt;
-&lt;/tx:advice&gt;
-</code></pre>
-<p><strong>spring事务传播特性：</strong></p>
-<p>事务传播行为就是多个事务方法相互调用时，事务如何在这些方法间传播。spring支持7种事务传播行为：</p>
-<ul>
-<li>propagation_requierd：如果当前没有事务，就新建一个事务，如果已存在一个事务中，加入到这个事务中，这是最常见的选择。</li>
-<li>propagation_supports：支持当前事务，如果没有当前事务，就以非事务方法执行。</li>
-<li>propagation_mandatory：使用当前事务，如果没有当前事务，就抛出异常。</li>
-<li>propagation_required_new：新建事务，如果当前存在事务，把当前事务挂起。</li>
-<li>propagation_not_supported：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</li>
-<li>propagation_never：以非事务方式执行操作，如果当前事务存在则抛出异常。</li>
-<li>propagation_nested：如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与propagation_required类似的操作</li>
-</ul>
-<p>Spring 默认的事务传播行为是 &#x3D;&#x3D;PROPAGATION_REQUIRED&#x3D;&#x3D;，它适合于绝大多数的情况。</p>
-<p>假设 ServiveX#methodX() 都工作在事务环境下（即都被 Spring 事务增强了），假设程序中存在如下的调用链：Service1#method1()-&gt;Service2#method2()-&gt;Service3#method3()，那么这 3 个服务类的 3 个方法通过 Spring 的事务传播机制都工作在同一个事务中。</p>
-<p>就好比，我们刚才的几个方法存在调用，所以会被放在一组事务当中！</p>
-<p><strong>配置AOP</strong></p>
-<p>导入aop的头文件！</p>
-<pre><code class="xml">&lt;!--配置aop织入事务--&gt;
-&lt;aop:config&gt;   
-    &lt;aop:pointcut id=&quot;txPointcut&quot; expression=&quot;execution(* com.kuang.dao.*.*(..))&quot;/&gt;   
-    &lt;aop:advisor advice-ref=&quot;txAdvice&quot; pointcut-ref=&quot;txPointcut&quot;/&gt;
-&lt;/aop:config&gt;
-</code></pre>
-<p><strong>进行测试</strong></p>
-<p>删掉刚才插入的数据，再次测试！</p>
-<pre><code class="java">@Test
-public void test2()&#123;  
-    ApplicationContext context = new ClassPathXmlApplicationContext(&quot;beans.xml&quot;);    
-    UserMapper mapper = (UserMapper) context.getBean(&quot;userDao&quot;);   
-    List&lt;User&gt; user = mapper.selectUser();    System.out.println(user);
-&#125;
-</code></pre>
-<h3 id="思考问题？-1"><a href="#思考问题？-1" class="headerlink" title="思考问题？"></a>思考问题？</h3><p>为什么需要配置事务？</p>
-<ul>
-<li>如果不配置，就需要我们手动提交控制事务；</li>
-<li>事务在项目开发过程非常重要，涉及到数据的一致性的问题，不容马虎！</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-        <category>Spring全家桶</category>
-      </categories>
-      <tags>
-        <tag>SSMP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Redis</title>
-    <url>/2024/03/10/Java/Redis/Redis/</url>
-    <content><![CDATA[<h1 id="01-Redis数据结构介绍"><a href="#01-Redis数据结构介绍" class="headerlink" title="01-Redis数据结构介绍"></a>01-Redis数据结构介绍</h1><table>
-<thead>
-<tr>
-<th>数据类型</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>String</td>
-<td><code>hello world</code></td>
-</tr>
-<tr>
-<td>Hash</td>
-<td><code>&#123;name: &quot;jack&quot;,age: 21&#125;</code></td>
-</tr>
-<tr>
-<td>List</td>
-<td><code>[A -&gt; B -&gt; C -&gt; C]</code></td>
-</tr>
-<tr>
-<td>Set</td>
-<td><code>&#123;A,B,C&#125;</code></td>
-</tr>
-<tr>
-<td>SortedSet</td>
-<td><code>&#123;A:1,B:2,C:3&#125;</code></td>
-</tr>
-<tr>
-<td>GEO</td>
-<td><code>&#123; A:(120.3,30.5) &#125;</code></td>
-</tr>
-<tr>
-<td>BitMap</td>
-<td><code>0110110101110101011</code></td>
-</tr>
-<tr>
-<td>HyperLog</td>
-<td><code>0110110101110101011</code></td>
-</tr>
-</tbody></table>
-<blockquote>
-<p><a href="https://redis.io/commands/https://redis.io/commands/">Redis命令文档</a></p>
-</blockquote>
-<h1 id="02-Redis命令"><a href="#02-Redis命令" class="headerlink" title="02-Redis命令"></a>02-Redis命令</h1><h2 id="01-Redis通用命令"><a href="#01-Redis通用命令" class="headerlink" title="01-Redis通用命令"></a>01-Redis通用命令</h2><blockquote>
-<p>通用指令是部分数据类型的，都可以使用的命令，常见的有:</p>
-<ul>
-<li><code>KEYS</code>: 查看符合模板的所有 key，&#x3D;&#x3D;不建议在生产环境使用&#x3D;&#x3D;<ul>
-<li><code>KEYS *n</code> : 查找包含n的所有key, * 为通配符</li>
-</ul>
-</li>
-<li><code>DEL</code>: 删除一个或多个key<ul>
-<li><code>DEL key [key ...]</code> DEL k1 k2 k3 k4</li>
-</ul>
-</li>
-<li><code>EXISTS</code>: 判断一个或多个 key 是否存在<ul>
-<li><code>EXISTS key [key ...]</code> EXISTS k1 k2 k3</li>
-</ul>
-</li>
-<li><code>EXPIRE</code>：给一个Key设置有效期，有效期到期时该key会自动被删除<ul>
-<li><code>EXIPRE key seconds</code> EXPIRE k1 10  #<em>设置k1十秒后删除</em></li>
-</ul>
-</li>
-<li><code>TTL</code> : 查看一个 Key所剩的有效时间，返回值为-1 永久有效，返回值-2为已过期，返回值为整数则暂未过期<ul>
-<li><code>TTL k1</code></li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h2 id="02-String类型常用命令"><a href="#02-String类型常用命令" class="headerlink" title="02-String类型常用命令"></a>02-String类型常用命令</h2><p>String类型是字符串类型，是Redis最简单的存储类型</p>
-<p>其value是字符串，不过根据字符串的格式不同，又可以分为3类：</p>
-<ul>
-<li>String： 普通字符串</li>
-<li>int：整型类型，可以做自增、自减操</li>
-<li>float：浮点类型，可以做自增、自减操作</li>
-</ul>
-<blockquote>
-<p>字符串类型的最大存储空间不能超过512M</p>
-</blockquote>
-<h3 id="String类型的常见命令"><a href="#String类型的常见命令" class="headerlink" title="String类型的常见命令"></a>String类型的常见命令</h3><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>set</td>
-<td>添加或者修改已经存在的一个String类型键值对</td>
-</tr>
-<tr>
-<td>get</td>
-<td>根据key获取String类型的value</td>
-</tr>
-<tr>
-<td>mset</td>
-<td>批量添加多个String的键值对</td>
-</tr>
-<tr>
-<td>mget</td>
-<td>根据多个key获取多个String类型的value</td>
-</tr>
-<tr>
-<td>incr</td>
-<td>让一个整型的key自增1</td>
-</tr>
-<tr>
-<td>incrby</td>
-<td>让一个整型的key自增并指定步长，例如: <code>incrby num 2</code> 就是让num自增2</td>
-</tr>
-<tr>
-<td>incrbyfloat</td>
-<td>让一个浮点类型的数字自增并指定步长</td>
-</tr>
-<tr>
-<td>setnx</td>
-<td>添加一个String类型的键值对，前提是这个key不存在，否则不执行</td>
-</tr>
-<tr>
-<td>setex</td>
-<td>添加一个String的键值对，并且指定有效期</td>
-</tr>
-</tbody></table>
-<h2 id="03-Key的层级格式"><a href="#03-Key的层级格式" class="headerlink" title="03-Key的层级格式"></a>03-Key的层级格式</h2><blockquote>
-<p>Redis的key允许又多个单词形成层级结构，多个单词之间使用<code>:</code>隔开，格式如下：</p>
-<blockquote>
-<p>项目名:业务名:类型:id</p>
-</blockquote>
-<p>该格式并非固定，具体根据需求定：</p>
-<ul>
-<li>user相关的key： <code>nancheng:user:1</code></li>
-<li>product相关的key：<code>nancheng:product:1</code></li>
-</ul>
-<p>如果Value是一个Java对象，例如User对象，则可以将对象序列化为JSON字符串后存储:</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>nancheng:user:1</td>
-<td>{“id”:1,”name”: “nancheng”,”age”:21}</td>
-</tr>
-<tr>
-<td>nancheng:product:1</td>
-<td>{“id”:1,”name”:”Redmi K60Ultra}</td>
-</tr>
-</tbody></table>
-</blockquote>
-<h2 id="04-Hash类型及常用命令"><a href="#04-Hash类型及常用命令" class="headerlink" title="04-Hash类型及常用命令"></a>04-Hash类型及常用命令</h2><blockquote>
-<p>Hash类型，也叫散列，其Value是一个无序字典，类似于Java中HashMap结构。</p>
-<p>String结构是将对象序列化为JSON字符串后存储，挡需要修改对象某个字段时很不方便。</p>
-</blockquote>
-<p>Hash结构可以将对象中的每个字段独立存储，可以针对单个字段做CRUD：</p>
-<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171024680.png" alt="image-20240313090902594"></p>
-<h3 id="Hash类型常见命令"><a href="#Hash类型常见命令" class="headerlink" title="Hash类型常见命令"></a>Hash类型常见命令</h3><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>格式</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>hset</td>
-<td>hset key filed value</td>
-<td>添加或者修改hash类型的key的field的值</td>
-</tr>
-<tr>
-<td>hget</td>
-<td>hget key filed</td>
-<td>获取一个hash类型key的field的值</td>
-</tr>
-<tr>
-<td>hmset</td>
-<td>hmset key filed value [filed value …]</td>
-<td>批量添加&#x2F;修改多个hash类型key的field的值</td>
-</tr>
-<tr>
-<td>hmget</td>
-<td>hmget key field [filed …]</td>
-<td>批量获取多个hash类型key的field的值</td>
-</tr>
-<tr>
-<td>hgetall</td>
-<td>hgetall key</td>
-<td>获取一个hash类型的key中所有的field喝value</td>
-</tr>
-<tr>
-<td>hkeys</td>
-<td>hkeys key</td>
-<td>获取一个hash类型的key中所偶的field</td>
-</tr>
-<tr>
-<td>hvals</td>
-<td>hvals key</td>
-<td>获取一个hash类型的key中所有的value</td>
-</tr>
-<tr>
-<td>hincrby</td>
-<td>hincryby key field <code>increment</code></td>
-<td>让一个hash类型的key的字段值自增并指定步长为 increment</td>
-</tr>
-<tr>
-<td>hsetnx</td>
-<td>hsetnx key field value</td>
-<td>添加一个hash类型的key的field值，前提是这个field不存在，否则不执行</td>
-</tr>
-</tbody></table>
-<h2 id="05-List类型"><a href="#05-List类型" class="headerlink" title="05-List类型"></a>05-List类型</h2><p>Redis中的List类型与Java中的LinkedList类型，可以看做是一个双向链表结构。既可以支持正向检索，也可以支持反向检索。</p>
-<p>特征：</p>
-<ul>
-<li>有序</li>
-<li>元素可以重复</li>
-<li>插入和删除快</li>
-<li>查询速度一般</li>
-</ul>
-<blockquote>
-<p>常用来存储一个有序数据就，例如：朋友圈点赞，评论列表</p>
-</blockquote>
-<h3 id="List常用命令"><a href="#List常用命令" class="headerlink" title="List常用命令"></a>List常用命令</h3><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>LPUSH key element…</td>
-<td>向列表左侧插入一个或多个元素</td>
-</tr>
-<tr>
-<td>LPOP key</td>
-<td>移除并返回列表左侧的第一个元素，没有则返回null</td>
-</tr>
-<tr>
-<td>RPUSH key element…</td>
-<td>向列表的右侧插入一个或多个元素</td>
-</tr>
-<tr>
-<td>RPOP key</td>
-<td>移出并返回列表右侧的第一个元素</td>
-</tr>
-<tr>
-<td>LRANGE key start end</td>
-<td>返回一段角标范围内的所有元素</td>
-</tr>
-<tr>
-<td>BLPOP和BRPOP</td>
-<td>于LPOP和RPOP类似，只不过在没有元素时等待指定时间，而不是直接返回null</td>
-</tr>
-</tbody></table>
-<h2 id="06-Set类型"><a href="#06-Set类型" class="headerlink" title="06-Set类型"></a>06-Set类型</h2><p>Set类型类似于HashSet，可以看作一个Value为null的HashMap。因为也是一个hash表，因此具备和HashSet类似的特征：</p>
-<ul>
-<li>无序</li>
-<li>元素不可重复</li>
-<li>查询快</li>
-<li>支持交集、并集、差集等功能</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a href="https://redis.com.cn/commands/sadd.html">SADD</a></td>
-<td>向集合添加一个或多个成员</td>
-</tr>
-<tr>
-<td><a href="https://redis.com.cn/commands/scard.html">SCARD</a></td>
-<td>获取集合的成员数</td>
-</tr>
-<tr>
-<td><a href="https://redis.com.cn/commands/sinter.html">SINTER</a></td>
-<td>返回给定所有集合的交集</td>
-</tr>
-<tr>
-<td><a href="https://redis.com.cn/commands/sismember.html">SISMEMBER</a></td>
-<td>判断 member 元素是否是集合 key 的成员</td>
-</tr>
-<tr>
-<td><a href="https://redis.com.cn/commands/smembers.html">SMEMBERS</a></td>
-<td>返回集合中的所有成员</td>
-</tr>
-<tr>
-<td><a href="https://redis.com.cn/commands/srem.html">SREM</a></td>
-<td>移除集合中一个或多个成员</td>
-</tr>
-<tr>
-<td>SDIFF</td>
-<td>返回给定所有集合的差集</td>
-</tr>
-<tr>
-<td>SUNION</td>
-<td>返回给定所有集合的并集</td>
-</tr>
-</tbody></table>
-<h2 id="07-SortedSet类型"><a href="#07-SortedSet类型" class="headerlink" title="07-SortedSet类型"></a>07-SortedSet类型</h2><blockquote>
-<p>Redis的SortedSet是一个可排序的Set集合，与Java中的TreeSet有些类似，但是底层数据结构却差别很大。SortedSet中的每一个元素都带有一个score属性，可以基于score属性对元素排序，底层的实现是一个跳表(SkipList)加hash表。</p>
-<p>SortedSet有以下特性：</p>
-<ul>
-<li>可排序</li>
-<li>元素不重复</li>
-<li>查询速度快</li>
-</ul>
-<p>因为SortedSet的可排序特性，经常被用来实现排行榜这样的功能。</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="left">命令</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://redis.com.cn/commands/zadd.html">ZADD</a></td>
-<td align="left">向有序集合添加一个或多个成员，或者更新已存在成员的分数</td>
-</tr>
-<tr>
-<td align="left"><a href="https://redis.com.cn/commands/zcard.html">ZCARD</a></td>
-<td align="left">获取有序集合的成员数</td>
-</tr>
-<tr>
-<td align="left"><a href="https://redis.com.cn/commands/zcount.html">ZCOUNT</a></td>
-<td align="left">计算在有序集合中指定区间分数的成员数</td>
-</tr>
-<tr>
-<td align="left"><a href="https://redis.com.cn/commands/zincrby.html">ZINCRBY</a></td>
-<td align="left">有序集合中对指定成员的分数加上增量 increment</td>
-</tr>
-<tr>
-<td align="left"><a href="https://redis.com.cn/commands/zrange.html">ZRANGE</a></td>
-<td align="left">通过索引区间返回有序集合成指定区间内的成员</td>
-</tr>
-<tr>
-<td align="left"><a href="https://redis.com.cn/commands/zrangebyscore.html">ZRANGEBYSCORE</a></td>
-<td align="left">通过分数返回有序集合指定区间内的成员</td>
-</tr>
-<tr>
-<td align="left"><a href="https://redis.com.cn/commands/zrank.html">ZRANK</a></td>
-<td align="left">返回有序集合中指定成员的索引</td>
-</tr>
-<tr>
-<td align="left"><a href="https://redis.com.cn/commands/zrem.html">ZREM</a></td>
-<td align="left">移除有序集合中的一个或多个成员</td>
-</tr>
-<tr>
-<td align="left"><a href="https://redis.com.cn/commands/zscore.html">ZSCORE</a></td>
-<td align="left">返回有序集中，成员的分数值</td>
-</tr>
-<tr>
-<td align="left">ZDIFF、ZINTER、ZUNION</td>
-<td align="left">求差、交、并集</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>注： 所有的排名默认都是升序。如果要降序则要在命令的Z后面添加REV即可</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>中间件</category>
-        <category>缓存</category>
-      </categories>
-      <tags>
-        <tag>微服务</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git</title>
-    <url>/2024/06/22/Java/Git/GitStudy/</url>
-    <content><![CDATA[<h1 id="GitStudy"><a href="#GitStudy" class="headerlink" title="GitStudy"></a>GitStudy</h1><h3 id="一、Typora快捷键"><a href="#一、Typora快捷键" class="headerlink" title="一、Typora快捷键"></a>一、Typora快捷键</h3><p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406221112612.png" alt="image-20220704192711490"></p>
-<h3 id="二、Git"><a href="#二、Git" class="headerlink" title="二、Git"></a>二、Git</h3><h4 id="1、工作原理"><a href="#1、工作原理" class="headerlink" title="1、工作原理"></a>1、工作原理</h4><p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406221112613.png" alt="image-20220704192951341"></p>
-<p>Workspace：工作区<br> Index &#x2F; Stage：暂存区<br> Repository：仓库区（或本地仓库）<br> Remote：远程仓库</p>
-<h4 id="2、命令行"><a href="#2、命令行" class="headerlink" title="2、命令行"></a>2、命令行</h4><table>
-<thead>
-<tr>
-<th align="left">代码</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">git config –global user.name “xxx”</td>
-<td>添加用户名</td>
-</tr>
-<tr>
-<td align="left">git config –global user.email “xxx”</td>
-<td>添加邮箱</td>
-</tr>
-<tr>
-<td align="left">git config –list</td>
-<td>查看配置</td>
-</tr>
-<tr>
-<td align="left">pwd</td>
-<td>命令用于当前的目录</td>
-</tr>
-<tr>
-<td align="left">git init</td>
-<td>把当前目录变成git可以管理的仓库</td>
-</tr>
-<tr>
-<td align="left">git add <file></td>
-<td>把文件提交到暂存区</td>
-</tr>
-<tr>
-<td align="left">git commit -m “message”</td>
-<td>将文件提交，message是提交的注释</td>
-</tr>
-<tr>
-<td align="left">git status</td>
-<td>查看是否还有文件没有提交</td>
-</tr>
-<tr>
-<td align="left">git diff <file></td>
-<td>查看文件到底修改了什么额呢绒</td>
-</tr>
-<tr>
-<td align="left">git log</td>
-<td>查看历史记录</td>
-</tr>
-<tr>
-<td align="left">git log –pretty&#x3D;oneline</td>
-<td>查看简介的历史记录</td>
-</tr>
-<tr>
-<td align="left">git reset –hard HEAD^</td>
-<td>回退到上一个版本，如果需要回退两个版本，则git reset –hard HEAD^^</td>
-</tr>
-<tr>
-<td align="left">git reset –hard HEAD~10</td>
-<td>回退到前十个版本</td>
-</tr>
-<tr>
-<td align="left">cat <file></td>
-<td>查看文件内容</td>
-</tr>
-<tr>
-<td align="left">git reset –hard &lt;版本号&gt;</td>
-<td>回退到对应版本号</td>
-</tr>
-<tr>
-<td align="left">git reflog</td>
-<td>查看版本号</td>
-</tr>
-</tbody></table>
-<h4 id="3、理解工作区与暂存区的区别"><a href="#3、理解工作区与暂存区的区别" class="headerlink" title="3、理解工作区与暂存区的区别"></a>3、理解工作区与暂存区的区别</h4><p>第一步：是使用 git add 把文件添加进去，实际上就是把文件添加到暂存区。</p>
-<p>第二步：使用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支上。</p>
-<h4 id="4、Git撤销修改和删除文件操作"><a href="#4、Git撤销修改和删除文件操作" class="headerlink" title="4、Git撤销修改和删除文件操作"></a>4、Git撤销修改和删除文件操作</h4><h5 id="1、撤销修改"><a href="#1、撤销修改" class="headerlink" title="1、撤销修改:"></a>1、撤销修改:</h5><ul>
-<li><p>直接手动更改去掉那些需要的文件，然后add添加到暂存区，最后commit掉。</p>
-</li>
-<li><p>使用 git reset –hard HEAD^</p>
-</li>
-<li><p>使用git checkout – &lt;file&gt; 可以丢弃工作区的修改.</p>
-<blockquote>
-<p> 命令 git checkout –readme.txt 意思就是，把readme.txt文件在工作区做的修改全部撤销，这里有2种情况，如下：</p>
-</blockquote>
-<blockquote>
-<p> 1.readme.txt自动修改后，还没有放到暂存区，使用 撤销修改就回到和版本库一模一样的状态。<br> 2.另外一种是readme.txt已经放入暂存区了，接着又作了修改，撤销修改就回到添加暂存区后的状态.</p>
-</blockquote>
-</li>
-</ul>
-<h5 id="2、删除文件"><a href="#2、删除文件" class="headerlink" title="2、删除文件"></a>2、删除文件</h5><p>​	rm &lt;file&gt;  删除文件</p>
-<blockquote>
-<p>如果我想彻底从版本库中删掉了此文件的话，可以再执行commit命令 提交掉</p>
-</blockquote>
-<h3 id="三、创建云端仓库"><a href="#三、创建云端仓库" class="headerlink" title="三、创建云端仓库"></a>三、创建云端仓库</h3><h4 id="一、创建GitHub或Gitee账户"><a href="#一、创建GitHub或Gitee账户" class="headerlink" title="一、创建GitHub或Gitee账户"></a>一、创建GitHub或Gitee账户</h4><h4 id="二、建立云端仓库"><a href="#二、建立云端仓库" class="headerlink" title="二、建立云端仓库"></a>二、建立云端仓库</h4><h4 id="三、将本地仓库与云端仓库建立连接"><a href="#三、将本地仓库与云端仓库建立连接" class="headerlink" title="三、将本地仓库与云端仓库建立连接"></a>三、将本地仓库与云端仓库建立连接</h4><p>​		git remote add origin &lt;仓库地址&gt;</p>
-<h4 id="四、上传流程"><a href="#四、上传流程" class="headerlink" title="四、上传流程"></a>四、上传流程</h4><h5 id="一、git-add"><a href="#一、git-add" class="headerlink" title="一、git add ."></a>一、git add .</h5><blockquote>
-<p>​		. 的意思是将当前位置工作区内所有文件添加到暂存区</p>
-</blockquote>
-<h5 id="二、git-commit-m-“massege”"><a href="#二、git-commit-m-“massege”" class="headerlink" title="二、git commit -m “massege”"></a>二、git commit -m “massege”</h5><blockquote>
-<p>​		提交文件，注释massege</p>
-</blockquote>
-<h5 id="三、git-remote-add-origin-“https-gitee-com-Nan-Cheng7-nan-cheng-itstudy-git“"><a href="#三、git-remote-add-origin-“https-gitee-com-Nan-Cheng7-nan-cheng-itstudy-git“" class="headerlink" title="三、git remote add origin “https://gitee.com/Nan_Cheng7/nan-cheng-itstudy.git“"></a>三、git remote add origin “<a href="https://gitee.com/Nan_Cheng7/nan-cheng-itstudy.git">https://gitee.com/Nan_Cheng7/nan-cheng-itstudy.git</a>“</h5><blockquote>
-<p>​		建立连接、</p>
-</blockquote>
-<h5 id="四、git-pull-–rebase-origin-master"><a href="#四、git-pull-–rebase-origin-master" class="headerlink" title="四、git pull –rebase origin master"></a>四、git pull –rebase origin master</h5><blockquote>
-<p>​		在当前文件夹内添加Readme文件</p>
-</blockquote>
-<h5 id="五、git-push-origin-master"><a href="#五、git-push-origin-master" class="headerlink" title="五、git push origin master"></a>五、git push origin master</h5><blockquote>
-<p>​		推送拉取的文件</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>中间件</category>
-        <category>计算机操作基础</category>
-      </categories>
-      <tags>
-        <tag>运维</tag>
       </tags>
   </entry>
   <entry>

@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>Categories: 中间件 | NanCheng7 Blog</title>
+    <title> | NanCheng7 Blog</title>
     <meta name="author" content="NanCheng7" />
     <meta name="description" content="just for coding" />
     <meta name="keywords" content="" />
@@ -37,6 +37,10 @@
 
 
 <script src="/js/lib/preview.js"></script>
+
+
+
+
 
 
 
@@ -150,156 +154,182 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="archives">
-    
-    <div class="categories-tags">
-        
-        
-        
-        <span>
-            <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                中间件
-            </a>
-        </span>
-        
-        
-        
-        
-        
-        <span>
-            <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E7%BC%93%E5%AD%98/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                缓存
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E5%9F%BA%E7%A1%80/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                计算机操作基础
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/categories/Java/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Java
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/categories/ORM%E6%A1%86%E6%9E%B6/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                ORM框架
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/categories/Java/Spring%E5%85%A8%E5%AE%B6%E6%A1%B6/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                Spring全家桶
-            </a>
+            <div class="article">
+    <div>
+        <h1></h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/6/28
         </span>
         
         
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2024/6/22</div>
-            <a href="/2024/06/22/Java/Git/GitStudy/">
-                <h3>git</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        中间件
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/%E8%BF%90%E7%BB%B4/" style="color: #ffa2c4">
-                            运维
-                        </a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
+    <div class="content" v-pre>
+        <hr>
+<h2 id="author-NanChengtitle-Vue3tag-前端框架"><a href="#author-NanChengtitle-Vue3tag-前端框架" class="headerlink" title="author:NanChengtitle:Vue3tag:前端框架"></a>author:NanCheng<br>title:Vue3<br>tag:前端框架</h2><h1 id="1-入门篇"><a href="#1-入门篇" class="headerlink" title="1.入门篇"></a>1.入门篇</h1><ul>
+<li>Vue是一款用于<strong>构建用户界面</strong>的渐进式的JS框架</li>
+</ul>
+<h2 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h2><blockquote>
+<ul>
+<li>实例代码</li>
+</ul>
+<pre><code class="HTMl">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Vue3快速入门&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;h1&gt;&#123;&#123; msg &#125;&#125;&lt;/h1&gt;
+    &lt;/div&gt;
+
+
+    &lt;!--ES引入Vue模块--&gt;
+    &lt;script type=&quot;module&quot;&gt;
+        import &#123; createApp &#125; from &#39;https://unpkg.com/vue@3/dist/vue.esm-browser.js&#39;;
+        createApp(&#123;
+            data() &#123;
+                return &#123;
+                    //定义数据
+                    msg: &#39;hello Vue3&#39;
+                &#125;
+            &#125;
+        &#125;).mount(&#39;#app&#39;)
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>演示效果</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406291859619.png" alt="image-20240629181157927"></p>
+</blockquote>
+<h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>v-for</td>
+<td>列表渲染，遍历容器的元素或对象的属性</td>
+</tr>
+<tr>
+<td>v-bind</td>
+<td>为HTML标签绑定属性值，如href、css样式等</td>
+</tr>
+<tr>
+<td>v-if&#x2F;v-else-if&#x2F;v-else</td>
+<td>条件性的渲染某元素，判定为true时渲染，否则不渲染</td>
+</tr>
+<tr>
+<td>v-show</td>
+<td>根据条件展示某元素，区别在于切换的是display属性的值</td>
+</tr>
+<tr>
+<td>v-model</td>
+<td>在表单元素上创建双向绑定元素</td>
+</tr>
+<tr>
+<td>v-on</td>
+<td>为HTML标签绑定事件</td>
+</tr>
+</tbody></table>
+<h3 id="v-for"><a href="#v-for" class="headerlink" title="v-for"></a>v-for</h3><p>![image-20240629181834467](Vue3 images&#x2F;image-20240629181834467.png)</p>
+<blockquote>
+<ul>
+<li>实例代码</li>
+</ul>
+<pre><code class="HTMl">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;v-for&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;table border=&quot;1 solid&quot; colspa=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+            &lt;tr&gt;
+                &lt;th&gt;文章标题&lt;/th&gt;
+                &lt;th&gt;分类&lt;/th&gt;
+                &lt;th&gt;发表时间&lt;/th&gt;
+                &lt;th&gt;状态&lt;/th&gt;
+                &lt;th&gt;操作&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr v-for=&quot;(article,index) in articleList&quot;&gt;
+                &lt;td&gt;&#123;&#123; article.title &#125;&#125;&lt;/td&gt;
+                &lt;td&gt;&#123;&#123; article.category &#125;&#125;&lt;/td&gt;
+                &lt;td&gt;&#123;&#123; article.time &#125;&#125;&lt;/td&gt;
+                &lt;td&gt;&#123;&#123; article.status &#125;&#125;&lt;/td&gt;
+                &lt;td&gt;
+                    &lt;button&gt;编辑&lt;/button&gt;
+                    &lt;button&gt;删除&lt;/button&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;script type=&quot;module&quot;&gt;
+        import &#123;createApp&#125; from  &#39;https://unpkg.com/vue@3/dist/vue.esm-browser.js&#39;;
+        createApp( &#123;
+            data() &#123;
+                return &#123;
+                    articleList: [
+                        &#123;
+                            title: &quot;test1&quot;,
+                            category: &quot;c1&quot;,
+                            time: &quot;2023-09-01&quot;,
+                            status: &quot;已发布&quot;
+                        &#125;,
+                        &#123;
+                            title: &quot;test2&quot;,
+                            category: &quot;c2&quot;,
+                            time: &quot;2023-09-02&quot;,
+                            status: &quot;已发布&quot;
+                        &#125;,
+                        &#123;
+                            title: &quot;test3&quot;,
+                            category: &quot;c3&quot;,
+                            time: &quot;2023-09-03&quot;,
+                            status: &quot;已发布&quot;
+                        &#125;,
+                        &#123;
+                            title: &quot;test4&quot;,
+                            category: &quot;c4&quot;,
+                            time: &quot;2023-09-04&quot;,
+                            status: &quot;未发布&quot;
+                        &#125;
+                    ]
+                &#125;
+            &#125;
+        &#125;).mount(&#39;#app&#39;)
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>演示效果</li>
+</ul>
+<p>![image-20240629185732594](Vue3 images&#x2F;image-20240629185732594.png)</p>
+</blockquote>
+<h3 id="v-bind"><a href="#v-bind" class="headerlink" title="v-bind"></a>v-bind</h3><p>![image-20240629211046673](Vue3 images&#x2F;image-20240629211046673.png)</p>
+<blockquote>
+</blockquote>
+
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2024/3/10</div>
-            <a href="/2024/03/10/Java/Redis/Redis/">
-                <h3>Redis</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        中间件
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="color: #ff7d73">
-                            微服务
-                        </a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
-    </div>
+    
+    
+    
+    
+    
     
 </div>
 
@@ -331,6 +361,12 @@
         
     </div>
     <script src="/js/main.js"></script>
+    
+    
+
+
+
+
     
 </body>
 </html>
