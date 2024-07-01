@@ -86,10 +86,13 @@
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 20px #d9d9d980;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -ms-flex-direction: column;
+        flex-direction: column;
     max-height: 80vh;
-    justify-content: center;
+    -ms-flex-pack: center;
+        justify-content: center;
     overflow: auto;
     position: sticky;
     text-align: center;
@@ -157,6 +160,7 @@
     margin: 20px auto;
 }
 #home-head {
+    display: -ms-flexbox;
     display: flex;
     height: 100vh;
     width: 100vw;
@@ -173,10 +177,13 @@
     z-index: -1;
 }
 #home-head #home-info .info {
-    align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
     border-radius: 50%;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -ms-flex-pack: center;
+        justify-content: center;
     text-align: center;
 }
 #home-head #home-info .loop:nth-child(1) {
@@ -212,10 +219,13 @@
     margin: auto;
 }
 #home-posts .page-current {
-    align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
+    display: -ms-flexbox;
     display: flex;
     font-weight: bold;
-    justify-content: center;
+    -ms-flex-pack: center;
+        justify-content: center;
     margin-top: 50px;
     text-align: center;
     width: 100%;
@@ -318,6 +328,7 @@
 #home-posts-wrap {
     background: transparent;
     border-radius: 10px;
+    display: -ms-flexbox;
     display: flex;
     margin: auto;
     padding: 20px;
@@ -329,12 +340,16 @@
     box-sizing: border-box;
 }
 #loading {
-    align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
     background: #fff;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -ms-flex-direction: column;
+        flex-direction: column;
     height: 100vh;
-    justify-content: center;
+    -ms-flex-pack: center;
+        justify-content: center;
     left: 0;
     position: fixed;
     top: 0;
@@ -352,13 +367,17 @@
     height: 50px;
 }
 #loading-circle {
-    align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
     border: 10px solid #a3ddfb;
     border-radius: 50%;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -ms-flex-direction: column;
+        flex-direction: column;
     height: 50vmin;
-    justify-content: center;
+    -ms-flex-pack: center;
+        justify-content: center;
     padding: 50px;
     text-align: center;
     width: 50vmin;
@@ -400,8 +419,10 @@
     z-index: 1002;
 }
 #menu #mobile-menu .items .item {
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -ms-flex-pack: center;
+        justify-content: center;
     margin: auto;
     min-width: 200px;
     width: 80%;
@@ -435,11 +456,14 @@
     color: #fff;
 }
 #preview {
-    align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
     background-color: #fffc;
+    display: -ms-flexbox;
     display: flex;
     height: 100vh;
-    justify-content: center;
+    -ms-flex-pack: center;
+        justify-content: center;
     left: 0;
     position: fixed;
     top: 0;
@@ -457,8 +481,10 @@
     z-index: 1000;
 }
 #timeline-wrap {
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+        flex-direction: column-reverse;
 }
 * {
     margin: 0;
@@ -657,6 +683,10 @@ body::-webkit-scrollbar-track {
     background: #e6efff;
     border-radius: 100px;
 }
+::-moz-selection {
+    background-color: #3392ff2a;
+    color: unset;
+}
 ::selection {
     background-color: #3392ff2a;
     color: unset;
@@ -685,7 +715,10 @@ video,
 .katex,
 .language,
 .page-current {
-    user-select: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 b,
 strong {
@@ -912,11 +945,14 @@ ol li {
         width: 350px;
     }
     #home-head #home-info .info {
-        align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
         background: #ffffffa6;
+        display: -ms-flexbox;
         display: flex;
         height: 350px;
-        justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
         margin: auto;
         width: 350px;
     }

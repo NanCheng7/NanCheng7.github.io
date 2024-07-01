@@ -1,0 +1,495 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>NanCheng7 Blog • Posts by &#34;框架&#34; category</title>
+        <link>http://example.com</link>
+        <description>just for coding</description>
+        <language>zh-CN</language>
+        <pubDate>Fri, 28 Jun 2024 20:23:00 +0800</pubDate>
+        <lastBuildDate>Fri, 28 Jun 2024 20:23:00 +0800</lastBuildDate>
+        <category>前端</category>
+        <category>SSMP</category>
+        <category>运维</category>
+        <category>微服务</category>
+        <item>
+            <guid isPermalink="true">http://example.com/2024/06/28/Vue/Vue3/</guid>
+            <title>Vue3</title>
+            <link>http://example.com/2024/06/28/Vue/Vue3/</link>
+            <category>前端</category>
+            <pubDate>Fri, 28 Jun 2024 20:23:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;1入门篇&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#1入门篇&#34;&gt;#&lt;/a&gt; 1. 入门篇&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Vue 是一款用于&lt;strong&gt;构建用户界面&lt;/strong&gt;的渐进式的 JS 框架&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;快速启动&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#快速启动&#34;&gt;#&lt;/a&gt; 快速启动&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;示例代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-HTMl&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+    &amp;lt;title&amp;gt;Vue3快速入门&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+
+    &amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+        &amp;lt;h1&amp;gt;&amp;#123;&amp;#123; msg &amp;#125;&amp;#125;&amp;lt;/h1&amp;gt;
+    &amp;lt;/div&amp;gt;
+
+
+    &amp;lt;!--ES引入Vue模块--&amp;gt;
+    &amp;lt;script type=&amp;quot;module&amp;quot;&amp;gt;
+        import &amp;#123; createApp &amp;#125; from &#39;https://unpkg.com/vue@3/dist/vue.esm-browser.js&#39;;
+        createApp(&amp;#123;
+            data() &amp;#123;
+                return &amp;#123;
+                    //定义数据
+                    msg: &#39;hello Vue3&#39;
+                &amp;#125;
+            &amp;#125;
+        &amp;#125;).mount(&#39;#app&#39;)
+    &amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406291859619.png&#34; alt=&#34;image-20240629181157927&#34;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;常用指令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#常用指令&#34;&gt;#&lt;/a&gt; 常用指令&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;指令&lt;/th&gt;
+&lt;th&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;v-for&lt;/td&gt;
+&lt;td&gt;列表渲染，遍历容器的元素或对象的属性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;v-bind&lt;/td&gt;
+&lt;td&gt;为 HTML 标签绑定属性值，如 href、css 样式等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;v-if/v-else-if/v-else&lt;/td&gt;
+&lt;td&gt;条件性的渲染某元素，判定为 true 时渲染，否则不渲染&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;v-show&lt;/td&gt;
+&lt;td&gt;根据条件展示某元素，区别在于切换的是 display 属性的值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;v-model&lt;/td&gt;
+&lt;td&gt;在表单元素上创建双向绑定元素&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;v-on&lt;/td&gt;
+&lt;td&gt;为 HTML 标签绑定事件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;v-for&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#v-for&#34;&gt;#&lt;/a&gt; v-for&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406300911267.png&#34; alt=&#34;image-20240629181834467&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;示例代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-HTMl&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+    &amp;lt;title&amp;gt;v-for&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+    &amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+        &amp;lt;table border=&amp;quot;1 solid&amp;quot; colspa=&amp;quot;0&amp;quot; cellspacing=&amp;quot;0&amp;quot;&amp;gt;
+            &amp;lt;tr&amp;gt;
+                &amp;lt;th&amp;gt;文章标题&amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;分类&amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;发表时间&amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;状态&amp;lt;/th&amp;gt;
+                &amp;lt;th&amp;gt;操作&amp;lt;/th&amp;gt;
+            &amp;lt;/tr&amp;gt;
+            &amp;lt;tr v-for=&amp;quot;(article,index) in articleList&amp;quot;&amp;gt;
+                &amp;lt;td&amp;gt;&amp;#123;&amp;#123; article.title &amp;#125;&amp;#125;&amp;lt;/td&amp;gt;
+                &amp;lt;td&amp;gt;&amp;#123;&amp;#123; article.category &amp;#125;&amp;#125;&amp;lt;/td&amp;gt;
+                &amp;lt;td&amp;gt;&amp;#123;&amp;#123; article.time &amp;#125;&amp;#125;&amp;lt;/td&amp;gt;
+                &amp;lt;td&amp;gt;&amp;#123;&amp;#123; article.status &amp;#125;&amp;#125;&amp;lt;/td&amp;gt;
+                &amp;lt;td&amp;gt;
+                    &amp;lt;button&amp;gt;编辑&amp;lt;/button&amp;gt;
+                    &amp;lt;button&amp;gt;删除&amp;lt;/button&amp;gt;
+                &amp;lt;/td&amp;gt;
+            &amp;lt;/tr&amp;gt;
+        &amp;lt;/table&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;script type=&amp;quot;module&amp;quot;&amp;gt;
+        import &amp;#123;createApp&amp;#125; from  &#39;https://unpkg.com/vue@3/dist/vue.esm-browser.js&#39;;
+        createApp( &amp;#123;
+            data() &amp;#123;
+                return &amp;#123;
+                    articleList: [
+                        &amp;#123;
+                            title: &amp;quot;test1&amp;quot;,
+                            category: &amp;quot;c1&amp;quot;,
+                            time: &amp;quot;2023-09-01&amp;quot;,
+                            status: &amp;quot;已发布&amp;quot;
+                        &amp;#125;,
+                        &amp;#123;
+                            title: &amp;quot;test2&amp;quot;,
+                            category: &amp;quot;c2&amp;quot;,
+                            time: &amp;quot;2023-09-02&amp;quot;,
+                            status: &amp;quot;已发布&amp;quot;
+                        &amp;#125;,
+                        &amp;#123;
+                            title: &amp;quot;test3&amp;quot;,
+                            category: &amp;quot;c3&amp;quot;,
+                            time: &amp;quot;2023-09-03&amp;quot;,
+                            status: &amp;quot;已发布&amp;quot;
+                        &amp;#125;,
+                        &amp;#123;
+                            title: &amp;quot;test4&amp;quot;,
+                            category: &amp;quot;c4&amp;quot;,
+                            time: &amp;quot;2023-09-04&amp;quot;,
+                            status: &amp;quot;未发布&amp;quot;
+                        &amp;#125;
+                    ]
+                &amp;#125;
+            &amp;#125;
+        &amp;#125;).mount(&#39;#app&#39;)
+    &amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406300911268.png&#34; alt=&#34;image-20240629185732594&#34;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;v-bind&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#v-bind&#34;&gt;#&lt;/a&gt; v-bind&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406300911269.png&#34; alt=&#34;image-20240629211046673&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;示例代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-HTML&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+   &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+   &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt;
+   &amp;lt;title&amp;gt;v-bind&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+
+&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+   &amp;lt;a :href=&amp;quot;url&amp;quot;&amp;gt;MyBlog&amp;lt;/a&amp;gt;
+&amp;lt;/div&amp;gt;
+
+
+&amp;lt;!--ES引入Vue模块--&amp;gt;
+&amp;lt;script type=&amp;quot;module&amp;quot;&amp;gt;
+   import &amp;#123;createApp&amp;#125; from &#39;https://unpkg.com/vue@3/dist/vue.esm-browser.js&#39;;
+
+   createApp(&amp;#123;
+       data() &amp;#123;
+           return &amp;#123;
+               url: &#39;http://localhost:4000&#39;
+           &amp;#125;
+       &amp;#125;
+   &amp;#125;).mount(&#39;#app&#39;)
+&amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406300911270.png&#34; alt=&#34;image-20240630085503140&#34;&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;v-if-v-show&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#v-if-v-show&#34;&gt;#&lt;/a&gt; v-if &amp;amp; v-show&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;作用： 这两类指令，都是用来控制元素的显示和隐藏的。&lt;/li&gt;
+&lt;li&gt;v-if
+&lt;ul&gt;
+&lt;li&gt;语法：  &lt;code&gt;v-if=&amp;quot;表达式&amp;quot;&lt;/code&gt; ，表达式为 true，显示；false，隐藏&lt;/li&gt;
+&lt;li&gt;其他：可以配合  &lt;code&gt;v-else-if&lt;/code&gt;  /  &lt;code&gt;v-else&lt;/code&gt;  进行链式调用条件判断&lt;/li&gt;
+&lt;li&gt;原理：&lt;strong&gt;基于条件判断，来控制创建或移除元素节点 (条件渲染)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;v-show
+&lt;ul&gt;
+&lt;li&gt;语法： &lt;code&gt;v-show=&amp;quot;表达式&amp;quot;&lt;/code&gt; ，表达式为 true，显示；false，隐藏&lt;/li&gt;
+&lt;li&gt;原理：&lt;strong&gt;基于 CSS 样式 display 来控制显示和隐藏&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;示例代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-HTML&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+    &amp;lt;title&amp;gt;v-if&amp;amp;v-show&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+
+&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+    电脑的价格为  &amp;lt;span v-if=&amp;quot;customer.level&amp;gt;=0 &amp;amp;&amp;amp; customer.level &amp;lt;= 1&amp;quot;&amp;gt;990&amp;lt;/span&amp;gt;
+                &amp;lt;span v-else-if=&amp;quot;customer.level &amp;lt;= 2&amp;quot;&amp;gt;1990&amp;lt;/span&amp;gt;
+                &amp;lt;span v-else&amp;gt;2990&amp;lt;/span&amp;gt;
+    &amp;lt;br&amp;gt;
+    手表的价格为  &amp;lt;span v-show=&amp;quot;customer.level&amp;gt;=0 &amp;amp;&amp;amp; customer.level &amp;lt;= 1&amp;quot;&amp;gt;990&amp;lt;/span&amp;gt;
+    &amp;lt;span v-show=&amp;quot;customer.level &amp;gt; 1 &amp;amp;&amp;amp; customer.level &amp;lt;= 2&amp;quot;&amp;gt;1990&amp;lt;/span&amp;gt;
+    &amp;lt;span v-show=&amp;quot;customer.level &amp;gt; 2&amp;quot;&amp;gt;2990&amp;lt;/span&amp;gt;
+&amp;lt;/div&amp;gt;
+
+
+&amp;lt;!--ES引入Vue模块--&amp;gt;
+&amp;lt;script type=&amp;quot;module&amp;quot;&amp;gt;
+    import &amp;#123;createApp&amp;#125; from &#39;https://unpkg.com/vue@3/dist/vue.esm-browser.js&#39;;
+
+    createApp(&amp;#123;
+        data() &amp;#123;
+            return &amp;#123;
+                customer:&amp;#123;
+                    name: &amp;quot;张三&amp;quot;,
+                    level: 1
+                &amp;#125;
+            &amp;#125;
+        &amp;#125;
+    &amp;#125;).mount(&#39;#app&#39;)
+&amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406300911271.png&#34; alt=&#34;image-20240630091044691&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;v-if 和 v-show 的区别&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406300911272.png&#34; alt=&#34;image-20240630091125505&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;v-if 和 v-show 的适用场景
+&lt;ul&gt;
+&lt;li&gt;v-if 适用于显示和隐藏切换&lt;strong&gt;不频繁&lt;/strong&gt;的场景&lt;/li&gt;
+&lt;li&gt;v-show 适用于显示和隐藏&lt;strong&gt;切换频繁&lt;/strong&gt;的场景&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;v-on&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#v-on&#34;&gt;#&lt;/a&gt; v-on&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;作用：为 HTML 标签绑定事件&lt;/li&gt;
+&lt;li&gt;语法：
+&lt;ul&gt;
+&lt;li&gt;v-on: 事件名 =“函数名”&lt;/li&gt;
+&lt;li&gt;简写为 @事件名 =“函数名”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;示例代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-HTML&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+    &amp;lt;title&amp;gt;v-on&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+
+&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+    &amp;lt;button v-on:click=&amp;quot;money&amp;quot;&amp;gt;点我有惊喜&amp;lt;/button&amp;gt; &amp;amp;nbsp;
+    &amp;lt;button @click=&amp;quot;love&amp;quot;&amp;gt;再点更惊喜&amp;lt;/button&amp;gt;
+
+&amp;lt;/div&amp;gt;
+
+
+&amp;lt;!--ES引入Vue模块--&amp;gt;
+&amp;lt;script type=&amp;quot;module&amp;quot;&amp;gt;
+    import &amp;#123;createApp&amp;#125; from &#39;https://unpkg.com/vue@3/dist/vue.esm-browser.js&#39;;
+
+    createApp(&amp;#123;
+        data() &amp;#123;
+            return &amp;#123;
+
+            &amp;#125;
+        &amp;#125;,
+        methods: &amp;#123;
+            money: function ()&amp;#123;
+                alert(&amp;quot;送你钱100&amp;quot;)
+            &amp;#125;,
+            love: function ()&amp;#123;
+                alert(&amp;quot;爱你一万年&amp;quot;)
+            &amp;#125;
+        &amp;#125;
+    &amp;#125;).mount(&#39;#app&#39;)
+&amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;![image-20240630092500888](Vue3 images/image-20240630092500888.png)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意：函数需要定义在 methods 选项内部！！！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;v-model&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#v-model&#34;&gt;#&lt;/a&gt; v-model&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;作用：在表单元素上使用，&lt;strong&gt;双向数据绑定&lt;/strong&gt;。可以方便的获取和设置表单项数据&lt;/li&gt;
+&lt;li&gt;语法：v-model=“变量名”&lt;/li&gt;
+&lt;li&gt;v-model 绑定的变量需要在 data 中定义&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;vue的生命周期&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#vue的生命周期&#34;&gt;#&lt;/a&gt; Vue 的生命周期&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;生命周期：指一个对象从创建到销毁的整个过程&lt;/li&gt;
+&lt;li&gt;生命周期的八个阶段：每个阶段都会自动执行一个生命周期方法 (钩子)，让开发者有机会在特定的阶段执行自己的代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;![image-20240630094800881](Vue3 images/image-20240630094800881.png)&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;状态&lt;/th&gt;
+&lt;th&gt;阶段周期&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;beforeCreate&lt;/td&gt;
+&lt;td&gt;创建前&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;created&lt;/td&gt;
+&lt;td&gt;创建后&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;beforeMount&lt;/td&gt;
+&lt;td&gt;载入前&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;mounted&lt;/td&gt;
+&lt;td&gt;挂载完成&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;beforeUpdate&lt;/td&gt;
+&lt;td&gt;数据更新前&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;updated&lt;/td&gt;
+&lt;td&gt;数据更新后&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;beforeUnmount&lt;/td&gt;
+&lt;td&gt;组件销毁前&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;unmounted&lt;/td&gt;
+&lt;td&gt;组件销毁后&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;我们常用到生命周期的场景，就是在 mounted 方法中发送请求，获取页面需要的数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;axios&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#axios&#34;&gt;#&lt;/a&gt; Axios&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;介绍: Axios 对原生的 Ajax 进行了封装，简化书写，快速开发&lt;/li&gt;
+&lt;li&gt;官网 &lt;a href=&#34;https://www.axios-http.cn/&#34;&gt;Axios&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;axios-使用步骤&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#axios-使用步骤&#34;&gt;#&lt;/a&gt; Axios 使用步骤&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;引入 Axios 的 js 文件 （参照官网即可）&lt;/li&gt;
+&lt;li&gt;使用 Axios 发送请求，并获取相应结果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;示例代码&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code class=&#34;language-HTML&#34;&gt;&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;
+    &amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+
+&amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt;
+
+&amp;lt;/div&amp;gt;
+&amp;lt;!--引入Axios的js文件--&amp;gt;
+&amp;lt;script src=&amp;quot;https://unpkg.com/axios/dist/axios.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script&amp;gt;
+    let book = &amp;#123;
+        id: 1003,
+        type: &#39;front&#39;,
+        name: &#39;Vue3&#39;,
+        description: &#39;我的Vue3戚飞飞~&#39;
+    &amp;#125;
+
+    let url = &#39;http://localhost:8084/books/&#39;;
+
+    &amp;lt;!--发送请求--&amp;gt;
+    //axios(&amp;#123;
+    //    method: &#39;get&#39;,
+    //    url: url,
+    //&amp;#125;).then(res =&amp;gt; &amp;#123;
+    //    console.log(res.data)
+    //&amp;#125;).catch(err =&amp;gt; &amp;#123;
+    //    console.log(err)
+    //&amp;#125;)
+
+
+
+    //axios(&amp;#123;
+    //    method: &#39;post&#39;,
+    //    url: url,
+    //    data: book
+    //&amp;#125;).then(res =&amp;gt; &amp;#123;
+    //    console.log(res.data)
+    //&amp;#125;).catch(err =&amp;gt; &amp;#123;
+    //    console.log(err)
+    //&amp;#125;)
+
+    //axios.get(url).then(res =&amp;gt; &amp;#123;
+    //    console.log(res.data);
+    //&amp;#125;).catch(err =&amp;gt; &amp;#123;
+    //    console.log(err)
+    //&amp;#125;)
+
+    axios.post(url,book).then(res =&amp;gt; &amp;#123;
+        console.log(res)
+    &amp;#125;).catch(err =&amp;gt; &amp;#123;
+        console.log(err)
+    &amp;#125;)
+
+&amp;lt;/script&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;演示效果&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;![image-20240630114855016](Vue3 images/image-20240630114855016.png)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;axios-请求方式别名&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#axios-请求方式别名&#34;&gt;#&lt;/a&gt; Axios - 请求方式别名&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;为了方便起见，Axios 已经为所有支持的请求方法提供了别名&lt;/li&gt;
+&lt;li&gt;格式：  &lt;code&gt;axios.请求方式(url,[,data[,config]])&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

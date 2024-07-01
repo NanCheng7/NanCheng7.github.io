@@ -184,7 +184,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="color: #03a9f4">
+                <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="color: #00a596">
                     微服务
                 </a>
             </span>
@@ -194,14 +194,16 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="01-Redis数据结构介绍"><a href="#01-Redis数据结构介绍" class="headerlink" title="01-Redis数据结构介绍"></a>01-Redis数据结构介绍</h1><table>
+        <h1 id="01-redis数据结构介绍"><a class="markdownIt-Anchor" href="#01-redis数据结构介绍">#</a> 01-Redis 数据结构介绍</h1>
+<table>
 <thead>
 <tr>
 <th>数据类型</th>
 <th>示例</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>String</td>
 <td><code>hello world</code></td>
 </tr>
@@ -233,75 +235,86 @@
 <td>HyperLog</td>
 <td><code>0110110101110101011</code></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://redis.io/commands/https://redis.io/commands/">Redis命令文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://redis.io/commands/https://redis.io/commands/">Redis 命令文档</a></p>
 </blockquote>
-<h1 id="02-Redis命令"><a href="#02-Redis命令" class="headerlink" title="02-Redis命令"></a>02-Redis命令</h1><h2 id="01-Redis通用命令"><a href="#01-Redis通用命令" class="headerlink" title="01-Redis通用命令"></a>01-Redis通用命令</h2><blockquote>
+<h1 id="02-redis命令"><a class="markdownIt-Anchor" href="#02-redis命令">#</a> 02-Redis 命令</h1>
+<h2 id="01-redis通用命令"><a class="markdownIt-Anchor" href="#01-redis通用命令">#</a> 01-Redis 通用命令</h2>
+<blockquote>
 <p>通用指令是部分数据类型的，都可以使用的命令，常见的有:</p>
 <ul>
-<li><code>KEYS</code>: 查看符合模板的所有 key，&#x3D;&#x3D;不建议在生产环境使用&#x3D;&#x3D;<ul>
-<li><code>KEYS *n</code> : 查找包含n的所有key, * 为通配符</li>
+<li><code>KEYS</code> : 查看符合模板的所有 key，<mark>不建议在生产环境使用</mark>
+<ul>
+<li><code>KEYS *n</code>  : 查找包含 n 的所有 key, * 为通配符</li>
 </ul>
 </li>
-<li><code>DEL</code>: 删除一个或多个key<ul>
-<li><code>DEL key [key ...]</code> DEL k1 k2 k3 k4</li>
+<li><code>DEL</code> : 删除一个或多个 key
+<ul>
+<li><code>DEL key [key ...]</code>  DEL k1 k2 k3 k4</li>
 </ul>
 </li>
-<li><code>EXISTS</code>: 判断一个或多个 key 是否存在<ul>
-<li><code>EXISTS key [key ...]</code> EXISTS k1 k2 k3</li>
+<li><code>EXISTS</code> : 判断一个或多个 key 是否存在
+<ul>
+<li><code>EXISTS key [key ...]</code>  EXISTS k1 k2 k3</li>
 </ul>
 </li>
-<li><code>EXPIRE</code>：给一个Key设置有效期，有效期到期时该key会自动被删除<ul>
-<li><code>EXIPRE key seconds</code> EXPIRE k1 10  #<em>设置k1十秒后删除</em></li>
+<li><code>EXPIRE</code> ：给一个 Key 设置有效期，有效期到期时该 key 会自动被删除
+<ul>
+<li><code>EXIPRE key seconds</code>  EXPIRE k1 10  #<em>设置 k1 十秒后删除</em></li>
 </ul>
 </li>
-<li><code>TTL</code> : 查看一个 Key所剩的有效时间，返回值为-1 永久有效，返回值-2为已过期，返回值为整数则暂未过期<ul>
+<li><code>TTL</code>  : 查看一个 Key 所剩的有效时间，返回值为 - 1 永久有效，返回值 - 2 为已过期，返回值为整数则暂未过期
+<ul>
 <li><code>TTL k1</code></li>
 </ul>
 </li>
 </ul>
 </blockquote>
-<h2 id="02-String类型常用命令"><a href="#02-String类型常用命令" class="headerlink" title="02-String类型常用命令"></a>02-String类型常用命令</h2><p>String类型是字符串类型，是Redis最简单的存储类型</p>
-<p>其value是字符串，不过根据字符串的格式不同，又可以分为3类：</p>
+<h2 id="02-string类型常用命令"><a class="markdownIt-Anchor" href="#02-string类型常用命令">#</a> 02-String 类型常用命令</h2>
+<p>String 类型是字符串类型，是 Redis 最简单的存储类型</p>
+<p>其 value 是字符串，不过根据字符串的格式不同，又可以分为 3 类：</p>
 <ul>
 <li>String： 普通字符串</li>
 <li>int：整型类型，可以做自增、自减操</li>
 <li>float：浮点类型，可以做自增、自减操作</li>
 </ul>
 <blockquote>
-<p>字符串类型的最大存储空间不能超过512M</p>
+<p>字符串类型的最大存储空间不能超过 512M</p>
 </blockquote>
-<h3 id="String类型的常见命令"><a href="#String类型的常见命令" class="headerlink" title="String类型的常见命令"></a>String类型的常见命令</h3><table>
+<h3 id="string类型的常见命令"><a class="markdownIt-Anchor" href="#string类型的常见命令">#</a> String 类型的常见命令</h3>
+<table>
 <thead>
 <tr>
 <th>命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>set</td>
-<td>添加或者修改已经存在的一个String类型键值对</td>
+<td>添加或者修改已经存在的一个 String 类型键值对</td>
 </tr>
 <tr>
 <td>get</td>
-<td>根据key获取String类型的value</td>
+<td>根据 key 获取 String 类型的 value</td>
 </tr>
 <tr>
 <td>mset</td>
-<td>批量添加多个String的键值对</td>
+<td>批量添加多个 String 的键值对</td>
 </tr>
 <tr>
 <td>mget</td>
-<td>根据多个key获取多个String类型的value</td>
+<td>根据多个 key 获取多个 String 类型的 value</td>
 </tr>
 <tr>
 <td>incr</td>
-<td>让一个整型的key自增1</td>
+<td>让一个整型的 key 自增 1</td>
 </tr>
 <tr>
 <td>incrby</td>
-<td>让一个整型的key自增并指定步长，例如: <code>incrby num 2</code> 就是让num自增2</td>
+<td>让一个整型的 key 自增并指定步长，例如:  <code>incrby num 2</code>  就是让 num 自增 2</td>
 </tr>
 <tr>
 <td>incrbyfloat</td>
@@ -309,24 +322,26 @@
 </tr>
 <tr>
 <td>setnx</td>
-<td>添加一个String类型的键值对，前提是这个key不存在，否则不执行</td>
+<td>添加一个 String 类型的键值对，前提是这个 key 不存在，否则不执行</td>
 </tr>
 <tr>
 <td>setex</td>
-<td>添加一个String的键值对，并且指定有效期</td>
+<td>添加一个 String 的键值对，并且指定有效期</td>
 </tr>
-</tbody></table>
-<h2 id="03-Key的层级格式"><a href="#03-Key的层级格式" class="headerlink" title="03-Key的层级格式"></a>03-Key的层级格式</h2><blockquote>
-<p>Redis的key允许又多个单词形成层级结构，多个单词之间使用<code>:</code>隔开，格式如下：</p>
+</tbody>
+</table>
+<h2 id="03-key的层级格式"><a class="markdownIt-Anchor" href="#03-key的层级格式">#</a> 03-Key 的层级格式</h2>
+<blockquote id:1,name:RedmiK60Ultra="">
+<p>Redis 的 key 允许又多个单词形成层级结构，多个单词之间使用 <code>:</code>  隔开，格式如下：</p>
 <blockquote>
-<p>项目名:业务名:类型:id</p>
+<p>项目名：业务名：类型:id</p>
 </blockquote>
 <p>该格式并非固定，具体根据需求定：</p>
 <ul>
-<li>user相关的key： <code>nancheng:user:1</code></li>
-<li>product相关的key：<code>nancheng:product:1</code></li>
+<li>user 相关的 key：  <code>nancheng:user:1</code></li>
+<li>product 相关的 key： <code>nancheng:product:1</code></li>
 </ul>
-<p>如果Value是一个Java对象，例如User对象，则可以将对象序列化为JSON字符串后存储:</p>
+<p>如果 Value 是一个 Java 对象，例如 User 对象，则可以将对象序列化为 JSON 字符串后存储:</p>
 <table>
 <thead>
 <tr>
@@ -334,23 +349,27 @@
 <th>Value</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr id:1,name:="" nancheng,age:21="">
 <td>nancheng:user:1</td>
-<td>{“id”:1,”name”: “nancheng”,”age”:21}</td>
+<td></td>
 </tr>
 <tr>
 <td>nancheng:product:1</td>
-<td>{“id”:1,”name”:”Redmi K60Ultra}</td>
+<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 </blockquote>
-<h2 id="04-Hash类型及常用命令"><a href="#04-Hash类型及常用命令" class="headerlink" title="04-Hash类型及常用命令"></a>04-Hash类型及常用命令</h2><blockquote>
-<p>Hash类型，也叫散列，其Value是一个无序字典，类似于Java中HashMap结构。</p>
-<p>String结构是将对象序列化为JSON字符串后存储，挡需要修改对象某个字段时很不方便。</p>
+<h2 id="04-hash类型及常用命令"><a class="markdownIt-Anchor" href="#04-hash类型及常用命令">#</a> 04-Hash 类型及常用命令</h2>
+<blockquote>
+<p>Hash 类型，也叫散列，其 Value 是一个无序字典，类似于 Java 中 HashMap 结构。</p>
+<p>String 结构是将对象序列化为 JSON 字符串后存储，挡需要修改对象某个字段时很不方便。</p>
 </blockquote>
-<p>Hash结构可以将对象中的每个字段独立存储，可以针对单个字段做CRUD：</p>
+<p>Hash 结构可以将对象中的每个字段独立存储，可以针对单个字段做 CRUD：</p>
 <p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406171024680.png" alt="image-20240313090902594"></p>
-<h3 id="Hash类型常见命令"><a href="#Hash类型常见命令" class="headerlink" title="Hash类型常见命令"></a>Hash类型常见命令</h3><table>
+<h3 id="hash类型常见命令"><a class="markdownIt-Anchor" href="#hash类型常见命令">#</a> Hash 类型常见命令</h3>
+<table>
 <thead>
 <tr>
 <th>命令</th>
@@ -358,53 +377,56 @@
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>hset</td>
 <td>hset key filed value</td>
-<td>添加或者修改hash类型的key的field的值</td>
+<td>添加或者修改 hash 类型的 key 的 field 的值</td>
 </tr>
 <tr>
 <td>hget</td>
 <td>hget key filed</td>
-<td>获取一个hash类型key的field的值</td>
+<td>获取一个 hash 类型 key 的 field 的值</td>
 </tr>
 <tr>
 <td>hmset</td>
 <td>hmset key filed value [filed value …]</td>
-<td>批量添加&#x2F;修改多个hash类型key的field的值</td>
+<td>批量添加 / 修改多个 hash 类型 key 的 field 的值</td>
 </tr>
 <tr>
 <td>hmget</td>
 <td>hmget key field [filed …]</td>
-<td>批量获取多个hash类型key的field的值</td>
+<td>批量获取多个 hash 类型 key 的 field 的值</td>
 </tr>
 <tr>
 <td>hgetall</td>
 <td>hgetall key</td>
-<td>获取一个hash类型的key中所有的field喝value</td>
+<td>获取一个 hash 类型的 key 中所有的 field 喝 value</td>
 </tr>
 <tr>
 <td>hkeys</td>
 <td>hkeys key</td>
-<td>获取一个hash类型的key中所偶的field</td>
+<td>获取一个 hash 类型的 key 中所偶的 field</td>
 </tr>
 <tr>
 <td>hvals</td>
 <td>hvals key</td>
-<td>获取一个hash类型的key中所有的value</td>
+<td>获取一个 hash 类型的 key 中所有的 value</td>
 </tr>
 <tr>
 <td>hincrby</td>
-<td>hincryby key field <code>increment</code></td>
-<td>让一个hash类型的key的字段值自增并指定步长为 increment</td>
+<td>hincryby key field  <code>increment</code></td>
+<td>让一个 hash 类型的 key 的字段值自增并指定步长为 increment</td>
 </tr>
 <tr>
 <td>hsetnx</td>
 <td>hsetnx key field value</td>
-<td>添加一个hash类型的key的field值，前提是这个field不存在，否则不执行</td>
+<td>添加一个 hash 类型的 key 的 field 值，前提是这个 field 不存在，否则不执行</td>
 </tr>
-</tbody></table>
-<h2 id="05-List类型"><a href="#05-List类型" class="headerlink" title="05-List类型"></a>05-List类型</h2><p>Redis中的List类型与Java中的LinkedList类型，可以看做是一个双向链表结构。既可以支持正向检索，也可以支持反向检索。</p>
+</tbody>
+</table>
+<h2 id="05-list类型"><a class="markdownIt-Anchor" href="#05-list类型">#</a> 05-List 类型</h2>
+<p>Redis 中的 List 类型与 Java 中的 LinkedList 类型，可以看做是一个双向链表结构。既可以支持正向检索，也可以支持反向检索。</p>
 <p>特征：</p>
 <ul>
 <li>有序</li>
@@ -415,20 +437,22 @@
 <blockquote>
 <p>常用来存储一个有序数据就，例如：朋友圈点赞，评论列表</p>
 </blockquote>
-<h3 id="List常用命令"><a href="#List常用命令" class="headerlink" title="List常用命令"></a>List常用命令</h3><table>
+<h3 id="list常用命令"><a class="markdownIt-Anchor" href="#list常用命令">#</a> List 常用命令</h3>
+<table>
 <thead>
 <tr>
 <th>命令</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>LPUSH key element…</td>
 <td>向列表左侧插入一个或多个元素</td>
 </tr>
 <tr>
 <td>LPOP key</td>
-<td>移除并返回列表左侧的第一个元素，没有则返回null</td>
+<td>移除并返回列表左侧的第一个元素，没有则返回 null</td>
 </tr>
 <tr>
 <td>RPUSH key element…</td>
@@ -443,11 +467,13 @@
 <td>返回一段角标范围内的所有元素</td>
 </tr>
 <tr>
-<td>BLPOP和BRPOP</td>
-<td>于LPOP和RPOP类似，只不过在没有元素时等待指定时间，而不是直接返回null</td>
+<td>BLPOP 和 BRPOP</td>
+<td>于 LPOP 和 RPOP 类似，只不过在没有元素时等待指定时间，而不是直接返回 null</td>
 </tr>
-</tbody></table>
-<h2 id="06-Set类型"><a href="#06-Set类型" class="headerlink" title="06-Set类型"></a>06-Set类型</h2><p>Set类型类似于HashSet，可以看作一个Value为null的HashMap。因为也是一个hash表，因此具备和HashSet类似的特征：</p>
+</tbody>
+</table>
+<h2 id="06-set类型"><a class="markdownIt-Anchor" href="#06-set类型">#</a> 06-Set 类型</h2>
+<p>Set 类型类似于 HashSet，可以看作一个 Value 为 null 的 HashMap。因为也是一个 hash 表，因此具备和 HashSet 类似的特征：</p>
 <ul>
 <li>无序</li>
 <li>元素不可重复</li>
@@ -461,7 +487,8 @@
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/sadd.html">SADD</a></td>
 <td>向集合添加一个或多个成员</td>
 </tr>
@@ -493,67 +520,71 @@
 <td>SUNION</td>
 <td>返回给定所有集合的并集</td>
 </tr>
-</tbody></table>
-<h2 id="07-SortedSet类型"><a href="#07-SortedSet类型" class="headerlink" title="07-SortedSet类型"></a>07-SortedSet类型</h2><blockquote>
-<p>Redis的SortedSet是一个可排序的Set集合，与Java中的TreeSet有些类似，但是底层数据结构却差别很大。SortedSet中的每一个元素都带有一个score属性，可以基于score属性对元素排序，底层的实现是一个跳表(SkipList)加hash表。</p>
-<p>SortedSet有以下特性：</p>
+</tbody>
+</table>
+<h2 id="07-sortedset类型"><a class="markdownIt-Anchor" href="#07-sortedset类型">#</a> 07-SortedSet 类型</h2>
+<blockquote>
+<p>Redis 的 SortedSet 是一个可排序的 Set 集合，与 Java 中的 TreeSet 有些类似，但是底层数据结构却差别很大。SortedSet 中的每一个元素都带有一个 score 属性，可以基于 score 属性对元素排序，底层的实现是一个跳表 (SkipList) 加 hash 表。</p>
+<p>SortedSet 有以下特性：</p>
 <ul>
 <li>可排序</li>
 <li>元素不重复</li>
 <li>查询速度快</li>
 </ul>
-<p>因为SortedSet的可排序特性，经常被用来实现排行榜这样的功能。</p>
+<p>因为 SortedSet 的可排序特性，经常被用来实现排行榜这样的功能。</p>
 </blockquote>
 <table>
 <thead>
 <tr>
-<th align="left">命令</th>
-<th align="left">描述</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">描述</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zadd.html">ZADD</a></td>
-<td align="left">向有序集合添加一个或多个成员，或者更新已存在成员的分数</td>
+<tbody>
+<tr>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zadd.html">ZADD</a></td>
+<td style="text-align:left">向有序集合添加一个或多个成员，或者更新已存在成员的分数</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zcard.html">ZCARD</a></td>
-<td align="left">获取有序集合的成员数</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zcard.html">ZCARD</a></td>
+<td style="text-align:left">获取有序集合的成员数</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zcount.html">ZCOUNT</a></td>
-<td align="left">计算在有序集合中指定区间分数的成员数</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zcount.html">ZCOUNT</a></td>
+<td style="text-align:left">计算在有序集合中指定区间分数的成员数</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zincrby.html">ZINCRBY</a></td>
-<td align="left">有序集合中对指定成员的分数加上增量 increment</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zincrby.html">ZINCRBY</a></td>
+<td style="text-align:left">有序集合中对指定成员的分数加上增量 increment</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zrange.html">ZRANGE</a></td>
-<td align="left">通过索引区间返回有序集合成指定区间内的成员</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zrange.html">ZRANGE</a></td>
+<td style="text-align:left">通过索引区间返回有序集合成指定区间内的成员</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zrangebyscore.html">ZRANGEBYSCORE</a></td>
-<td align="left">通过分数返回有序集合指定区间内的成员</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zrangebyscore.html">ZRANGEBYSCORE</a></td>
+<td style="text-align:left">通过分数返回有序集合指定区间内的成员</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zrank.html">ZRANK</a></td>
-<td align="left">返回有序集合中指定成员的索引</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zrank.html">ZRANK</a></td>
+<td style="text-align:left">返回有序集合中指定成员的索引</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zrem.html">ZREM</a></td>
-<td align="left">移除有序集合中的一个或多个成员</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zrem.html">ZREM</a></td>
+<td style="text-align:left">移除有序集合中的一个或多个成员</td>
 </tr>
 <tr>
-<td align="left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zscore.html">ZSCORE</a></td>
-<td align="left">返回有序集中，成员的分数值</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://redis.com.cn/commands/zscore.html">ZSCORE</a></td>
+<td style="text-align:left">返回有序集中，成员的分数值</td>
 </tr>
 <tr>
-<td align="left">ZDIFF、ZINTER、ZUNION</td>
-<td align="left">求差、交、并集</td>
+<td style="text-align:left">ZDIFF、ZINTER、ZUNION</td>
+<td style="text-align:left">求差、交、并集</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <blockquote>
-<p>注： 所有的排名默认都是升序。如果要降序则要在命令的Z后面添加REV即可</p>
+<p>注： 所有的排名默认都是升序。如果要降序则要在命令的 Z 后面添加 REV 即可</p>
 </blockquote>
 
     </div>

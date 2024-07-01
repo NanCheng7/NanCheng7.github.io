@@ -184,7 +184,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E8%BF%90%E7%BB%B4/" style="color: #00bcd4">
+                <a href="/tags/%E8%BF%90%E7%BB%B4/" style="color: #ffa2c4">
                     运维
                 </a>
             </span>
@@ -194,115 +194,143 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="GitStudy"><a href="#GitStudy" class="headerlink" title="GitStudy"></a>GitStudy</h1><h3 id="一、Typora快捷键"><a href="#一、Typora快捷键" class="headerlink" title="一、Typora快捷键"></a>一、Typora快捷键</h3><p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406221112612.png" alt="image-20220704192711490"></p>
-<h3 id="二、Git"><a href="#二、Git" class="headerlink" title="二、Git"></a>二、Git</h3><h4 id="1、工作原理"><a href="#1、工作原理" class="headerlink" title="1、工作原理"></a>1、工作原理</h4><p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406221112613.png" alt="image-20220704192951341"></p>
-<p>Workspace：工作区<br> Index &#x2F; Stage：暂存区<br> Repository：仓库区（或本地仓库）<br> Remote：远程仓库</p>
-<h4 id="2、命令行"><a href="#2、命令行" class="headerlink" title="2、命令行"></a>2、命令行</h4><table>
+        <h1 id="gitstudy"><a class="markdownIt-Anchor" href="#gitstudy">#</a> GitStudy</h1>
+<h3 id="一-typora快捷键"><a class="markdownIt-Anchor" href="#一-typora快捷键">#</a> 一、Typora 快捷键</h3>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406221112612.png" alt="image-20220704192711490"></p>
+<h3 id="二-git"><a class="markdownIt-Anchor" href="#二-git">#</a> 二、Git</h3>
+<h4 id="1-工作原理"><a class="markdownIt-Anchor" href="#1-工作原理">#</a> 1、工作原理</h4>
+<p><img src="https://raw.githubusercontent.com/NanCheng7/notePics/img/imgs/202406221112613.png" alt="image-20220704192951341"></p>
+<p>Workspace：工作区<br>
+ Index / Stage：暂存区<br>
+ Repository：仓库区（或本地仓库）<br>
+Remote：远程仓库</p>
+<h4 id="2-命令行"><a class="markdownIt-Anchor" href="#2-命令行">#</a> 2、命令行</h4>
+<table>
 <thead>
 <tr>
-<th align="left">代码</th>
+<th style="text-align:left">代码</th>
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">git config –global user.name “xxx”</td>
+<tbody>
+<tr>
+<td style="text-align:left">git config --global <a target="_blank" rel="noopener" href="http://user.name">user.name</a> “xxx”</td>
 <td>添加用户名</td>
 </tr>
 <tr>
-<td align="left">git config –global user.email “xxx”</td>
+<td style="text-align:left">git config --global user.email “xxx”</td>
 <td>添加邮箱</td>
 </tr>
 <tr>
-<td align="left">git config –list</td>
+<td style="text-align:left">git config --list</td>
 <td>查看配置</td>
 </tr>
 <tr>
-<td align="left">pwd</td>
+<td style="text-align:left">pwd</td>
 <td>命令用于当前的目录</td>
 </tr>
 <tr>
-<td align="left">git init</td>
-<td>把当前目录变成git可以管理的仓库</td>
+<td style="text-align:left">git init</td>
+<td>把当前目录变成 git 可以管理的仓库</td>
 </tr>
 <tr>
-<td align="left">git add <file></td>
+<td style="text-align:left">git add <file></td>
 <td>把文件提交到暂存区</td>
 </tr>
 <tr>
-<td align="left">git commit -m “message”</td>
-<td>将文件提交，message是提交的注释</td>
+<td style="text-align:left">git commit -m “message”</td>
+<td>将文件提交，message 是提交的注释</td>
 </tr>
 <tr>
-<td align="left">git status</td>
+<td style="text-align:left">git status</td>
 <td>查看是否还有文件没有提交</td>
 </tr>
 <tr>
-<td align="left">git diff <file></td>
+<td style="text-align:left">git diff <file></td>
 <td>查看文件到底修改了什么额呢绒</td>
 </tr>
 <tr>
-<td align="left">git log</td>
+<td style="text-align:left">git log</td>
 <td>查看历史记录</td>
 </tr>
 <tr>
-<td align="left">git log –pretty&#x3D;oneline</td>
+<td style="text-align:left">git log --pretty=oneline</td>
 <td>查看简介的历史记录</td>
 </tr>
 <tr>
-<td align="left">git reset –hard HEAD^</td>
-<td>回退到上一个版本，如果需要回退两个版本，则git reset –hard HEAD^^</td>
+<td style="text-align:left">git reset --hard HEAD^</td>
+<td>回退到上一个版本，如果需要回退两个版本，则 git reset --hard HEAD^^</td>
 </tr>
 <tr>
-<td align="left">git reset –hard HEAD~10</td>
+<td style="text-align:left">git reset --hard HEAD~10</td>
 <td>回退到前十个版本</td>
 </tr>
 <tr>
-<td align="left">cat <file></td>
+<td style="text-align:left">cat <file></td>
 <td>查看文件内容</td>
 </tr>
 <tr>
-<td align="left">git reset –hard &lt;版本号&gt;</td>
+<td style="text-align:left">git reset --hard &lt;版本号&gt;</td>
 <td>回退到对应版本号</td>
 </tr>
 <tr>
-<td align="left">git reflog</td>
+<td style="text-align:left">git reflog</td>
 <td>查看版本号</td>
 </tr>
-</tbody></table>
-<h4 id="3、理解工作区与暂存区的区别"><a href="#3、理解工作区与暂存区的区别" class="headerlink" title="3、理解工作区与暂存区的区别"></a>3、理解工作区与暂存区的区别</h4><p>第一步：是使用 git add 把文件添加进去，实际上就是把文件添加到暂存区。</p>
-<p>第二步：使用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支上。</p>
-<h4 id="4、Git撤销修改和删除文件操作"><a href="#4、Git撤销修改和删除文件操作" class="headerlink" title="4、Git撤销修改和删除文件操作"></a>4、Git撤销修改和删除文件操作</h4><h5 id="1、撤销修改"><a href="#1、撤销修改" class="headerlink" title="1、撤销修改:"></a>1、撤销修改:</h5><ul>
-<li><p>直接手动更改去掉那些需要的文件，然后add添加到暂存区，最后commit掉。</p>
+</tbody>
+</table>
+<h4 id="3-理解工作区与暂存区的区别"><a class="markdownIt-Anchor" href="#3-理解工作区与暂存区的区别">#</a> 3、理解工作区与暂存区的区别</h4>
+<p>第一步：是使用 git add 把文件添加进去，实际上就是把文件添加到暂存区。</p>
+<p>第二步：使用 git commit 提交更改，实际上就是把暂存区的所有内容提交到当前分支上。</p>
+<h4 id="4-git撤销修改和删除文件操作"><a class="markdownIt-Anchor" href="#4-git撤销修改和删除文件操作">#</a> 4、Git 撤销修改和删除文件操作</h4>
+<h5 id="1-撤销修改"><a class="markdownIt-Anchor" href="#1-撤销修改">#</a> 1、撤销修改:</h5>
+<ul>
+<li>
+<p>直接手动更改去掉那些需要的文件，然后 add 添加到暂存区，最后 commit 掉。</p>
 </li>
-<li><p>使用 git reset –hard HEAD^</p>
+<li>
+<p>使用 git reset --hard HEAD^</p>
 </li>
-<li><p>使用git checkout – &lt;file&gt; 可以丢弃工作区的修改.</p>
+<li>
+<p>使用 git checkout – &lt;file&gt; 可以丢弃工作区的修改.</p>
 <blockquote>
-<p> 命令 git checkout –readme.txt 意思就是，把readme.txt文件在工作区做的修改全部撤销，这里有2种情况，如下：</p>
+<p>命令 git checkout --readme.txt 意思就是，把 readme.txt 文件在工作区做的修改全部撤销，这里有 2 种情况，如下：</p>
 </blockquote>
 <blockquote>
-<p> 1.readme.txt自动修改后，还没有放到暂存区，使用 撤销修改就回到和版本库一模一样的状态。<br> 2.另外一种是readme.txt已经放入暂存区了，接着又作了修改，撤销修改就回到添加暂存区后的状态.</p>
+<p>1.readme.txt 自动修改后，还没有放到暂存区，使用 撤销修改就回到和版本库一模一样的状态。<br>
+2. 另外一种是 readme.txt 已经放入暂存区了，接着又作了修改，撤销修改就回到添加暂存区后的状态.</p>
 </blockquote>
 </li>
 </ul>
-<h5 id="2、删除文件"><a href="#2、删除文件" class="headerlink" title="2、删除文件"></a>2、删除文件</h5><p>​	rm &lt;file&gt;  删除文件</p>
+<h5 id="2-删除文件"><a class="markdownIt-Anchor" href="#2-删除文件">#</a> 2、删除文件</h5>
+<p>​	rm &lt;file&gt;  删除文件</p>
 <blockquote>
-<p>如果我想彻底从版本库中删掉了此文件的话，可以再执行commit命令 提交掉</p>
+<p>如果我想彻底从版本库中删掉了此文件的话，可以再执行 commit 命令 提交掉</p>
 </blockquote>
-<h3 id="三、创建云端仓库"><a href="#三、创建云端仓库" class="headerlink" title="三、创建云端仓库"></a>三、创建云端仓库</h3><h4 id="一、创建GitHub或Gitee账户"><a href="#一、创建GitHub或Gitee账户" class="headerlink" title="一、创建GitHub或Gitee账户"></a>一、创建GitHub或Gitee账户</h4><h4 id="二、建立云端仓库"><a href="#二、建立云端仓库" class="headerlink" title="二、建立云端仓库"></a>二、建立云端仓库</h4><h4 id="三、将本地仓库与云端仓库建立连接"><a href="#三、将本地仓库与云端仓库建立连接" class="headerlink" title="三、将本地仓库与云端仓库建立连接"></a>三、将本地仓库与云端仓库建立连接</h4><p>​		git remote add origin &lt;仓库地址&gt;</p>
-<h4 id="四、上传流程"><a href="#四、上传流程" class="headerlink" title="四、上传流程"></a>四、上传流程</h4><h5 id="一、git-add"><a href="#一、git-add" class="headerlink" title="一、git add ."></a>一、git add .</h5><blockquote>
+<h3 id="三-创建云端仓库"><a class="markdownIt-Anchor" href="#三-创建云端仓库">#</a> 三、创建云端仓库</h3>
+<h4 id="一-创建github或gitee账户"><a class="markdownIt-Anchor" href="#一-创建github或gitee账户">#</a> 一、创建 GitHub 或 Gitee 账户</h4>
+<h4 id="二-建立云端仓库"><a class="markdownIt-Anchor" href="#二-建立云端仓库">#</a> 二、建立云端仓库</h4>
+<h4 id="三-将本地仓库与云端仓库建立连接"><a class="markdownIt-Anchor" href="#三-将本地仓库与云端仓库建立连接">#</a> 三、将本地仓库与云端仓库建立连接</h4>
+<p>​		git remote add origin &lt;仓库地址&gt;</p>
+<h4 id="四-上传流程"><a class="markdownIt-Anchor" href="#四-上传流程">#</a> 四、上传流程</h4>
+<h5 id="一-git-add"><a class="markdownIt-Anchor" href="#一-git-add">#</a> 一、git add .</h5>
+<blockquote>
 <p>​		. 的意思是将当前位置工作区内所有文件添加到暂存区</p>
 </blockquote>
-<h5 id="二、git-commit-m-“massege”"><a href="#二、git-commit-m-“massege”" class="headerlink" title="二、git commit -m “massege”"></a>二、git commit -m “massege”</h5><blockquote>
-<p>​		提交文件，注释massege</p>
+<h5 id="二-git-commit-m-massege"><a class="markdownIt-Anchor" href="#二-git-commit-m-massege">#</a> 二、git commit -m “massege”</h5>
+<blockquote>
+<p>​		提交文件，注释 massege</p>
 </blockquote>
-<h5 id="三、git-remote-add-origin-“https-gitee-com-Nan-Cheng7-nan-cheng-itstudy-git“"><a href="#三、git-remote-add-origin-“https-gitee-com-Nan-Cheng7-nan-cheng-itstudy-git“" class="headerlink" title="三、git remote add origin “https://gitee.com/Nan_Cheng7/nan-cheng-itstudy.git“"></a>三、git remote add origin “<a target="_blank" rel="noopener" href="https://gitee.com/Nan_Cheng7/nan-cheng-itstudy.git">https://gitee.com/Nan_Cheng7/nan-cheng-itstudy.git</a>“</h5><blockquote>
+<h5 id="三-git-remote-add-origin-httpsgiteecomnan_cheng7nan-cheng-itstudygit"><a class="markdownIt-Anchor" href="#三-git-remote-add-origin-httpsgiteecomnan_cheng7nan-cheng-itstudygit">#</a> 三、git remote add origin “<a target="_blank" rel="noopener" href="https://gitee.com/Nan_Cheng7/nan-cheng-itstudy.git">https://gitee.com/Nan_Cheng7/nan-cheng-itstudy.git</a>”</h5>
+<blockquote>
 <p>​		建立连接、</p>
 </blockquote>
-<h5 id="四、git-pull-–rebase-origin-master"><a href="#四、git-pull-–rebase-origin-master" class="headerlink" title="四、git pull –rebase origin master"></a>四、git pull –rebase origin master</h5><blockquote>
-<p>​		在当前文件夹内添加Readme文件</p>
+<h5 id="四-git-pull-rebase-origin-master"><a class="markdownIt-Anchor" href="#四-git-pull-rebase-origin-master">#</a> 四、git pull --rebase origin master</h5>
+<blockquote>
+<p>​		在当前文件夹内添加 Readme 文件</p>
 </blockquote>
-<h5 id="五、git-push-origin-master"><a href="#五、git-push-origin-master" class="headerlink" title="五、git push origin master"></a>五、git push origin master</h5><blockquote>
+<h5 id="五-git-push-origin-master"><a class="markdownIt-Anchor" href="#五-git-push-origin-master">#</a> 五、git push origin master</h5>
+<blockquote>
 <p>​		推送拉取的文件</p>
 </blockquote>
 
